@@ -1,5 +1,5 @@
-# practical-training
-# 名字：
+# Refined Resume
+# 项目名称：
 ```
 Refined Resume
 ```
