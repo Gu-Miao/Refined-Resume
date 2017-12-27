@@ -16,7 +16,7 @@ Refined Resume
 自制模板分享功能  
 # 用户面向
 对个人简历有需求的求职者或者个人
-# 数据库 MongoDB Node.js
+# 数据库：MongoDB&Node.js
 [MongoDB 教程](http://www.runoob.com/mongodb/mongodb-tutorial.html)  
 [Node.js 连接 MongoDB](http://www.runoob.com/nodejs/nodejs-mongodb.html)  
 [8天学通MongoDB](https://kb.cnblogs.com/page/152296/)  
