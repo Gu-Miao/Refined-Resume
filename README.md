@@ -66,10 +66,7 @@ JS|刘京，张高翔
 
 ## 可能会用到的东西总结
 
-* [MongoDB 教程](http://www.runoob.com/mongodb/mongodb-tutorial.html)  
-* [Node.js 连接 MongoDB](http://www.runoob.com/nodejs/nodejs-mongodb.html)  
-* [8天学通MongoDB](https://kb.cnblogs.com/page/152296/)  
-* [node.js从入门到菜鸟——node与数据库，一段不得不说的故事](https://www.cnblogs.com/xiao-yao/archive/2012/04/13/2445915.html)  
+* [MongoDB](../mongodb.git)
 * [文件上传到服务器并获取文件中的数据](http://blog.csdn.net/cwzhsi/article/details/45486925)  
 * [js如何把数据保存到服务器端，用文件系统](https://zhidao.baidu.com/question/1701857117220731540.html)  
 * [js实现将canvas保存成图片并下载到本地](http://blog.csdn.net/u012246064/article/details/78032153)  
