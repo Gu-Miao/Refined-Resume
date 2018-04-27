@@ -1,9 +1,10 @@
 var usr = document.getElementsByClassName("usr")[0];
 var psw = document.getElementsByClassName("psw")[0];
+var cpsw = document.getElementsByClassName("psw")[1];
 var usr_em = document.getElementsByClassName("em")[0];
 var psw_em = document.getElementsByClassName("em")[1];
-var reg = document.getElementsByClassName("reg")[0];
-var getpsw = document.getElementsByClassName("getpsw")[0];
+var psw_em = document.getElementsByClassName("em")[2];
+var radio = document.getElementsByClassName("radio")[0];
 var btn = document.getElementsByClassName("btn")[0];
 
 usr.value = "用户名";
@@ -12,7 +13,6 @@ usr.className += " placeholder";
 usr.onfocus = function() {
     if(usr.value == "用户名") {
         usr.value = "";
-        console.log(typeof usr.className)
         usr.className = usr.className.split(" ")[0];
     }
 }
@@ -23,15 +23,14 @@ usr.onblur = function () {
     }
 }
 
+psw.type = "text";
 psw.value = "密码";
 psw.className += " placeholder";
-psw.type = "text";
 
 psw.onfocus = function() {
     if(psw.value == "密码") {
         psw.type = "password";
         psw.value = "";
-        console.log(typeof psw.className)
         psw.className = psw.className.split(" ")[0];
     }
 }
@@ -43,15 +42,34 @@ psw.onblur = function () {
     }
 }
 
-btn.onclick = function() {
-    if (usr.value == "" && psw.value == "") {
-        usr_em.innerHTML = "* 请输入用户名";
-        psw_em.innerHTML = "* 请输入密码";
-    } else if(usr.value == "") {
-        usr_em.innerHTML = "* 请输入用户名";
-    } else if(psw.value == "") {
-        psw_em.innerHTML = "* 请输入密码";
-    } else {
-        alert("登录成功");
+cpsw.type = "text";
+cpsw.value = "确认密码";
+cpsw.className += " placeholder";
+
+cpsw.onfocus = function() {
+    if(cpsw.value == "确认密码") {
+        cpsw.type = "password";
+        cpsw.value = "";
+        cpsw.className = cpsw.className.split(" ")[0];
     }
 }
+cpsw.onblur = function () {
+    if(cpsw.value == "") {
+        cpsw.type = "text";
+        cpsw.value = "确认密码";
+        cpsw.className += " placeholder";
+    }
+}
+
+radio.onclick = function() {
+    if(radio.className == "radio") {
+        radio.className += " radioChecked";
+    } else {
+        radio.className = "radio";
+    }
+}
+
+btn.onclick = function() {
+    alert("注册成功");
+}
+
