@@ -1,0 +1,27 @@
+.admin_header {
+    width: 100%;
+    min-width: 700px;
+    height: 70px;
+    background-color: black;
+}
+
+.admin_header img{
+    position: absolute;
+    top: 25px;
+    margin-left:1%; 
+
+}
+
+.btn{
+    width: 5%;
+    height: 50px;
+    background:black;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 5px 0 0 auto;
+    cursor: pointer;
+    float:right;
+}

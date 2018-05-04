@@ -1,0 +1,52 @@
+.box_getpsw {
+    background-color: #ffffff;
+    width: 460px;
+    height: 280px;
+    left: 50%;
+    margin-left: -230px;
+    border-radius: 5px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    padding: 25px 0 20px 0;
+    position: fixed;
+    top: 15%;
+}
+
+.title_getpsw {
+    width: 30%;
+    height: 30px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #42a5f5;
+}
+
+.link_getpsw {
+    width: 30%;
+    height: 20px;
+    line-height: 20px;
+    margin: 20px 0 15px 68%;
+    color: #8d8d8d;
+    font-size: 12px;
+    -moz-user-select:none; /*火狐*/
+    -webkit-user-select:none; /*webkit浏览器*/
+    -ms-user-select:none; /*IE10*/
+    -khtml-user-select:none; /*早期浏览器*/
+    user-select:none;
+}
+
+.login {
+    color: #42a5f5;
+    cursor: pointer;
+}
+
+.newpsw {
+    width: 70%;
+    margin: 0 auto 10px auto;
+}
+
+.qes {
+    width: 70%;
+    margin: 20px auto 0 auto;
+
+}
