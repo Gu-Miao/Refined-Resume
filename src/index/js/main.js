@@ -8,7 +8,9 @@ var rr = document.getElementById("rr");
 
 !function() {
     window.onhashchange = function() { // 路由设置
-        if(this.location.hash === "#/login") {
+        if(this.location.hash === "#/welcome") {
+            c_welcome.show();
+        } else if(this.location.hash === "#/login") {
             c_login.show();
         } else if(this.location.hash === "#/reg"){
             c_reg.show();
@@ -20,7 +22,7 @@ var rr = document.getElementById("rr");
             c_footer.show();
         }
     }
-    c_login.show();
+    c_welcome.show();
 }();
 
 
