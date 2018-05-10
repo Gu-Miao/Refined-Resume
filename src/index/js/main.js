@@ -1,5 +1,5 @@
 var rr = document.getElementById("rr");
-
+var a = [];
 // c_header.show();
 // c_footer.show();
 // c_login.show();
@@ -8,9 +8,10 @@ var rr = document.getElementById("rr");
 
 !function() {
     window.onhashchange = function() { // 路由设置
+      console.log(this.location.hash.split("#")[1]);
         if(this.location.hash === "#/welcome") {
             c_welcome.show();
-        } else if(this.location.hash === "#/login") {
+        } else if(this.location.hash.split("$")[0] === "#/login") {
             c_login.show();
         } else if(this.location.hash === "#/reg"){
             c_reg.show();
@@ -22,7 +23,7 @@ var rr = document.getElementById("rr");
             c_footer.show();
         }
     }
-    c_welcome.show();
+    c_reg.show();
 }();
 
 
@@ -97,7 +98,56 @@ function radio() { // 单选框回调函数
 }
 
 function reg() { // 注册按钮回调函数
-    alert("注册成功");
+  var usr = document.getElementsByClassName("usr")[0].value;
+  var psw = document.getElementsByClassName("psw")[0].value;
+  var cpsw = document.getElementsByClassName("psw")[1].value;
+  var radio = document.getElementsByClassName("radio")[0];
+  var usr_em = document.getElementsByClassName("em")[0];
+  var psw_em = document.getElementsByClassName("em")[1];
+  var cpsw_em = document.getElementsByClassName("em")[2];
+
+  console.log(usr, psw, cpsw);
+  console.log(radio.classList[1]);
+  if(usr === "" || usr === "用户名") {
+    usr_em.innerHTML = "用户名不能为空";
+  } else {
+    usr_em.innerHTML = "";
+  }
+  
+  if(psw === "" || psw === "密码") {
+    psw_em.innerHTML = "密码不能为空";
+  } else if(psw.length < 6) {
+    psw_em.innerHTML = "密码长度不得少于6位";
+  } else {
+    psw_em.innerHTML = "";
+  }
+  
+  if(cpsw !== psw || cpsw === "确认密码") {
+    cpsw_em.innerHTML = "请确认密码";
+  } else {
+    cpsw_em.innerHTML = "";
+  }
+  
+  
+  if(usr_em.innerHTML === "" && psw_em.innerHTML === "" && cpsw_em.innerHTML === "" && radio.classList[1]) {
+    var data = {username: usr, password: psw};
+    console.log("fetching...");
+    fetch("http://192.168.42.122:8000", {
+      method: "POST",
+      body: JSON.stringify(data)
+    }).then(function(res) {
+      res.text().then(function(data) {
+        if(data == "用户名已存在") {
+          alert("用户名已存在");
+          usr_em.innerHTML = "* 用户名已存在";
+        } else {
+          alert("注册成功！");
+          this.location.hash = "#/login$usr="+usr+"$psw="+psw;
+        }
+      });
+    });
+  }
+
 }
 
 function next1() { // 注册页下一步按钮的回调函数

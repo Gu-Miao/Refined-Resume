@@ -16,7 +16,9 @@ var c_login = function() {
 
     function show() {
         rr.innerHTML = dom_login;
-        location.hash = "#/login";
+        if(location.hash.split("$")[0] !== "#/login") {
+          location.hash = "#/login";
+        }
     }
 
     return {show: show};
