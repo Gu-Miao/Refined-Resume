@@ -1,0 +1,10 @@
+.admin-app-stage {
+  position: absolute;
+  left: 200px;
+  top: 70px;
+  bottom: 0;
+  right: 0;
+  border-left: solid 2px #1aa094;
+  box-sizing: border-box;
+  background: white;
+}
