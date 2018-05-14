@@ -1,0 +1,19 @@
+rr
+├─dist 
+├─docs 文档
+│  ├─1.项目启动
+│  └─2.项目规划
+├─node_modules 引用
+├─server 静态页服务和API
+└─src
+    ├─index 前端
+    │  ├─css
+    │  ├─images
+    │  ├─js
+    │  └─pages
+    │      ├─footer
+    │      ├─header
+    │      ├─menu
+    │      ├─page
+    │      └─stage
+    └─manage 后台
