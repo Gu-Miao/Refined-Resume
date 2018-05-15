@@ -26,7 +26,7 @@ var c_getpsw = function() {
         '<label for="cpsw" class="la"></label>'+
         '<input id="cpsw" type="text" class="psw placeholder" autocomplete="off" onfocus="pswFocus()" onblur="pswBlur()" value="确认密码">'+
         '<div class="em"></div>'+
-        '<div class="btn_login finish">完成</div></div></div></div>';
+        '<div class="btn_login finish" onclick="getPsw()">完成</div></div></div></div>';
 
     function show() {
         rr.innerHTML = dom_getpsw;

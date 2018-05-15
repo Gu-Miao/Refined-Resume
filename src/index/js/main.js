@@ -304,7 +304,7 @@ function next2() { // 忘记密码页下一步按钮的回调函数
     }  
 }
 
-function finish() { // 忘记密码页完成按钮的回调函数
+function getPsw() { // 忘记密码页完成按钮的回调函数
     var psw = document.getElementsByClassName("psw")[0].value;
     var cpsw = document.getElementsByClassName("psw")[1].value;
     var psw_em = document.getElementsByClassName("em")[2];
