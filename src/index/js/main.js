@@ -1,10 +1,5 @@
 var rr = document.getElementById("rr");
 var a = [];
-// c_header.show();
-// c_footer.show();
-// c_login.show();
-// c_reg.show();
-// c_getpsw.show();
 
 !function() {
     window.onhashchange = function() { // 路由设置
@@ -24,7 +19,6 @@ var a = [];
         }
     }
     
-
     window.onbeforeunload = function() {
         window.sessionStorage.setItem("rr_show", window.location.hash);
     }
@@ -252,8 +246,27 @@ function reg() { // 注册按钮回调函数
 function next1() { // 注册页下一步按钮的回调函数
     var box1 = document.getElementsByClassName("box_getpsw")[0];
     var box2 = document.getElementsByClassName("box_getpsw")[1];
-    box1.className += " hide";
-    box2.className = box2.className.split(" hide")[0];
+    var usr = document.getElementsByClassName("usr")[0].value;
+    var usr_em = document.getElementsByClassName("em")[0].innerHTML;
+    if(usr === "" || usr === "用户名") {
+        usr_em = "* 用户名不能为空";
+    } else {
+        usr_em = "";
+        var data = {id: "getpsw1", username: usr};
+        fetch("http://192.168.194.122:8000", {
+            method: "POST",
+            body: JSON.stringify(data)
+        }).then(function(res) {
+            res.text().then(function(data) {
+                if(data == "用户名不存在") {
+                    usr_em = "* 用户名不存在";
+                } else {
+                    box1.className += " hide";
+                    box2.className = box2.className.split(" hide")[0];
+                }
+            });
+        });
+    } 
 }
 
 function next2() { // 注册页下一步按钮的回调函数

@@ -11,7 +11,7 @@ var c_getpsw = function() {
         '<div class="box_getpsw box2 hide">'+
         '<div class="title_getpsw">找回密码</div><div><div class="link_getpsw">'+
         '<span class="text">已有账号，</span><span class="login" onclick="toLogin()">马上登录</span></div>'+
-        '<div class="qes">密保问题：你的生日是？</div>'+
+        '<div class="qes">密保问题：</div>'+
         '<label for="qes" class="la"></label>'+
         '<input id="qes" type="text" class="usr" autocomplete="off">'+
         '<div class="em"></div>'+

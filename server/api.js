@@ -36,6 +36,9 @@ http.createServer(function(req, res) {
                 case "login":
                   login(data, req, res);
                   break;
+                case "getpsw1":
+                  getUsername(data, req, res);
+                  break;
                 default: 
                   break;
               }
@@ -114,6 +117,29 @@ function reg(data, req, res) {
       res.setHeader("Content-Length", Buffer.byteLength(end));
       res.end(end);
     });
+}
+
+function getUsername(data, req, res) {
+  console.log("login/POST");
+  console.log(JSON.parse(data.toString("utf8")));
+
+  var username = "";
+  var end = "用户名不存在";
+
+  username = JSON.parse(data.toString("utf8")).username;
+  
+  for(let i = 0; i < users.length; i++) {
+    if(users[i].username === username) {
+      end = "用户名存在"
+    }
+  }
+
+  req.on("end", function() {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Content-Type", "text/plain; charset='utf-8'");
+    res.setHeader("Content-Length", Buffer.byteLength(end));
+    res.end(end);
+  });
 
 }
 
