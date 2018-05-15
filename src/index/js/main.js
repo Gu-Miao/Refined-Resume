@@ -110,11 +110,11 @@ function pswBlur() { // 密码框失去焦点的回调
 }
 
 function login() { // 登录页点击登录按钮的回调
-    var usr = document.getElementsByClassName("usr")[0],
-        psw = document.getElementsByClassName("psw")[0],
+    var usr = document.getElementsByClassName("usr")[0].value,
+        psw = document.getElementsByClassName("psw")[0].value,
         usr_em = document.getElementsByClassName("em")[0],
         psw_em = document.getElementsByClassName("em")[1];
-    if ((usr.value == "" || usr.value == "用户名") && (psw.value == "" || psw.value == "密码")) {
+    if ((usr == "" || usr == "用户名") && (psw == "" || psw == "密码")) {
         usr_em.innerHTML = "* 请输入用户名";
         psw_em.innerHTML = "* 请输入密码";
     } else if(usr.value == "" || usr.value == "用户名") {

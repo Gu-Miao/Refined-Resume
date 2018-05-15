@@ -48,6 +48,7 @@ http.createServer(function(req, res) {
 
 function login(data, req, res) {
     console.log("login/POST");
+    console.log(JSON.parse(data.toString("utf8")));
 
     var username = "";
     var password = "";
@@ -58,7 +59,7 @@ function login(data, req, res) {
     
     for(let i = 0; i < users.length; i++) {
       if(users[i].username === username) {
-        if(users[i] === password) {
+        if(users[i].password === password) {
           end = "登陆成功";
         } else {
           end = "密码错误";
@@ -116,7 +117,7 @@ function reg(data, req, res) {
 
 }
 
-function loginSelect(db, callback) {  
+function selectData(db, callback) {  
   var collection = db.collection('user');
   collection.find().toArray(function(err, result) {
     if(err)
