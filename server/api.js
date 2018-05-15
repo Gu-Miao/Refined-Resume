@@ -33,6 +33,9 @@ http.createServer(function(req, res) {
                 case "reg":
                   reg(data, req, res);
                   break;
+                case "login":
+                  login(data, req, res);
+                  break;
                 default: 
                   break;
               }
@@ -44,17 +47,36 @@ http.createServer(function(req, res) {
 }).listen(8000);
 
 function login(data, req, res) {
-    console.log("GET");
-    var body = "hello";
+    console.log("login/POST");
+
+    var username = "";
+    var password = "";
+    var end = "用户名不存在";
+
+    username = JSON.parse(data.toString("utf8")).username;
+    password = JSON.parse(data.toString("utf8")).password;
     
-    res.setHeader("Content-Length", Buffer.byteLength(body));
-    res.setHeader("Content-Type", "text/plain; charset='utf-8'");
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.end(body);
+    for(let i = 0; i < users.length; i++) {
+      if(users[i].username === username) {
+        if(users[i] === password) {
+          end = "登陆成功";
+        } else {
+          end = "密码错误";
+        }
+      }
+    }
+
+    req.on("end", function() {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Content-Type", "text/plain; charset='utf-8'");
+      res.setHeader("Content-Length", Buffer.byteLength(end));
+      res.end(end);
+
+    });
 
 }
 function reg(data, req, res) {
-    console.log("POST");
+    console.log("reg/POST");
     
     var username = "";
     var password = "";
@@ -76,8 +98,9 @@ function reg(data, req, res) {
     if(had === false) {
       MongoClient.connect(url, function(err, db) {
         console.log("数据库连接成功！");
-        insertData(db, function(result) {
+        regInsert(db, function(result) {
           console.log(result);
+          users.push(result);
           db.close();
         }, username, password, qestion, answer);
       });
@@ -85,19 +108,15 @@ function reg(data, req, res) {
       
 
     req.on("end", function() {
-      if(had === false) {
-        users.push(username);
-      }
       res.setHeader("Access-Control-Allow-Origin", "*");
       res.setHeader("Content-Type", "text/plain; charset='utf-8'");
       res.setHeader("Content-Length", Buffer.byteLength(end));
       res.end(end);
-
     });
 
 }
 
-function selectData(db, callback) {  
+function loginSelect(db, callback) {  
   var collection = db.collection('user');
   collection.find().toArray(function(err, result) {
     if(err)
@@ -109,7 +128,7 @@ function selectData(db, callback) {
   });
 };
 
-function insertData(db, callback, username, password, qestion, answer)  {  
+function regInsert(db, callback, username, password, qestion, answer)  {  
     var collection = db.collection('user');
     var usr = "";
     var psw = "";
