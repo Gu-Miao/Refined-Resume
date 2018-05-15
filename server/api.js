@@ -195,14 +195,11 @@ function changePsw(data, req, res) {
           console.log(result);
           db.close();
           end = "密码找回成功";
+          res.setHeader("Access-Control-Allow-Origin", "*");
+          res.setHeader("Content-Type", "text/plain; charset='utf-8'");
+          res.setHeader("Content-Length", Buffer.byteLength(end));
+          res.end(end);
       }, username, password);
-  });
-
-  req.on("end", function() {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Content-Type", "text/plain; charset='utf-8'");
-    res.setHeader("Content-Length", Buffer.byteLength(end));
-    res.end(end);
   });
 
 }

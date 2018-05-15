@@ -338,7 +338,7 @@ function getPsw() { // 忘记密码页完成按钮的回调函数
                     alert("密码修改失败");
                 } else {
                     alert("密码找回成功");
-                    window.location.hash = "#/login$usr="+usr+"$psw="+psw;
+                    window.location.hash = "#/login$usr="+window.sessionStorage["rr_usr"]+"$psw="+psw;
                 }
             });
         });
