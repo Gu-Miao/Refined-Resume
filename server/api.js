@@ -27,11 +27,11 @@ http.createServer(function(req, res) {
             get(res);
             break;
         case "POST":
-            req.on("data",function() {
+            req.on("data",function(data) {
               var id = JSON.parse(data.toString("utf8")).id;
               switch(id){
                 case "reg":
-                  reg(res, req);
+                  reg(data, req, res);
                   break;
                 default: 
                   break;
@@ -53,7 +53,7 @@ function get(res) {
     res.end(body);
 
 }
-function reg(req, res) {
+function reg(data, req, res) {
     console.log("POST");
     
     var username = "";
@@ -61,30 +61,28 @@ function reg(req, res) {
     var had = false; // 标识符
     var end = "注册成功";
 
-    req.on("data", function(data) {
-      username = JSON.parse(data.toString("utf8")).username;
-      password = JSON.parse(data.toString("utf8")).password;
-      qestion = JSON.parse(data.toString("utf8")).qestion;
-      answer = JSON.parse(data.toString("utf8")).answer;
-      for(let i = 0; i < usernames.length; i++) {
-        if(username == usernames[i]) {
-          end = "用户名已存在";
-          had = true;
-          break;
-        }
+    username = JSON.parse(data.toString("utf8")).username;
+    password = JSON.parse(data.toString("utf8")).password;
+    qestion = JSON.parse(data.toString("utf8")).qestion;
+    answer = JSON.parse(data.toString("utf8")).answer;
+    for(let i = 0; i < usernames.length; i++) {
+      if(username == usernames[i]) {
+        end = "用户名已存在";
+        had = true;
+        break;
       }
+    }
 
-      if(had === false) {
-        MongoClient.connect(url, function(err, db) {
-          console.log("数据库连接成功！");
-          insertData(db, function(result) {
-            console.log(result);
-            db.close();
-          }, username, password, qestion, answer);
-        });
-      }
+    if(had === false) {
+      MongoClient.connect(url, function(err, db) {
+        console.log("数据库连接成功！");
+        insertData(db, function(result) {
+          console.log(result);
+          db.close();
+        }, username, password, qestion, answer);
+      });
+    }
       
-    });
 
     req.on("end", function() {
       if(had === false) {
