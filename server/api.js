@@ -130,7 +130,8 @@ function getUsername(data, req, res) {
   
   for(let i = 0; i < users.length; i++) {
     if(users[i].username === username) {
-      end = "用户名存在"
+      var qes = users[i].qestion;
+      end = qes;
     }
   }
 
