@@ -186,7 +186,7 @@ function reg() { // 注册按钮回调函数
     if(usr_em.innerHTML === "" && psw_em.innerHTML === "" && cpsw_em.innerHTML === "" && qes_em.innerHTML === "" && ans_em.innerHTML === "" && radio.classList[1]) {
     var data = {username: usr, password: psw, qestion: qes, answer: ans};
     console.log("fetching...");
-    fetch("http://192.168.42.122:8000", {
+    fetch("http://192.168.194.122:8000", {
         method: "POST",
         body: JSON.stringify(data)
     }).then(function(res) {
