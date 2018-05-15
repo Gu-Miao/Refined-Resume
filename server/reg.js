@@ -56,6 +56,8 @@ function insert(req, res) {
     req.on("data", function(data) {
       username = JSON.parse(data.toString("utf8")).username;
       password = JSON.parse(data.toString("utf8")).password;
+      qestion = JSON.parse(data.toString("utf8")).qestion;
+      answer = JSON.parse(data.toString("utf8")).answer;
       for(let i = 0; i < usernames.length; i++) {
         if(username == usernames[i]) {
           end = "用户名已存在";
@@ -70,7 +72,7 @@ function insert(req, res) {
           insertData(db, function(result) {
             console.log(result);
             db.close();
-          }, username, password);
+          }, username, password, qestion, answer);
         });
       }
       
@@ -101,13 +103,17 @@ function selectData(db, callback) {
   });
 };
 
-function insertData(db, callback, username, password)  {  
+function insertData(db, callback, username, password, qestion, answer)  {  
     var collection = db.collection('user');
     var usr = "";
     var psw = "";
+    var qes = "";
+    var ans = "";
     usr += username;
     psw += password;
-    var data = [{username: usr, password: psw}];
+    qes += qestion;
+    ans += answer;
+    var data = [{username: usr, password: psw, qestion: qes, answer: ans}];
     collection.insert(data, function(err, result) { 
       if(err) {
         console.log('Error:'+ err);

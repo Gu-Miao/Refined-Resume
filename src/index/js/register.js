@@ -14,6 +14,14 @@ var c_reg = function() {
         '<label for="cpsw" class="la"></label>'+
         '<input id="cpsw" type="text" class="psw placeholder" value="确认密码" onfocus="pswFocus()" onblur="pswBlur()">'+
         '<div class="em"></div>'+
+        '<br>'+
+        '<label for="qes" class="la"></label>'+
+        '<input id="qes" type="text" class="usr placeholder" autocomplete="off" value="密保问题" onfocus="qesFocus()" onblur="qesBlur()">'+
+        '<div class="em"></div>'+
+        '<br>'+
+        '<label for="ans" class="la"></label>'+
+        '<input id="ans" type="text" class="usr placeholder" autocomplete="off" value="密保问题答案" onfocus="ansFocus()" onblur="ansBlur()">'+
+        '<div class="em"></div>'+
         '<div class="link_reg">'+
         '<div class="radio" onclick="radio()"></div>'+
         '<span class="text"> 我已阅读并接受 </span>'+

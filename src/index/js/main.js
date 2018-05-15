@@ -47,6 +47,44 @@ function usrBlur() { // 用户框失去焦点的回调
     }
 }
 
+function qesFocus() { // 密保问题获得焦点的回调
+    var qes = document.getElementById("qes"),
+        qes_em = document.getElementsByClassName("em")[3];
+    if(qes.value == "密保问题") {
+        qes.value = "";
+        qes_em.innerHTML = "";
+        qes.className = qes.className.split(" ")[0];
+    }
+}
+
+function qesBlur() { // 密保问题失去焦点失去焦点的回调
+    var qes = document.getElementById("qes"),
+        qes_em = document.getElementsByClassName("em")[0];
+    if(qes.value == "") {
+        qes.value = "密保问题";
+        qes.className += " placeholder";
+    }
+}
+
+function ansFocus() { // 密保问题答案获取焦点的回调
+    var ans = document.getElementById("ans"),
+        ans_em = document.getElementsByClassName("em")[4];
+    if(ans.value == "密保问题答案") {
+        ans.value = "";
+        ans_em.innerHTML = "";
+        ans.className = qes.className.split(" ")[0];
+    }
+}
+
+function ansBlur() { // 密保问题答案失去焦点的回调
+    var ans = document.getElementById("ans"),
+        ans_em = document.getElementsByClassName("em")[4];
+    if(ans.value == "") {
+        ans.value = "密保问题答案";
+        ans.className += " placeholder";
+    }
+}
+
 function pswFocus() { // 密码框获取焦点的回调
     var psw = window.event.srcElement || window.event.target;
     var psw_em = psw.nextSibling;
@@ -98,55 +136,71 @@ function radio() { // 单选框回调函数
 }
 
 function reg() { // 注册按钮回调函数
-  var usr = document.getElementsByClassName("usr")[0].value;
-  var psw = document.getElementsByClassName("psw")[0].value;
-  var cpsw = document.getElementsByClassName("psw")[1].value;
-  var radio = document.getElementsByClassName("radio")[0];
-  var usr_em = document.getElementsByClassName("em")[0];
-  var psw_em = document.getElementsByClassName("em")[1];
-  var cpsw_em = document.getElementsByClassName("em")[2];
+    var usr = document.getElementsByClassName("usr")[0].value;
+    var psw = document.getElementsByClassName("psw")[0].value;
+    var cpsw = document.getElementsByClassName("psw")[1].value;
+    var qes = document.getElementById("qes").value;
+    var ans = document.getElementById("ans").value;
+    var radio = document.getElementsByClassName("radio")[0];
+    var usr_em = document.getElementsByClassName("em")[0];
+    var psw_em = document.getElementsByClassName("em")[1];
+    var cpsw_em = document.getElementsByClassName("em")[2];
+    var qes_em = document.getElementsByClassName("em")[3];
+    var ans_em = document.getElementsByClassName("em")[4];
 
-  console.log(usr, psw, cpsw);
-  console.log(radio.classList[1]);
-  if(usr === "" || usr === "用户名") {
-    usr_em.innerHTML = "用户名不能为空";
-  } else {
+    console.log(usr, psw, cpsw);
+    console.log(radio.classList[1]);
+    if(usr === "" || usr === "用户名") {
+    usr_em.innerHTML = "* 用户名不能为空";
+    } else {
     usr_em.innerHTML = "";
-  }
+    }
   
-  if(psw === "" || psw === "密码") {
-    psw_em.innerHTML = "密码不能为空";
-  } else if(psw.length < 6) {
-    psw_em.innerHTML = "密码长度不得少于6位";
-  } else {
+    if(psw === "" || psw === "密码") {
+    psw_em.innerHTML = "* 密码不能为空";
+    } else if(psw.length < 6) {
+    psw_em.innerHTML = "* 密码长度不得少于6位";
+    } else {
     psw_em.innerHTML = "";
-  }
+    }
   
-  if(cpsw !== psw || cpsw === "确认密码") {
-    cpsw_em.innerHTML = "请确认密码";
-  } else {
+    if(cpsw !== psw || cpsw === "确认密码") {
+    cpsw_em.innerHTML = "* 请确认密码";
+    } else {
     cpsw_em.innerHTML = "";
-  }
+    }
+
+    if(qes === "" || qes === "密保问题") {
+        qes_em.innerHTML = "* 密保问题不能为空";
+    } else {
+        qes_em.innerHTML = "";
+    }
+
+    if(ans === "" || ans === "密保问题答案") {
+        ans_em.innerHTML = "* 密保问题答案不能为空";
+    } else {
+        ans_em.innerHTML = "";
+    }
+
   
-  
-  if(usr_em.innerHTML === "" && psw_em.innerHTML === "" && cpsw_em.innerHTML === "" && radio.classList[1]) {
-    var data = {username: usr, password: psw};
+    if(usr_em.innerHTML === "" && psw_em.innerHTML === "" && cpsw_em.innerHTML === "" && qes_em.innerHTML === "" && ans_em.innerHTML === "" && radio.classList[1]) {
+    var data = {username: usr, password: psw, qestion: qes, answer: ans};
     console.log("fetching...");
     fetch("http://192.168.42.122:8000", {
-      method: "POST",
-      body: JSON.stringify(data)
+        method: "POST",
+        body: JSON.stringify(data)
     }).then(function(res) {
-      res.text().then(function(data) {
+        res.text().then(function(data) {
         if(data == "用户名已存在") {
-          alert("用户名已存在");
-          usr_em.innerHTML = "* 用户名已存在";
+            alert("用户名已存在");
+            usr_em.innerHTML = "* 用户名已存在";
         } else {
-          alert("注册成功！");
-          this.location.hash = "#/login$usr="+usr+"$psw="+psw;
+            alert("注册成功！");
+            this.location.hash = "#/login$usr="+usr+"$psw="+psw;
         }
-      });
+        });
     });
-  }
+    }
 
 }
 
