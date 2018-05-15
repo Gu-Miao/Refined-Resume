@@ -1,14 +1,25 @@
 #!/usr/bin/node
 
+var usernames = [];
 var http = require("http");
-var items = [];
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://localhost:27017/todo';    
+var url = 'mongodb://localhost:27017/rr'; 
+
+MongoClient.connect(url, function(err, db) {
+  console.log("数据库连接成功！");
+  selectData(db, function(result) {
+    for(let i=0;i<result.length;i++) {
+      usernames.push(result[i].username);
+    }
+    db.close();
+    console.log("usernames: ", usernames);
+  });
+});
   
 
 http.createServer(function(req, res) {
-    console.log(req.headers);
-    console.log(req.url);
+    console.log("req.headers: ", req.headers);
+    console.log("req.url: ", req.url);
     console.log("");
 
     switch(req.method) {
@@ -16,15 +27,16 @@ http.createServer(function(req, res) {
             get(res);
             break;
         case "POST":
-            insert(req, res);
-            break;
-        case "OPTIONS":
-            if(req.headers["access-control-request-method"] === "PUT") {
-              change(req, res);
-            } else if(req.headers["access-control-request-method"] === "DELETE") {
-              del(req, res);
+            req.on("data") {
+              var id = JSON.parse(data.toString("utf8")).id;
+              switch(id){
+                case "reg":
+                  reg(res, req);
+                  break;
+                default: 
+                  break;
+              }
             }
-            break;
         default:
             console.log(req);
             break;
@@ -32,104 +44,63 @@ http.createServer(function(req, res) {
 }).listen(8000);
 
 function get(res) {
-    MongoClient.connect(url, function(err, db) {
-      console.log("数据库连接成功！");
-      selectData(db, function(result) {
-        items = [];
-        for(let i=0;i<result.length;i++) {
-          console.log(result.length, result[i].todo);
-          items.push(result[i].todo);
-        }
-        db.close();
-        console.log("GET请求，当前item为", items);
-      });
-    });
-
-    var body = JSON.stringify(items);
-
+    console.log("GET");
+    var body = "hello";
+    
     res.setHeader("Content-Length", Buffer.byteLength(body));
     res.setHeader("Content-Type", "text/plain; charset='utf-8'");
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.end(body);
 
-
 }
-function insert(req, res) {
-
-
+function reg(req, res) {
     console.log("POST");
-    var item = "";
+    
+    var username = "";
+    var password = "";
+    var had = false; // 标识符
+    var end = "注册成功";
+
     req.on("data", function(data) {
-      item += data;
-      MongoClient.connect(url, function(err, db) {
+      username = JSON.parse(data.toString("utf8")).username;
+      password = JSON.parse(data.toString("utf8")).password;
+      qestion = JSON.parse(data.toString("utf8")).qestion;
+      answer = JSON.parse(data.toString("utf8")).answer;
+      for(let i = 0; i < usernames.length; i++) {
+        if(username == usernames[i]) {
+          end = "用户名已存在";
+          had = true;
+          break;
+        }
+      }
+
+      if(had === false) {
+        MongoClient.connect(url, function(err, db) {
           console.log("数据库连接成功！");
           insertData(db, function(result) {
             console.log(result);
             db.close();
-            console.log("POST请求，当前item为",items);
-          }, data);
-      });
-    });
-    req.on("end", function() {
-      items.push(item);
-    });
-
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.end();
-}
-function del(req, res) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    
-    console.log("DELETE");
-    var arg = req.url.split("/");
-    if(arg[1] === "") {
-      items = [];
-    }
-
-    var i = parseInt(arg[1]);
-    var data = items[i];
-    if(!items[i]) {
-      res.statusCode = 404;
-      res.end("Not Found");
-    } else {
-      items.splice(i, 1);
-      MongoClient.connect(url, function(err, db) {
-        console.log("数据库连接成功！");
-        delData(db, function(result) {
-          console.log(result);
-          db.close();
-        }, data);
-      }); 
-      res.end("Delete OK");
-      console.log("DELETE请求，当前items为", items);
-    }
-
-}
-function change(req, res) {
-
-    console.log("PUT");
-    var arg = req.url.split("/");
-    if(arg[1] === "") {
-      items = [];
-    }
-    var item = "";
-    req.on("data", function(chunk) {
-      item += chunk;
-    });
-    req.on("end", function() {
-      var i = parseInt(arg[1]);
-      if(!items[i]) {
-        res.statusCode = 404;
-        res.end("Not Found");
-      } else {
-        items[i] = item;
-        res.end("Change OK");
+          }, username, password, qestion, answer);
+        });
       }
+      
     });
-    res.setHeader("Access-Control-Allow-Origin", "*");
+
+    req.on("end", function() {
+      if(had === false) {
+        usernames.push(username);
+      }
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Content-Type", "text/plain; charset='utf-8'");
+      res.setHeader("Content-Length", Buffer.byteLength(end));
+      res.end(end);
+
+    });
+
 }
+
 function selectData(db, callback) {  
-  var collection = db.collection('todo');
+  var collection = db.collection('user');
   collection.find().toArray(function(err, result) {
     if(err)
     {
@@ -140,11 +111,17 @@ function selectData(db, callback) {
   });
 };
 
-function insertData(db, callback, todo)  {  
-    var collection = db.collection('todo');
-    var chunk = "";
-    chunk += todo;
-    var data = [{todo: chunk}];
+function insertData(db, callback, username, password, qestion, answer)  {  
+    var collection = db.collection('user');
+    var usr = "";
+    var psw = "";
+    var qes = "";
+    var ans = "";
+    usr += username;
+    psw += password;
+    qes += qestion;
+    ans += answer;
+    var data = [{username: usr, password: psw, qestion: qes, answer: ans}];
     collection.insert(data, function(err, result) { 
       if(err) {
         console.log('Error:'+ err);
@@ -153,16 +130,3 @@ function insertData(db, callback, todo)  {
       callback(result);
     });
 }
-
-function delData(db, callback, data) {  
-  var collection = db.collection('todo');
-  var whereStr = {todo: data};
-  collection.remove(whereStr, function(err, result) {
-    if(err)
-    {
-      console.log('Error:'+ err);
-      return;
-    }     
-    callback(result);
-  });
-};
