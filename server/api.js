@@ -27,7 +27,7 @@ http.createServer(function(req, res) {
             get(res);
             break;
         case "POST":
-            req.on("data") {
+            req.on("data",function() {
               var id = JSON.parse(data.toString("utf8")).id;
               switch(id){
                 case "reg":
@@ -36,7 +36,7 @@ http.createServer(function(req, res) {
                 default: 
                   break;
               }
-            }
+            });
         default:
             console.log(req);
             break;
