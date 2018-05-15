@@ -42,6 +42,9 @@ http.createServer(function(req, res) {
                 case "getpsw2":
                   next2(data, req, res);
                   break;
+                case "changePsw":
+                  changePsw(data, req, res);
+                  break;
                 default: 
                   break;
               }
@@ -175,6 +178,35 @@ function next2(data, req, res) {
 
 }
 
+function changePsw(data, req, res) {
+  console.log("changePsw/POST");
+  console.log(JSON.parse(data.toString("utf8")));
+
+  var username  = "";
+  var password = "";
+  var end = "密码修改失败";
+
+  username = JSON.parse(data.toString("utf8")).username;
+  password = JSON.parse(data.toString("utf8")).password;
+  
+  MongoClient.connect(url, function(err, db) {
+      console.log("连接成功！");
+      updatePsw(db, function(result) {
+          console.log(result);
+          db.close();
+          end = "密码找回成功";
+      }, username, password);
+  });
+
+  req.on("end", function() {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Content-Type", "text/plain; charset='utf-8'");
+    res.setHeader("Content-Length", Buffer.byteLength(end));
+    res.end(end);
+  });
+
+}
+
 function selectData(db, callback) {  
   var collection = db.collection('user');
   collection.find().toArray(function(err, result) {
@@ -206,3 +238,21 @@ function regInsert(db, callback, username, password, qestion, answer)  {
       callback(result);
     });
 }
+
+var updatePsw = function(db, callback, username, password) {   
+  var collection = db.collection('user');
+  var usr = "";
+  var psw = "";
+  usr += username;
+  psw += password;
+  var whereStr = {username: usr};
+  var updateStr = {$set: {password: psw}};
+  collection.update(whereStr,updateStr, function(err, result) {
+      if(err)
+      {
+          console.log('Error:'+ err);
+          return;
+      }     
+      callback(result);
+  });
+};

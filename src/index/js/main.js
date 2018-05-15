@@ -243,7 +243,7 @@ function reg() { // 注册按钮回调函数
 
 }
 
-function next1() { // 注册页下一步按钮的回调函数
+function next1() { // 忘记密码页下一步按钮的回调函数
     var box1 = document.getElementsByClassName("box_getpsw")[0];
     var box2 = document.getElementsByClassName("box_getpsw")[1];
     var qes = document.getElementsByClassName("qes")[0];
@@ -275,7 +275,7 @@ function next1() { // 注册页下一步按钮的回调函数
     } 
 }
 
-function next2() { // 注册页下一步按钮的回调函数
+function next2() { // 忘记密码页下一步按钮的回调函数
     var box2 = document.getElementsByClassName("box_getpsw")[1];
     var box3 = document.getElementsByClassName("box_getpsw")[2];
     var ans = document.getElementsByClassName("usr")[1].value;
@@ -304,8 +304,47 @@ function next2() { // 注册页下一步按钮的回调函数
     }  
 }
 
-function finish() { // 注册页完成按钮的回调函数
-    console.log("成功找回了密码！");
+function finish() { // 忘记密码页完成按钮的回调函数
+    var psw = document.getElementsByClassName("psw")[0].value;
+    var cpsw = document.getElementsByClassName("psw")[1].value;
+    var psw_em = document.getElementsByClassName("em")[2];
+    var cpsw_em = document.getElementsByClassName("em")[3];
+
+    if(psw === "" || psw === "密码") {
+        psw_em.innerHTML = "* 新密码不能为空";
+    } else {
+        psw_em.innerHTML = "";
+    }
+    
+    if(cpsw === "" || cpsw === "确认密码") {
+        cpsw_em.innerHTML = "* 请确认密码";
+    } else {
+        cpsw_em.innerHTML = "";
+    }
+    
+    if(psw !== cpsw) {
+        cpsw_em.innerHTML = "* 两次密码输入不一致，请重新输入";
+    } else {
+        cpsw_em.innerHTML = "";
+    }
+    
+    if(psw_em.innerHTML === "" && cpsw_em.innerHTML === ""){
+        var data = {id: "changePsw", username: window.sessionStorage["rr_usr"], password: psw}
+        fetch("http://192.168.194.122:8000", {
+            method: "POST",
+            body: JSON.stringify(data)
+        }).then(function(res) {
+            res.text().then(function(data) {
+                console.log(data);
+                if(data == "密码修改失败") {
+                    alert("密码修改失败");
+                } else {
+                    alert("密码找回成功");
+                    window.location.hash = "#/login$usr="+usr+"$psw="+psw;
+                }
+            });
+        });
+    }
 }
 
 function toReg() { //转到注册页
