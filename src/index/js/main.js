@@ -263,6 +263,7 @@ function next1() { // 注册页下一步按钮的回调函数
                 if(data == "用户名不存在") {
                     usr_em.innerHTML = "* 用户名不存在";
                 } else {
+                    usr_em.innerHTML = "";
                     box1.className += " hide";
                     box2.className = box2.className.split(" hide")[0];
                     window.sessionStorage.setItem("rr_usr", usr);
@@ -277,8 +278,30 @@ function next1() { // 注册页下一步按钮的回调函数
 function next2() { // 注册页下一步按钮的回调函数
     var box2 = document.getElementsByClassName("box_getpsw")[1];
     var box3 = document.getElementsByClassName("box_getpsw")[2];
-    box2.className += " hide";
-    box3.className = box3.className.split(" hide")[0];
+    var ans = document.getElementsByClassName("usr")[1].value;
+    var ans_em = document.getElementsByClassName("em")[1];
+
+    if(ans === "") {
+        ans_em.innerHTML= "* 密保答案不能为空";
+    } else {
+        ans_em.innerHTML = "";
+        var data = {id: "getpsw2", username: window.sessionStorage["rr_usr"], answer: ans};
+        fetch("http://192.168.194.122:8000", {
+            method: "POST",
+            body: JSON.stringify(data)
+        }).then(function(res) {
+            res.text().then(function(data) {
+                console.log(data);
+                if(data == "密保问题答案错误") {
+                    ans_em.innerHTML = "* 请输入正确答案";
+                } else {
+                    ans_em.innerHTML = "";
+                    box2.className += " hide";
+                    box3.className = box3.className.split(" hide")[0];
+                }
+            });
+        });
+    }  
 }
 
 function finish() { // 注册页完成按钮的回调函数

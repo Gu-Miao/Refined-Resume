@@ -37,7 +37,10 @@ http.createServer(function(req, res) {
                   login(data, req, res);
                   break;
                 case "getpsw1":
-                  getUsername(data, req, res);
+                  next1(data, req, res);
+                  break;
+                case "getpsw2":
+                  next2(data, req, res);
                   break;
                 default: 
                   break;
@@ -119,7 +122,7 @@ function reg(data, req, res) {
     });
 }
 
-function getUsername(data, req, res) {
+function next1(data, req, res) {
   console.log("login/POST");
   console.log(JSON.parse(data.toString("utf8")));
 
@@ -132,6 +135,34 @@ function getUsername(data, req, res) {
     if(users[i].username === username) {
       var qes = users[i].qestion;
       end = qes;
+    }
+  }
+
+  req.on("end", function() {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Content-Type", "text/plain; charset='utf-8'");
+    res.setHeader("Content-Length", Buffer.byteLength(end));
+    res.end(end);
+  });
+
+}
+
+function next2(data, req, res) {
+  console.log("next2/POST");
+  console.log(JSON.parse(data.toString("utf8")));
+
+  var username  = "";
+  var answer = "";
+  var end = "密保问题答案错误";
+
+  username = JSON.parse(data.toString("utf8")).username;
+  answer = JSON.parse(data.toString("utf8")).answer;
+  
+  for(let i = 0; i < users.length; i++) {
+    if(users[i].username === username) {
+      if(users[i].answer === answer) {
+        end = "密保问题正确";
+      }
     }
   }
 
