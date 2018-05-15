@@ -318,12 +318,8 @@ function getPsw() { // 忘记密码页完成按钮的回调函数
     
     if(cpsw === "" || cpsw === "确认密码") {
         cpsw_em.innerHTML = "* 请确认密码";
-    } else {
-        cpsw_em.innerHTML = "";
-    }
-    
-    if(psw !== cpsw) {
-        cpsw_em.innerHTML = "* 两次密码输入不一致，请重新输入";
+    } else if(psw !== cpsw) {
+        cpsw_em.innerHTML = "* 两次密码输入不一致";
     } else {
         cpsw_em.innerHTML = "";
     }
