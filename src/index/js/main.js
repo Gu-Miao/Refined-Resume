@@ -122,7 +122,27 @@ function login() { // 登录页点击登录按钮的回调
     } else if(psw.value == "" || psw.value == "密码") {
         psw_em.innerHTML = "* 请输入密码";
     } else {
-        window.location.hash = "#/home";
+        var data = {id: "login", username: usr, password: psw};
+        console.log("fetching...");
+        fetch("http://192.168.194.122:8000", {
+            method: "POST",
+            body: JSON.stringify(data)
+        }).then(function(res) {
+            res.text().then(function(data) {
+                if(data == "登陆成功") {
+                    alert("登陆成功");
+                    window.location.hash = "#/home$" + usr;
+                } else if(data === "用户名不存在") {
+                    alert("用户名不存在");
+                    usr_em.innerHTML = "* 用户名不存在";
+                } else if(data === "密码错误") {
+                    alert("密码错误");
+                    psw_em.innerHTML = "* 密码错误，请重试";
+                } else {
+                    alert("登录失败");
+                }
+            });
+        });
     }
 }
 
@@ -184,22 +204,22 @@ function reg() { // 注册按钮回调函数
 
   
     if(usr_em.innerHTML === "" && psw_em.innerHTML === "" && cpsw_em.innerHTML === "" && qes_em.innerHTML === "" && ans_em.innerHTML === "" && radio.classList[1]) {
-    var data = {id: "reg", username: usr, password: psw, qestion: qes, answer: ans};
-    console.log("fetching...");
-    fetch("http://192.168.194.122:8000", {
-        method: "POST",
-        body: JSON.stringify(data)
-    }).then(function(res) {
-        res.text().then(function(data) {
-        if(data == "用户名已存在") {
-            alert("用户名已存在");
-            usr_em.innerHTML = "* 用户名已存在";
-        } else {
-            alert("注册成功！");
-            this.location.hash = "#/login$usr="+usr+"$psw="+psw;
-        }
+        var data = {id: "reg", username: usr, password: psw, qestion: qes, answer: ans};
+        console.log("fetching...");
+        fetch("http://192.168.194.122:8000", {
+            method: "POST",
+            body: JSON.stringify(data)
+        }).then(function(res) {
+            res.text().then(function(data) {
+            if(data == "用户名已存在") {
+                alert("用户名已存在");
+                usr_em.innerHTML = "* 用户名已存在";
+            } else {
+                alert("注册成功！");
+                this.location.hash = "#/login$usr="+usr+"$psw="+psw;
+            }
+            });
         });
-    });
     }
 
 }

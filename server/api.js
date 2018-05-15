@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-var usernames = [];
+var users = [];
 var http = require("http");
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://localhost:27017/rr'; 
@@ -9,10 +9,10 @@ MongoClient.connect(url, function(err, db) {
   console.log("数据库连接成功！");
   selectData(db, function(result) {
     for(let i=0;i<result.length;i++) {
-      usernames.push(result[i].username);
+      users.push(result[i]);
     }
     db.close();
-    console.log("usernames: ", usernames);
+    console.log("users: ", users);
   });
 });
   
@@ -43,7 +43,7 @@ http.createServer(function(req, res) {
     }
 }).listen(8000);
 
-function get(res) {
+function login(data, req, res) {
     console.log("GET");
     var body = "hello";
     
@@ -65,8 +65,8 @@ function reg(data, req, res) {
     password = JSON.parse(data.toString("utf8")).password;
     qestion = JSON.parse(data.toString("utf8")).qestion;
     answer = JSON.parse(data.toString("utf8")).answer;
-    for(let i = 0; i < usernames.length; i++) {
-      if(username == usernames[i]) {
+    for(let i = 0; i < users.length; i++) {
+      if(username == users[i].username) {
         end = "用户名已存在";
         had = true;
         break;
@@ -86,7 +86,7 @@ function reg(data, req, res) {
 
     req.on("end", function() {
       if(had === false) {
-        usernames.push(username);
+        users.push(username);
       }
       res.setHeader("Access-Control-Allow-Origin", "*");
       res.setHeader("Content-Type", "text/plain; charset='utf-8'");
