@@ -312,6 +312,8 @@ function getPsw() { // 忘记密码页完成按钮的回调函数
 
     if(psw === "" || psw === "密码") {
         psw_em.innerHTML = "* 新密码不能为空";
+    } else if(psw.length < 6) {
+        psw_em.innerHTML = "* 密码长度不能少于6";
     } else {
         psw_em.innerHTML = "";
     }
