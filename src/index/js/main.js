@@ -23,7 +23,32 @@ var a = [];
             c_footer.show();
         }
     }
-    c_reg.show();
+    
+
+    window.onbeforeunload = function() {
+        window.sessionStorage.setItem("rr_show", window.location.hash);
+    }
+
+    window.onload = function() {
+        console.log(window.sessionStorage["rr_show"]);
+        if(!window.sessionStorage["rr_show"]) { // 若有，则为关闭页面重新进入，否则为刷新
+            c_welcome.show();
+        } else {
+            if(window.sessionStorage["rr_show"] === "#/welcome") {
+                c_welcome.show();
+            } else if(window.sessionStorage["rr_show"] === "#/login") {
+                c_login.show();
+            } else if(window.sessionStorage["rr_show"] === "#/reg"){
+                c_reg.show();
+            } else if(window.sessionStorage["rr_show"] === "#/getpsw") {
+                c_getpsw.show();
+            } else {
+                rr.innerHTML = "";
+                c_header.show();
+                c_footer.show();
+            }
+        }
+    }
 }();
 
 
