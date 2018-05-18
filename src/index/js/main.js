@@ -107,7 +107,7 @@ function ansBlur() { // 密保问题答案失去焦点的回调
 function pswFocus() { // 密码框获取焦点的回调
     var psw = window.event.srcElement || window.event.target;
     var psw_em = psw.nextSibling;
-    if(psw.value == "密码" || psw.value == "确认密码") {
+    if(psw.value == "密码" || psw.value == "确认密码" || psw_em.innerHTML !== "") {
         psw.type = "password";
         psw.value = "";
         psw_em.innerHTML = "";
@@ -338,7 +338,7 @@ function getPsw() { // 忘记密码页完成按钮的回调函数
                     alert("密码修改失败");
                 } else {
                     alert("密码找回成功");
-                    window.location.hash = "#/login$usr="+window.sessionStorage["rr_usr"]+"$psw="+psw;
+                    window.location.hash = "#/login$usr="+usr+"$psw="+psw;
                 }
             });
         });
