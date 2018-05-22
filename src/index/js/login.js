@@ -19,6 +19,16 @@ var c_login = function() {
         if(location.hash.split("$")[0] !== "#/login") {
           location.hash = "#/login";
         }
+        if(sessionStorage["rr_usrRtoL"]) {
+            console.log(sessionStorage);
+            document.getElementsByClassName("usr")[0].focus();
+            document.getElementsByClassName("usr")[0].value = JSON.parse(sessionStorage["rr_usrRtoL"]).username;
+            document.getElementsByClassName("usr")[0].blur();
+            document.getElementsByClassName("psw")[0].focus()
+            document.getElementsByClassName("psw")[0].value = JSON.parse(sessionStorage["rr_usrRtoL"]).password;
+            document.getElementsByClassName("psw")[0].blur()
+        }
+        
     }
 
     return {show: show};

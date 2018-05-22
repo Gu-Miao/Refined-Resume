@@ -12,6 +12,9 @@ var a = [];
             c_reg.show();
         } else if(this.location.hash === "#/getpsw") {
             c_getpsw.show();
+        } else if(this.location.hash === "#/info") {
+            c_info.show();
+            c_header.show();
         } else {
             rr.innerHTML = "";
             c_header.show();
@@ -21,12 +24,18 @@ var a = [];
     
     window.onbeforeunload = function() {
         window.sessionStorage.setItem("rr_show", window.location.hash);
+        if(window.sessionStorage["rr_usrC"]) {
+            localStorage.setItem("rr_lastLogin", window.sessionStorage["rr_usrC"]);
+        }
     }
 
     window.onload = function() {
         console.log(window.sessionStorage["rr_show"]);
         if(!window.sessionStorage["rr_show"]) { // 若有，则为关闭页面重新进入，否则为刷新
             c_welcome.show();
+            if(window.localStorage["rr_lastLogin"]) {
+                window.sessionStorage.setItem("rr_usrC", window.localStorage["rr_lastLogin"]);
+            }
         } else {
             if(window.sessionStorage["rr_show"] === "#/welcome") {
                 c_welcome.show();
@@ -36,6 +45,9 @@ var a = [];
                 c_reg.show();
             } else if(window.sessionStorage["rr_show"] === "#/getpsw") {
                 c_getpsw.show();
+            } else if(this.window.sessionStorage["rr_show"] === "#/info"){
+                c_info.show();
+                c_header.show();
             } else {
                 rr.innerHTML = "";
                 c_header.show();
@@ -143,14 +155,14 @@ function login() { // 登录页点击登录按钮的回调
     } else {
         var data = {id: "login", username: usr, password: psw};
         console.log("fetching...");
-        fetch("http://192.168.194.122:8000", {
+        fetch("http://localhost:8000", {
             method: "POST",
             body: JSON.stringify(data)
         }).then(function(res) {
             res.text().then(function(data) {
-                if(data == "登陆成功") {
-                    alert("登陆成功");
-                    window.location.hash = "#/home$" + usr;
+                if(data == "登录失败") {
+                    alert("登录失败");
+                    fetch()
                 } else if(data === "用户名不存在") {
                     alert("用户名不存在");
                     usr_em.innerHTML = "* 用户名不存在";
@@ -158,7 +170,11 @@ function login() { // 登录页点击登录按钮的回调
                     alert("密码错误");
                     psw_em.innerHTML = "* 密码错误，请重试";
                 } else {
-                    alert("登录失败");
+                    alert("登录成功");
+                    window.location.hash = "#/home"
+                    var rr_usrC = JSON.parse(data);
+                    sessionStorage.setItem("rr_usrC", data);
+                    console.log(rr_usrC);
                 }
             });
         });
@@ -225,18 +241,22 @@ function reg() { // 注册按钮回调函数
     if(usr_em.innerHTML === "" && psw_em.innerHTML === "" && cpsw_em.innerHTML === "" && qes_em.innerHTML === "" && ans_em.innerHTML === "" && radio.classList[1]) {
         var data = {id: "reg", username: usr, password: psw, qestion: qes, answer: ans};
         console.log("fetching...");
-        fetch("http://192.168.194.122:8000", {
+        fetch("http://localhost:8000", {
             method: "POST",
             body: JSON.stringify(data)
         }).then(function(res) {
             res.text().then(function(data) {
-            if(data == "用户名已存在") {
-                alert("用户名已存在");
-                usr_em.innerHTML = "* 用户名已存在";
-            } else {
-                alert("注册成功！");
-                this.location.hash = "#/login$usr="+usr+"$psw="+psw;
-            }
+                if(data == "用户名已存在") {
+                    alert("用户名已存在");
+                    usr_em.innerHTML = "* 用户名已存在";
+                } else {
+                    alert("注册成功！");
+                    window.location.hash = "#/login";
+                    sessionStorage.setItem("rr_usrRtoL", JSON.stringify({
+                        username: usr,
+                        password: psw
+                    }));
+                }
             });
         });
     }
@@ -254,7 +274,7 @@ function next1() { // 忘记密码页下一步按钮的回调函数
     } else {
         usr_em.innerHTML = "";
         var data = {id: "getpsw1", username: usr};
-        fetch("http://192.168.194.122:8000", {
+        fetch("http://localhost:8000", {
             method: "POST",
             body: JSON.stringify(data)
         }).then(function(res) {
@@ -286,7 +306,7 @@ function next2() { // 忘记密码页下一步按钮的回调函数
     } else {
         ans_em.innerHTML = "";
         var data = {id: "getpsw2", username: window.sessionStorage["rr_usr"], answer: ans};
-        fetch("http://192.168.194.122:8000", {
+        fetch("http://localhost:8000", {
             method: "POST",
             body: JSON.stringify(data)
         }).then(function(res) {
@@ -328,7 +348,7 @@ function getPsw() { // 忘记密码页完成按钮的回调函数
     
     if(psw_em.innerHTML === "" && cpsw_em.innerHTML === ""){
         var data = {id: "changePsw", username: window.sessionStorage["rr_usr"], password: psw}
-        fetch("http://192.168.194.122:8000", {
+        fetch("http://localhost:8000", {
             method: "POST",
             body: JSON.stringify(data)
         }).then(function(res) {
@@ -355,4 +375,231 @@ function toGetpsw() { // 转到忘了密码页
 
 function toLogin() { // 转到登录页
     window.location.hash = "#/login";
+}
+
+function infoChange1() { // 基本信息
+	var name = document.getElementById("info_name"); // 姓名
+		sex = "", // 性别
+		male = document.getElementById("info_male"), // 男
+		age = document.getElementById("info_age"), // 年龄
+		home = document.getElementById("info_home"), // 住址
+		tele = document.getElementById("info_tele"); // 电话
+	if(male.checked === true) {
+		sex = "男";
+	} else {
+		sex = "女";
+	}
+	var data = {
+		id: "changeInfo1",
+		username: JSON.parse(window.sessionStorage["rr_usrC"]).username,
+		name: name.value,
+		sex: sex,
+		age: age.value,
+		home: home.value,
+		telephone: tele.value
+	}
+	console.log("data: ", data);
+	fetch("http://localhost:8000", {
+		method: "POST",
+		body: JSON.stringify(data)
+	}).then(function(res) {
+		res.text().then(function(data) {
+			console.log(data);
+			if(data === "修改失败") {
+				alert("保存失败，请重试");
+			} else {
+				alert("保存成功");
+				window.sessionStorage.setItem("rr_usrC", data);
+				//console.log(window.sessionStorage["rr_usrC"]);
+			}
+		});
+	});
+	console.log(JSON.parse(window.sessionStorage["rr_usrC"]).username);
+}
+function infoChange2() { // 详细信息
+	var tall = document.getElementById("info_tall"), // 身高
+	weight = document.getElementById("info_weight"), // 体重
+	blood = $("#info_blood option:selected"), // 血型
+	hobby = document.getElementById("info_hobby"); // 兴趣
+	console.log(blood.text());
+	var data = {
+		id: "changeInfo2",
+		username: JSON.parse(window.sessionStorage["rr_usrC"]).username,
+		tall: tall.value,
+		weight: sex,
+		blood: blood.text(),
+		hobby: home.value
+	}
+	console.log("data: ", data);
+	fetch("http://localhost:8000", {
+		method: "POST",
+		body: JSON.stringify(data)
+	}).then(function(res) {
+		res.text().then(function(data) {
+			console.log(data);
+			if(data === "修改失败") {
+				alert("保存失败，请重试");
+			} else {
+				window.sessionStorage.setItem("rr_usrC", data);
+				//console.log(window.sessionStorage["rr_usrC"]);
+			}
+		});
+	});
+	console.log(JSON.parse(window.sessionStorage["rr_usrC"]).username);
+}
+function infoChange3() { // 教育背景
+	var edu = document.getElementById("info_edu"), // 学历
+	school = document.getElementById("info_school"); // 毕业学校
+	
+	var data = {
+		id: "changeInfo3",
+		username: JSON.parse(window.sessionStorage["rr_usrC"]).username,
+		education: edu.value,
+		school: school.value
+	}
+	console.log("data: ", data);
+	fetch("http://localhost:8000", {
+		method: "POST",
+		body: JSON.stringify(data)
+	}).then(function(res) {
+		res.text().then(function(data) {
+			console.log(data);
+			if(data === "修改失败") {
+				alert("保存失败，请重试");
+			} else {
+				window.sessionStorage.setItem("rr_usrC", data);
+				//console.log(window.sessionStorage["rr_usrC"]);
+			}
+		});
+	});
+	console.log(JSON.parse(window.sessionStorage["rr_usrC"]).username);
+}
+function infoChange4() { // 工作信息
+	var com = document.getElementById("info_com"), // 公司
+		pos = document.getElementById("info_pos"), // 岗位
+		exp = document.getElementById("info_exp"); // 经历
+
+	console.log(exp.value);
+	
+	var data = {
+		id: "changeInfo4",
+		username: JSON.parse(window.sessionStorage["rr_usrC"]).username,
+		company: com.value,
+		postion: pos.value,
+		experience: exp.value
+	}
+	console.log("data: ", data);
+	fetch("http://localhost:8000", {
+		method: "POST",
+		body: JSON.stringify(data)
+	}).then(function(res) {
+		res.text().then(function(data) {
+			console.log(data);
+			if(data === "修改失败") {
+				alert("保存失败，请重试");
+			} else {
+				alert("保存成功");
+				window.sessionStorage.setItem("rr_usrC", data);
+				//console.log(window.sessionStorage["rr_usrC"]);
+			}
+		});
+	});
+	console.log(JSON.parse(window.sessionStorage["rr_usrC"]).username);
+}
+function infoChange5() { // 求职意向
+	var posw = document.getElementById("info_posw"), // 期望职位
+		priw = document.getElementById("info_priw"); // 期望薪资
+	
+	var data = {
+		id: "changeInfo4",
+		username: JSON.parse(window.sessionStorage["rr_usrC"]).username,
+		postionwant: posw.value,
+		pricewant: priw.value,
+	}
+	console.log("data: ", data);
+	fetch("http://localhost:8000", {
+		method: "POST",
+		body: JSON.stringify(data)
+	}).then(function(res) {
+		res.text().then(function(data) {
+			console.log(data);
+			if(data === "修改失败") {
+				alert("保存失败，请重试");
+			} else {
+				alert("保存成功");
+				window.sessionStorage.setItem("rr_usrC", data);
+				//console.log(window.sessionStorage["rr_usrC"]);
+			}
+		});
+	});
+	console.log(JSON.parse(window.sessionStorage["rr_usrC"]).username);
+}
+function infoChange6() { // 更改头像
+	var usrhd = document.getElementById("info_thumbnail");
+	var data = {
+		id: "changeInfo6",
+		username: JSON.parse(window.sessionStorage["rr_usrC"]).username,
+		userhead: usrhd.toDataURL("image/png")
+	}
+	console.log("data: ", data);
+	fetch("http://localhost:8000", {
+		method: "POST",
+		body: JSON.stringify(data)
+	}).then(function(res) {
+		res.text().then(function(data) {
+			console.log(data);
+			if(data === "修改失败") {
+				alert("保存失败，请重试");
+			} else {
+				alert("保存成功");
+				window.sessionStorage.setItem("rr_usrC", data);
+				//console.log(window.sessionStorage["rr_usrC"]);
+			}
+		});
+	});
+	console.log(JSON.parse(window.sessionStorage["rr_usrC"]).username);
+}
+function infoChange7() { // 修改密码
+	var pswc = document.getElementById("info_pswc"), // 新密码
+		cpswc = document.getElementById("info_cpswc"); // 确认新密码
+		pswc_em = document.getElementsByClassName("em")[0];
+		cpswc_em = document.getElementsByClassName("em")[1];
+
+	console.log(pswc.value, cpswc.value);
+
+	if(pswc.value == "") {
+		pswc_em.innerHTML = "* 请输入新密码";
+	} else if(pswc.value.length < 6) {
+		pswc_em.innerHTML = "* 请输入至少6位";
+	} else if(cpswc.value == "") {
+		pswc_em.innerHTML = "";
+		cpswc_em.innerHTML = "* 请确认密码";
+	} else if(pswc.value !== cpswc.value) {
+		pswc_em.innerHTML = "";
+		cpswc_em.innerHTML = "* 两次输入不一致";
+	} else {
+		pswc_em.innerHTML = "";
+		cpswc_em.innerHTML = "";
+		var data = {
+			id: "changePsw",
+			username: JSON.parse(window.sessionStorage["rr_usrC"]).username,
+			password: pswc.value
+		}
+		console.log("data: ", data);
+		fetch("http://localhost:8000", {
+			method: "POST",
+			body: JSON.stringify(data)
+		}).then(function(res) {
+			res.text().then(function(data) {
+				console.log(data);
+				if(data === "密码修改失败") {
+					alert("密码修改失败，请重试");
+				} else {
+					alert("密码修改成功");
+				}
+			});
+		});
+	}
+
+	console.log(pswc_em.innerHTML, cpswc_em.innerHTML);
 }

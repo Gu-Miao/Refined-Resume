@@ -13,7 +13,7 @@ var c_welcome = function() {
 		'</div>'+
 		'<div class="col-lg-8 mx-auto">'+
 		'<p class="text-faded mb-5">全球已将超过200000000人使用Refinde_Resume轻松找到工作!</p>'+
-		'<a class="btn" href="#/home">&nbsp;&nbsp;&nbsp;&nbsp;立&nbsp;即&nbsp;体&nbsp;验&nbsp;&nbsp;&nbsp;&nbsp;</a>'+
+		'<a class="btn" href="#/login">&nbsp;&nbsp;&nbsp;&nbsp;立&nbsp;即&nbsp;体&nbsp;验&nbsp;&nbsp;&nbsp;&nbsp;</a>'+
 		'</div>'+
 		'</div>'+
 		'</div>'+
@@ -22,6 +22,9 @@ var c_welcome = function() {
 	function show() {
 		rr.innerHTML = dom_welcome;
 		window.location.hash = "#/welcome";
+		if(sessionStorage["rr_usrC"]) {
+            document.getElementsByClassName("btn")[0].href = "#/home";
+        }
 	}
 
 	return {show: show}
