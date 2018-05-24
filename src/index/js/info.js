@@ -177,7 +177,7 @@ var c_info = function() {
         '</div>';
 
     function show() {
-        rr.innerHTML = dom_info;
+        rr.innerHTML += dom_info;
         window.location.hash = "#/info";
         var first = document.getElementsByClassName("menulist")[0];
 

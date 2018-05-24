@@ -13,6 +13,10 @@ html, body, #rr {
     line-height: 1 !important;
 }
 
+li {
+    list-style: none;
+}
+
 .hide {
     display: none;
 }
@@ -74,4 +78,8 @@ html, body, #rr {
 
 .psw:checked {
     outline: none;
+}
+
+.minHeight {
+    min-height: 1000px;
 }

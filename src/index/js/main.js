@@ -3,22 +3,29 @@ var a = [];
 
 !function() {
     window.onhashchange = function() { // 路由设置
-      console.log(this.location.hash.split("#")[1]);
-        if(this.location.hash === "#/welcome") {
+        console.log(window.location.hash.split("#")[1]);
+        $(document).unbind();
+        rr.className = "";
+
+        if(window.location.hash === "#/welcome") {
             c_welcome.show();
-        } else if(this.location.hash.split("$")[0] === "#/login") {
+        } else if(window.location.hash === "#/login") {
             c_login.show();
-        } else if(this.location.hash === "#/reg"){
+        } else if(window.location.hash === "#/reg"){
             c_reg.show();
-        } else if(this.location.hash === "#/getpsw") {
+        } else if(window.location.hash === "#/getpsw") {
             c_getpsw.show();
-        } else if(this.location.hash === "#/info") {
-            c_info.show();
+        } else if(window.location.hash === "#/info") {
+            rr.innerHTML = "";
             c_header.show();
+            c_info.show();
+            $(document).click(hideList);
         } else {
             rr.innerHTML = "";
             c_header.show();
             c_footer.show();
+            $(document).click(hideList);
+            rr.className = "minHeight";
         }
     }
     
@@ -30,6 +37,8 @@ var a = [];
     }
 
     window.onload = function() {
+        $(document).unbind();
+        rr.className = "";
         console.log(window.sessionStorage["rr_show"]);
         if(!window.sessionStorage["rr_show"]) { // 若有，则为关闭页面重新进入，否则为刷新
             c_welcome.show();
@@ -46,12 +55,16 @@ var a = [];
             } else if(window.sessionStorage["rr_show"] === "#/getpsw") {
                 c_getpsw.show();
             } else if(this.window.sessionStorage["rr_show"] === "#/info"){
-                c_info.show();
+                rr.innerHTML = "";
                 c_header.show();
+                c_info.show();
+                $(document).click(hideList);
             } else {
                 rr.innerHTML = "";
                 c_header.show();
                 c_footer.show();
+                $(document).click(hideList);
+                rr.className = "minHeight";
             }
         }
     }
@@ -373,10 +386,6 @@ function toGetpsw() { // 转到忘了密码页
     window.location.hash = "#/getpsw";
 }
 
-function toLogin() { // 转到登录页
-    window.location.hash = "#/login";
-}
-
 function infoChange1() { // 基本信息
 	var name = document.getElementById("info_name"); // 姓名
 		sex = "", // 性别
@@ -602,4 +611,33 @@ function infoChange7() { // 修改密码
 	}
 
 	console.log(pswc_em.innerHTML, cpswc_em.innerHTML);
+}
+
+function showList() {
+    console.log("showlist");
+    $(".header_usr_list").removeClass("hide");
+    $(".header_usr i").removeClass("icon-arrowup");
+    $(".header_usr i").addClass("icon-arrowdown");
+    (event || window.event).cancelBubble = true;
+}
+
+function hideList() {
+    $(".header_usr_list").addClass("hide");
+    $(".header_usr i").removeClass("icon-arrowdown");
+    $(".header_usr i").addClass("icon-arrowup");
+}
+
+function toInfo() {
+    window.location.hash = "#/info";
+    (event || window.event).cancelBubble = true;
+}
+
+function toLogin() {
+    window.location.hash = "#/login";
+    (event || window.event).cancelBubble = true;
+}
+
+function toHome() {
+    window.location.hash = "#/home";
+    (event || window.event).cancelBubble = true;
 }

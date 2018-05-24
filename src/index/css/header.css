@@ -1,27 +1,86 @@
-.admin_header {
+#header {
     width: 100%;
-    min-width: 700px;
+    min-width: 1125px;
     height: 70px;
-    background-color: black;
-}
-
-.admin_header img{
-    position: absolute;
-    top: 25px;
-    margin-left:1%; 
-
-}
-
-.btn_header{
-    width: 5%;
-    height: 50px;
-    background:black;
     text-align: center;
-    line-height: 50px;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    margin: 5px 0 0 auto;
+    box-shadow: 1px 1px 1px 1px #d5d5d5;
+}
+
+.header_logo {
+    position: absolute;
+    left: 20px;
+    top: 26px;
     cursor: pointer;
-    float:right;
+}
+
+.header_title {
+    line-height: 70px;
+}
+
+.header_usr {
+    width: 200px;
+    height: 180px;
+    position: absolute;
+    top: 0;
+    right: 40px;
+}
+
+.header_usr1 {
+    width: 200px;
+    height: 180px;
+    position: absolute;
+    top: 0;
+    left: 884px;
+}
+
+.header_usr_top {
+    width: 100%;
+    height: 70px;
+}
+
+.header_usrhd {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    position: absolute;
+    top: 15px;
+    left: 6px;
+    cursor: pointer;
+}
+
+.header_username {
+    line-height: 70px;
+    cursor: pointer;
+}
+
+.header_usr i {
+    cursor: pointer;
+}
+
+.header_usr_list {
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 0 1px 1px 1px #d5d5d5;
+    border-radius: 5px;
+    position: relative;
+    top: -5px;
+    left: 0;
+    z-index: 999;
+}
+
+.header_usr_list li {
+    height: 30px;
+    line-height: 30px;
+}
+
+.header_usr_list li span {
+    cursor: pointer;
+}
+
+.hhr {
+    width: 94%;
+    height: 1px;
+    margin: 0 auto;
+    border: none;
+    background-color: #d5d5d5;
 }
