@@ -14,7 +14,7 @@ var c_header = function() {
         '<hr class="hhr">'+
         '<li><span>我的简历</span></li>'+
         '<hr class="hhr">'+
-        '<li><span onclick="toLogin()">注销登录</span></li>'+
+        '<li><span onclick="logOff()">注销登录</span></li>'+
         '</ul>'+
         '</div>'+
         '</div>'+

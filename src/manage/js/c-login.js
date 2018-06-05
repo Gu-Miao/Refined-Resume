@@ -14,6 +14,7 @@ var $login = function() {
       + '</div>');
 
   var $form = $loginDOM.find('form');
+  var $forget = $loginDOM.find("form input:eq(4)");
 
   function show() {
     $(app.config.appContainer).html('');

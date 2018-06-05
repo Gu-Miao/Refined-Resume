@@ -1,0 +1,79 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#rr {
+    width: 100%;
+    height: 1000px;
+}
+
+#stage {
+    width: 1000px;
+    height: 1240px;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+.stage_top {
+    width: 100%;
+    text-align: center;
+} .stage_top h2 {
+    font-size: 30px;
+    font-weight: normal; 
+}.stage_top h5 {
+    font-weight: normal;
+    color: #333;
+} .stage_top hr {
+    width: 94%;
+    height: 1px;
+    margin: 10px auto 0 auto;
+    border: none;
+    background-color: #d5d5d5;
+}
+
+.stage_content {
+    width: 100%;
+} 
+
+.mbox {
+    width: 240px;
+    height: 360px;
+    /* border: 1px solid black; */
+    margin: 20px 0 0 70px;
+    float: left;
+}
+
+.imgL {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+} .imgL img {
+    width: 240px;
+    height: 320px;
+    transition: all 1s;
+    cursor: pointer;
+} .imgL img:hover {
+    transform: scale(1.3);
+}
+
+.mbox_bottom {
+    width: 100%;
+    height: 40px;
+    /* border: 1px solid brown; */
+    background-color: #d5d5d5;
+} .mbox_bottom span {
+    line-height: 40px;
+    margin-left: 10px;
+} .mbox_bottom button {
+    width: 50px;
+    border: none;
+    background-color: #d5d5d5;
+    font-size: 16px;
+    margin: 10px 0 0 60px;
+    outline: none;
+    cursor: pointer;
+} .mbox_bottom button:active {
+    border-bottom: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+}

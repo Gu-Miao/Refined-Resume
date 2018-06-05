@@ -32,10 +32,3 @@ var $stage = function() {
 
   return {show: show, load: load};
 }();
-
-/* test case
-
-$stage.load('#/store-list');
-$stage.load('#/store-list-abc');
-
-*/

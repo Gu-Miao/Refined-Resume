@@ -24,12 +24,48 @@ app.config = {
  */
 app.menuData = [
   {
-    'title': '门店管理',
+    'title': '系统管理',
     'icon': 'icon-mendianguanli',
     'items': [
       {
-        'title': '门店列表',
-        'url': '#/store-list'
+        'title': '概览',
+        'url': '#/system-summary'
+      },
+      {
+        'title': '访问日志',
+        'url': '#/system-log'
+      },
+      {
+        'title': '模板管理',
+        'url': '#/template-manage'
+      }
+    ]
+  },
+  {
+    'title': '用户管理',
+    'icon': 'icon-mendianguanli',
+    'items': [
+      {
+        'title': '用户信息',
+        'url': '#/user-information'
+      },
+      {
+        'title': '用户详情',
+        'url': '#/user-details'
+      }
+    ]
+  },
+  {
+    'title': '管理员管理',
+    'icon': 'icon-mendianguanli',
+    'items': [
+      {
+        'title': '管理员帐号',
+        'url': '#/manage-number'
+      },
+      {
+        'title': '修改密码',
+        'url': '#/change-password'
       }
     ]
   },

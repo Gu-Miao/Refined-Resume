@@ -1,0 +1,186 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.hide {
+	display: none;
+}
+
+#rr {
+	width: 100%;
+}
+
+.settingbox {
+	width: 970px;
+	height: 525px;
+	border: 1px solid #e5e5e5;
+	box-shadow: -1px 0 2px 1px #c5c5c5;
+	position: absolute;
+	top: 60px;
+	left: 180px;
+}
+
+#infoMenu {
+	width: 170px;
+	min-width: 150px;
+	height: 525px;
+	border: 1px solid #e5e5e5;
+	border-left: none;
+	border-right: none;
+	background: #f7f7f7;
+	float: left;
+	position: relative;
+	top: 0;
+	left: 0;
+	-moz-user-select:none; /*火狐*/
+    -webkit-user-select:none; /*webkit浏览器*/
+    -ms-user-select:none; /*IE10*/
+    -khtml-user-select:none; /*早期浏览器*/
+    user-select:none;
+}
+
+#infoStage {
+	width: 800px;
+	min-width: 150px;
+	height: 525px;
+	float: left;
+	border-left: none;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.menutitle {
+	width: 100%;
+	height: 50px;
+	font-size: 16px;
+	text-align: center;
+	line-height: 50px;
+	font-weight: bold;
+	border-right: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.menulist {
+	width: 100%;
+	height: 40px;
+	font-size: 14px;
+	background: #f7f7f7;
+	text-align: center;
+	line-height: 40px;
+	border: 1px solid #e5e5e5;
+	border-left: none;
+	border-top: none;
+	cursor: pointer;
+}
+
+.menulist_c {
+	background: #fff;
+	border-right: none;
+}
+
+.menulist:active {
+	font-size: 12px;
+}
+
+.stagebox {
+	width: 800px;
+	min-width: 150px;
+	height: 525px;
+}
+
+.stageheader {
+	width: 100%;
+	height: 70px;
+} .stageheader span {
+	font-size: 22px;
+	font-weight: bold;
+	color: #999;
+	position: relative;
+	top: 20px;
+	left: 30px;
+} .stageheader hr {
+	position: relative;
+	top: 30px;
+	left: 2%;
+	width: 96%;
+}
+
+.stagecontent {
+	width: 80%;
+	height: 415px;
+	padding: 40px 0 0 20%;
+} .stagecontent textarea {
+	resize: none;
+}
+
+.info_btn {
+    width: 120px;
+    height: 30px;
+    background: #67a1d4;
+    text-align: center;
+    line-height: 30px;
+	color: white;
+	font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 15px auto 0 auto;
+    cursor: pointer;
+    -moz-user-select:none; /*火狐*/
+    -webkit-user-select:none; /*webkit浏览器*/
+    -ms-user-select:none; /*IE10*/
+    -khtml-user-select:none; /*早期浏览器*/
+	user-select:none;
+	position: absolute;
+	left: 210px;
+	bottom: 40px;
+}
+
+.info_btn:active {
+	font-size: 12px;
+}
+
+#preview {
+    width:300px;
+}
+
+#info_show {
+    width: 400px;
+	height: 300px;
+	background: #e5e5e5;
+	border: 1px solid black;
+	position: absolute;
+	top: 80px;
+	left: 70px;
+}
+#info_thumbnail {
+	width: 100px;
+	height: 100px;
+	background: #e5e5e5;
+	border: 1px solid black;
+	position: absolute;
+	top: 80px;
+	left: 500px;
+}
+#info_file {
+	width: 200px;
+	position: absolute;
+	top: 240px;
+	left: 500px;
+}
+#info_thumbnail_text {
+	font-size: 16px;
+	position: absolute;
+	top: 200px;
+	left: 500px;
+}
+
+.em {
+    width: 170px;
+    height: 15px;
+    font-size: 8px;
+    color: red;
+    line-height: 20px;
+    margin: 5px 0 0 70px;
+}

@@ -40,6 +40,7 @@ var $changePasswordPanel = (function() {
   }
   
   function show() {
+    console.log("changePasswordPanel");
     $(app.config.panelContainer).html('');
     $(app.config.panelContainer).append($changePwdDOM);
 

@@ -11,12 +11,13 @@ var c_footer = function() {
         '</div>'+
         '<div class="footer_item">'+
         '<h3>关注Refined Resume</h3>'+
-        '<img src="images/ico2.jpg" />'+
-        '<img src="images/ico-weixin.jpg" />'+
-        '<br/>官方QQ 官方微信'+
+        '<img src="images/qq.png" width="43" height="51" onclick="showQRCodeQQ()" />　'+
+        '<img src="images/wx.jpg" onclick="showQRCodeWX()" /> '+
+        '<br/>官方QQ　官方微信'+
         '</div> '+
         '<div class="QRcode">'+
-        '<img src="images/ico-QRcode.jpg">'+
+        '<img src="images/QRcodeQQ.jpg" class="hide" id="QRqq">'+
+        '<img src="images/QRcodeWX.jpg" class="hide" id="QRwx">'+
         '</div>'+
         '<div class="footer_info">'+
         '<img src="./images/footer_info.jpg">'

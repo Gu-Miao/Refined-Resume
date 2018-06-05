@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/jquery.Jcrop.min.css">
+    <link rel="stylesheet" href="./css/a.css">
+</head>
+<body>
+    <div id="ss"></div>
+    <input type="file" name="file" id="doc" onchange="setImagePreview()">
+    <br>
+    <canvas id="canvas2"></canvas>
+    <button onclick="aa()">保存</button>
+    <div id="coords">
+        x1<input type="text" size="4" id="x1" name="x1" />
+        y1<input type="text" size="4" id="y1" name="y1" />
+        x2<input type="text" size="4" id="x2" name="x2" />
+        y2<input type="text" size="4" id="y2" name="y2" />
+        w<input type="text" size="4" id="w" name="w" />
+        h<input type="text" size="4" id="h" name="h" />
+    </div>
+    <button onclick="aaa()" id="aaa" style="display: none">asdf</button>
+    <input type="hidden" id="base">
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery.Jcrop.min.js"></script>
+<script src="./js/a.js"></script>
+</html>

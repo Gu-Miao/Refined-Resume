@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/tag.css">
+</head>
+<body>
+    <div id="rr">
+        <button data-toggle="modal" class="btn_change" data-target="#rr_skill">修改</button>
+        <div class="modal fade" id="rr_skill" tModalgerenabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            编辑基本信息
+                        </h4>
+                    </div>
+                    <div class="modal-body" id="modal_basic">
+                        <div class="tags">
+                            <div class="tag_top">
+                                <div class="tag" onclick="changeTag(this)">团队协作<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">人际关系<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">组织协调<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">外语交际<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">销售技巧<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">团队运营<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">市场调研<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">活动策划<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">公文写作<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">客户接待<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">人员招聘<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">商务谈判<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">领导能力<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">自主创新<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">执行力<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">设计能力<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">公关技巧<div></div></div>
+                                <div class="tag" onclick="changeTag(this)">计划与执行<div></div></div>
+                                <input type="text" onkeydown="addTag(this, event)">
+                            </div>
+                            
+                            <div class="tag_bottom">
+                                <p>已添加的：</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button " class="btn btn-default" data-dismiss="modal">
+                            取消
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            保存
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/tag.js"></script>
+</html>

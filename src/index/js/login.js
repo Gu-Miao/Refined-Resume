@@ -27,6 +27,13 @@ var c_login = function() {
             document.getElementsByClassName("psw")[0].focus()
             document.getElementsByClassName("psw")[0].value = JSON.parse(sessionStorage["rr_usrRtoL"]).password;
             document.getElementsByClassName("psw")[0].blur()
+        } else if(sessionStorage["rr_usrC"]) {
+            document.getElementsByClassName("usr")[0].focus();
+            document.getElementsByClassName("usr")[0].value = JSON.parse(sessionStorage["rr_usrC"]).username;
+            document.getElementsByClassName("usr")[0].blur();
+            document.getElementsByClassName("psw")[0].focus()
+            document.getElementsByClassName("psw")[0].value = JSON.parse(sessionStorage["rr_usrC"]).password;
+            document.getElementsByClassName("psw")[0].blur()
         }
         
     }

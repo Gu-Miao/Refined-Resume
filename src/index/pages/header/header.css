@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+#rr {
+    width: 100%;
+}
+
+.hide {
+    display: none;
+}
+
+#header {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    box-shadow: 1px 1px 1px 1px #d5d5d5;
+}
+
+.header_logo {
+    /* margin: 26px 0 0 20px; */
+    position: absolute;
+    left: 20px;
+    top: 26px;
+}
+
+.header_title {
+    line-height: 70px;
+}
+
+.header_usr {
+    width: 200px;
+    height: 180px;
+    position: absolute;
+    top: 0;
+    right: 40px;
+}
+
+.header_usr_top {
+    width: 100%;
+    height: 70px;
+}
+
+.header_usrhd {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    position: absolute;
+    top: 15px;
+    left: 26px;
+    cursor: pointer;
+}
+
+.header_username {
+    line-height: 70px;
+    cursor: pointer;
+}
+
+.header_usr i {
+    cursor: pointer;
+}
+
+.header_usr_list {
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 0 1px 1px 1px #d5d5d5;
+    border-radius: 5px;
+    position: relative;
+    top: -5px;
+    left: 0;
+    z-index: 999;
+}
+
+.header_usr_list li {
+    height: 30px;
+    line-height: 30px;
+}
+
+.header_usr_list li span {
+    cursor: pointer;
+}
+
+.hhr {
+    width: 94%;
+    height: 1px;
+    margin: 0 auto;
+    border: none;
+    background-color: #d5d5d5;
+}

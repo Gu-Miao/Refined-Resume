@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        body {
+            width: 100%;
+            height: 1000px;
+        }
+        #a {
+            width: 50%;
+            height: 50%;
+            background-image: url(Jcrop.gif);
+        }
+        #b {
+            width: 99%;
+            height: 99%;
+            background-color: green;
+            position: relative;
+            left: 2px;
+            top: 2px;
+        }
+        #rr_city {
+            width: 320px;
+            height: 40px;
+            border: 1px solid #ccc;
+            margin: 100px 50px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="a">
+        <div id="b"></div>
+    </div>
+    <p id="rr_city"></p>
+</body>
+<script src="./jquery.min.js"></script>
+<script src="./city.min.js"></script>
+<script type="text/javascript">
+    var ylc = yeluochenCity('rr_city', (city) => {console.log(city)}, null);
+</script>
+</html>

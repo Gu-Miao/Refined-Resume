@@ -4,6 +4,11 @@
     height: 70px;
     text-align: center;
     box-shadow: 1px 1px 1px 1px #d5d5d5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #fff;
 }
 
 .header_logo {

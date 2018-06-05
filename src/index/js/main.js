@@ -1,12 +1,11 @@
 var rr = document.getElementById("rr");
-var a = [];
 
 !function() {
     window.onhashchange = function() { // 路由设置
         console.log(window.location.hash.split("#")[1]);
         $(document).unbind();
         rr.className = "";
-
+        
         if(window.location.hash === "#/welcome") {
             c_welcome.show();
         } else if(window.location.hash === "#/login") {
@@ -20,9 +19,19 @@ var a = [];
             c_header.show();
             c_info.show();
             $(document).click(hideList);
+        } else if(window.location.hash === "#/make") {
+            rr.innerHTML = "";
+            c_header.show();
+            c_menu.show();
+            c_tip.show();
+            c_resume.show();
+            $(document).click(hideList);
+            sessionStorage.setItem("rr_ta1", $(""));
+            sessionStorage.setItem("rr_ta2", 148);
         } else {
             rr.innerHTML = "";
             c_header.show();
+            c_stage.show();
             c_footer.show();
             $(document).click(hideList);
             rr.className = "minHeight";
@@ -59,9 +68,17 @@ var a = [];
                 c_header.show();
                 c_info.show();
                 $(document).click(hideList);
+            } else if(window.location.hash === "#/make") {
+                rr.innerHTML = "";
+                c_header.show();
+                c_menu.show();
+                c_tip.show();
+                c_resume.show();
+                $(document).click(hideList);
             } else {
                 rr.innerHTML = "";
                 c_header.show();
+                c_stage.show();
                 c_footer.show();
                 $(document).click(hideList);
                 rr.className = "minHeight";
@@ -638,6 +655,565 @@ function toLogin() {
 }
 
 function toHome() {
-    window.location.hash = "#/home";
+    if(window.location.hash === "#/home") {
+        window.location.reload();
+    } else {
+        window.location.hash = "#/home";
+    }
     (event || window.event).cancelBubble = true;
+}
+
+function toMake() {
+    window.location.hash = "#/make";
+    (event || window.event).cancelBubble = true;
+}
+
+function logOff() {
+    window.location.hash = "#/login";
+    window.localStorage.removeItem("rr_LastLogin");
+}
+
+function showQRCodeQQ() {
+    var QRCodeQQ = document.getElementById("QRqq");
+    var QRCodeWX = document.getElementById("QRwx");
+
+    QRCodeQQ.className = "";
+    QRCodeWX.className = "hide";
+}
+
+function showQRCodeWX() {
+    var QRCodeQQ = document.getElementById("QRqq");
+    var QRCodeWX = document.getElementById("QRwx");
+
+    QRCodeWX.className = "";
+    QRCodeQQ.className = "hide";
+}
+
+function downloadPDF() { // 点击“导出”按钮的回调
+    var targetDom = $(".resume");
+    //把需要导出的pdf内容clone一份，这样对它进行转换、微调等操作时才不会影响原来界面
+    var copyDom = targetDom.clone();
+    //新的div宽高跟原来一样，高度设置成自适应，这样才能完整显示节点中的所有内容（比如说表格滚动条中的内容）
+    copyDom.width(targetDom.width() + "px");
+    copyDom.height(targetDom.height() + "px");
+
+    $('body').append(copyDom);//ps:这里一定要先把copyDom append到body下，然后再进行后续的glyphicons2canvas处理，不然会导致图标为空
+    svg2canvas(copyDom);
+    html2canvas(copyDom, {
+        onrendered: function (canvas) {
+            
+            var imgData = canvas.toDataURL('image/jpeg');
+            var img = new Image();
+            img.src = imgData;
+            //根据图片的尺寸设置pdf的规格，要在图片加载成功时执行，之所以要*0.225是因为比例问题
+            img.onload = function () {
+                //此处需要注意，pdf横置和竖置两个属性，需要根据宽高的比例来调整，不然会出现显示不完全的问题
+                if (this.width > this.height) {
+                    var doc = new jsPDF('l', 'mm', [this.width * 0.225, this.height * 0.225]);
+                } else {
+                    var doc = new jsPDF('p', 'mm', [this.width * 0.225, this.height * 0.225]);
+                }
+                doc.addImage(imgData, 'jpeg', 0, 0, this.width * 0.225, this.height * 0.225);
+                //根据下载保存成不同的文件名
+                doc.save('pdf_' + new Date().getTime() + '.pdf');
+            };
+            //删除复制出来的div
+            copyDom.remove();
+        },
+        background: "#fff",
+        //这里给生成的图片默认背景，不然的话，如果你的html根节点没设置背景的话，会用黑色填充。
+        allowTaint: true //避免一些不识别的图片干扰，默认为false，遇到不识别的图片干扰则会停止处理html2canvas
+    });
+}
+
+function svg2canvas(targetElem) { // 如果有svg图像
+    var svgElem = targetElem.find('svg');
+    svgElem.each(function (index, node) {
+        var parentNode = node.parentNode;
+        //由于现在的IE不支持直接对svg标签node取内容，所以需要在当前标签外面套一层div，通过外层div的innerHTML属性来获取
+        var tempNode = document.createElement('div');
+        tempNode.appendChild(node);
+        var svg = tempNode.innerHTML;
+        var canvas = document.createElement('canvas');
+        //转换
+        canvg(canvas, svg);
+        parentNode.appendChild(canvas);
+    });
+}
+
+function glyphicons2canvas(targetElem, fontClassName, fontFamilyName) { // 处理glyphicons图标的回调
+    var iconElems = targetElem.find('.' + fontClassName);
+    iconElems.each(function (index, inconNode) {
+        var fontSize = $(inconNode).css("font-size");
+        var iconColor = $(inconNode).css("color");
+        var styleContent = $(inconNode).attr('style');
+        //去掉"px"
+        fontSize = fontSize.replace("px", "");
+        var charCode = getCharCodeByGlyphiconsName(iconName);
+        var myCanvas = document.createElement('canvas');
+        //把canva宽高各增加2是为了显示图标完整
+        myCanvas.width = parseInt(fontSize) + 2;
+        myCanvas.height = parseInt(fontSize) + 2;
+        myCanvas.style = styleContent;
+        var ctx = myCanvas.getContext('2d');
+        //设置绘图内容的颜色
+        ctx.fillStyle = iconColor;
+        //设置绘图的字体大小以及font-family的名字
+        ctx.font = fontSize + 'px ' + fontFamilyName;
+        ctx.fillText(String.fromCharCode(charCode), 1, parseInt(fontSize) + 1);
+        $(inconNode).replaceWith(myCanvas);
+    });
+}
+
+function getCharCodeByGlyphiconsName(iconName) { //根据glyphicons/glyphicon图标的类名获取到对应的char code
+    switch (iconName) {
+        case("glyphicons-resize-full"):
+            return "0xE216";
+        case ("glyphicons-chevron-left"):
+            return "0xE225";
+        default:
+            return "";
+    }
+}
+
+function tipCollapse() { // 小贴士切换回调
+    var self = window.event.target;
+    switch(self.id) {
+        case "tip1":
+            var target = $('#collapseOne');
+            break;
+        case "tip2":
+            var target = $('#collapseTwo');
+            break;
+        case "tip3":
+            var target = $('#collapseThree');
+            break;
+        case "tip4":
+            var target = $('#collapseFour');
+            break;
+        case "tip5":
+            var target = $('#collapseFive');
+            break;
+        case "tip6":
+            var target = $('#collapseSix');
+            break;
+        case "tip7":
+            var target = $('#collapseSeven');
+            break;
+        case "tip8":
+            var target = $('#collapseEight');
+            break;
+        default:
+            break;   
+    }
+    var id = 1;
+    for(let i = 0; i < target[0].classList.length; i++) {
+        if(target[0].classList[i] == "in") {
+            id = 0;
+        }
+    }
+    
+    if(id == 0) {
+        target.collapse('hide');
+    } else {
+        target.collapse('show');
+    }
+}
+
+function showBtn(obj) {
+    var self = $(obj);
+    if(self.find(".hide")) {
+        self.find(".hide").removeClass("hide");
+    }
+    self.parent().addClass("gifbg");
+}
+
+function hideBtn(obj) {
+    var self = $(obj);
+    if(self.find("button")) {
+        self.find("button").addClass("hide");
+    }
+    self.parent().removeClass("gifbg");
+}
+
+function userhead(obj) { // 头像模态框的保存按钮的回调函数
+    $(".resume_userhead").append($("<img src='" + $("#rr_thumbnail")[0].toDataURL("image/png") + "'>"));
+    $(obj).parent().parent().find(".close").trigger("click");
+}
+
+// 邮箱表单验证
+function checkMail(obj, em) {
+　　var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+
+　　if(obj.value === "") {
+　　　　return true;
+　　} else if (!reg.test(obj.value)) { // 正则验证不通过，格式不对
+    　　em.innerHTML = "* 邮箱格式不正确！";
+　　　　return false;
+　　} else {
+　　　　em.innerHTML = "";
+　　　　return true;
+　　}
+}
+
+// 手机表单验证
+function checkPhone(obj, em) {
+
+    var phval = obj.value;
+    
+    if (phval == "") {
+        return true;
+    } else if (!/^1[35789]\d{9}$/.test(phval)) {
+        em.innerHTML = "* 手机号格式不正确";
+        return false;
+    } else {
+        em.innerHTML = "";
+        return true;
+    }
+}
+
+function basic(obj) {
+    var birth = $(obj).parent().parent().find(".ui_date")[0];
+    var city = $("#city-picker3");
+    var mail = $(obj).parent().parent().find(".ui_date")[1];
+    var phone = $(obj).parent().parent().find(".ui_date")[2];
+    var mail_em = $(obj).parent().parent().find(".em")[0];
+    var phone_em = $(obj).parent().parent().find(".em")[1];
+
+    var resume_birth = $("#resume_birth");
+    var resume_city = $("#resume_city");
+    var resume_mail = $("#resume_mail");
+    var resume_phone = $("#resume_phone");
+
+    console.log(checkMail(mail, mail_em));
+    if(checkMail(mail, mail_em) && checkPhone(phone, phone_em)) {
+        console.log(1);
+        if(!birth.value == "") {
+            resume_birth.html(birth.value);
+        }
+        if(!city.val() == "") {
+            resume_city.html(city.val());
+        }
+        if(!mail.value == "") {
+            resume_mail.html(mail.value);
+        }
+        if(!phone.value == "") {
+            resume_phone.html(phone.value);
+        }
+        alert("保存成功");
+        $(obj).parent().parent().find(".close").trigger("click");
+    }
+}
+
+function changeSkill(obj) {
+    console.log($("#skills .tag_bottom").children().length);
+    
+    if($(obj).parent()[0].className == "tag_top") {
+        if($("#skills .tag_bottom").children().length === 10) {
+            alert("您添加的标签太多了，选几个重点吧");
+        } else {
+            var addTarget = $(obj);
+            $("#skills .tag_bottom").append(addTarget[0].outerHTML);
+            $(obj).remove();
+        }
+    } else {
+        var addTarget = $(obj);
+        $("#skills .tag_top").append(addTarget[0].outerHTML);
+        $(obj).remove();
+    }
+}
+
+function addSkill(obj, e) {
+    if(e.keyCode == 13) {
+        if($("#skills .tag_bottom").children().length === 10) {
+            alert("您添加的标签太多了，选几个重点吧");
+        } else {
+            $("#skills .tag_bottom").append($('<div class="tag" onclick="changeSkill(this)">' + $(obj).val() + '<div></div></div>'));
+            $(obj).val("");
+        }
+    }
+}
+
+function skill(obj) {
+    $(".resume_skill ul li").remove();
+    $("#skills .tag_bottom .tag").each(function() {
+        var id = 0;
+        for(let i = 0; i < $(".resume_skill ul li").length; i++) {
+            if($(".resume_skill ul li")[i].innerHTML == $(this).text()) {
+                id = 1;
+            }
+        }
+        if(id == 0) {
+            $(".resume_skill ul").append($("<li>" + $(this).text() + "</li>"));
+        }
+    });
+
+    $(obj).parent().parent().find(".close").trigger("click");
+    if($(".resume_skill ul li").length === 0) {
+        $(".resume_skill ul").append($("<li>添加我的技能特长</li>"))
+    }
+}
+
+function changeHobby(obj) {
+    console.log($("#hobbys .tag_bottom").children().length);
+    
+    if($(obj).parent()[0].className == "tag_top") {
+        if($("#hobbys .tag_bottom").children().length === 10) {
+            alert("您添加的标签太多了，选几个重点吧");
+        } else {
+            var addTarget = $(obj);
+            $("#hobbys .tag_bottom").append(addTarget[0].outerHTML);
+            $(obj).remove();
+        }
+    } else {
+        var addTarget = $(obj);
+        $("#hobbys .tag_top").append(addTarget[0].outerHTML);
+        $(obj).remove();
+    }
+}
+
+function addHobby(obj, e) {
+    if(e.keyCode == 13) {
+        console.log(1);
+        if($("#hobbys .tag_bottom").children().length === 10) {
+            alert("您添加的标签太多了，选几个重点吧");
+        } else {
+            $("#hobbys .tag_bottom").append($('<div class="tag" onclick="changeSkill(this)">' + $(obj).val() + '<div></div></div>'));
+            $(obj).val("");
+        }
+    }
+}
+
+function hobby(obj) {
+    $(".resume_hobby ul li").remove();
+    $("#hobbys .tag_bottom .tag").each(function() {
+        var id = 0;
+        for(let i = 0; i < $(".resume_hobby ul li").length; i++) {
+            if($(".resume_hobby ul li")[i].innerHTML == $(this).text()) {
+                id = 1;
+            }
+        }
+        if(id == 0) {
+            $(".resume_hobby ul").append($("<li>" + $(this).text() + "</li>"));
+        }
+    });
+
+    $(obj).parent().parent().find(".close").trigger("click");
+    if($(".resume_hobby ul li").length === 0) {
+        $(".resume_hobby ul").append($("<li>添加我的兴趣爱好</li>"))
+    }
+}
+
+function introduce(obj) {
+    var name = $(obj).parent().parent().find("input")[0];
+    var introduce = $(obj).parent().parent().find("input")[1];
+
+    $(".resume_name p:eq(0)").html(name.value);
+    $(".resume_name p:eq(1)").html(introduce.value);
+    
+    $(obj).parent().parent().find(".close").trigger("click");
+}
+
+function jhi(obj) {
+    var posw = $(obj).parent().parent().find("input")[0];
+    var poss = $(obj).parent().parent().find("input")[1];
+    var city = $(obj).parent().parent().find("input")[2];
+    var pri = $(obj).parent().parent().find("input")[3];
+
+    $(".resume_jhi div:eq(0)").html("意向岗位：" + posw.value);
+    $(".resume_jhi div:eq(1)").html("职业类型：" + poss.value);
+    $(".resume_jhi div:eq(2)").html("意向城市：" + city.value);
+    $(".resume_jhi div:eq(3)").html("薪资要求：" + pri.value);
+
+    $(obj).parent().parent().find(".close").trigger("click");
+}
+
+function edu(obj) {
+    var edu = $(obj).parent().parent().find("input")[0];
+    var time = $(obj).parent().parent().find("input")[1];
+    var sch = $(obj).parent().parent().find("input")[2];
+    var mar = $(obj).parent().parent().find("input")[3];
+
+    $(".resume_edu div:eq(0)").html("最高学历：" + edu.value);
+    $(".resume_edu div:eq(1)").html("毕业时间：" + time.value);
+    $(".resume_edu div:eq(2)").html("毕业学校：" + sch.value);
+    $(".resume_edu div:eq(3)").html("所学专业：" + mar.value);
+
+    $(obj).parent().parent().find(".close").trigger("click");
+}
+
+function exp(obj) {
+    var start = $(obj).parent().parent().find("input")[0];
+    var end = $(obj).parent().parent().find("input")[1];
+    var com = $(obj).parent().parent().find("input")[2];
+    var pos = $(obj).parent().parent().find("input")[3];
+    var exp = $(obj).parent().parent().find("textarea")[0];
+
+    if(start.value == "" || end.value == "") {
+        $(".resume_exp div:eq(0)").html("工作时间");
+    } else {
+        $(".resume_exp div:eq(0)").html(start.value + "~" + end.value);
+    }
+    
+    $(".resume_exp div:eq(1)").html("所在公司" + com.value);
+    $(".resume_exp div:eq(2)").html("工作岗位" + pos.value);
+
+    $(obj).parent().parent().find(".close").trigger("click");
+}
+
+function taBlur(obj) {
+    console.log("blur");
+    $(obj).css({
+        "border": "none",
+        "resize": "none"
+    });
+}
+
+function taFocus(obj) {
+    console.log("blur");
+    $(obj).css({
+        "border": "1px solid #333333",
+        "resize": "vertical"
+    });
+}
+
+function taMove(obj) {
+    if($(obj).parent()[0].className === "resume_exp") {
+        if($(".exp_box").height()-$(obj).height() < 142) {
+            var height = 142+$(obj).height();
+            $(".exp_box").height(height);
+            $(".resume_exp").height(height-2);
+            $(".resumeBox").height($(".resumeBox").height() + $(obj).height() - window.sessionStorage["rr_ta1"]);
+        } else if($(".exp_box").height()-$(obj).height() > 142) {
+            var height = 142+$(obj).height();
+            $(".exp_box").height(height);
+            $(".resume_exp").height(height-2);
+            $(".resumeBox").height($(".resumeBox").height() + $(obj).height() - window.sessionStorage["rr_ta1"]);
+        }
+        sessionStorage.setItem("rr_ta1", $(obj).height());
+    } else {
+        if($(".self_box").height()-$(obj).height() < 52) {
+            var height = 52+$(obj).height();
+            $(".self_box").height(height);
+            $(".resume_self").height(height-2);
+            $(".resumeBox").height($(".resumeBox").height() + $(obj).height() - window.sessionStorage["rr_ta2"]);
+        } else if($(".self_box").height()-$(obj).height() > 52) {
+            var height = 52+$(obj).height();
+            $(".self_box").height(height);
+            $(".resume_self").height(height-2);
+            $(".resumeBox").height($(".resumeBox").height() + $(obj).height() - window.sessionStorage["rr_ta2"]);
+        }
+        sessionStorage.setItem("rr_ta2", $(obj).height());
+    }
+    
+}
+
+function taKey(obj) {
+    var col = getCol($(obj));
+    $(obj).height(col*20+20);
+
+    if($(obj).parent()[0].className === "resume_exp") {
+        if($(".exp_box").height()-$(obj).height() < 142) {
+            var height = 142+$(obj).height();
+            $(".exp_box").height(height);
+            $(".resume_exp").height(height-2);
+            $(".resumeBox").height($(".resumeBox").height() + $(obj).height() - window.sessionStorage["rr_ta1"]);
+        } else if($(".exp_box").height()-$(obj).height() > 142) {
+            var height = 142+$(obj).height();
+            $(".exp_box").height(height);
+            $(".resume_exp").height(height-2);
+            $(".resumeBox").height($(".resumeBox").height() + $(obj).height() - window.sessionStorage["rr_ta1"]);
+        }
+        sessionStorage.setItem("rr_ta1", $(obj).height());
+    } else {
+        if($(".self_box").height()-$(obj).height() < 52) {
+            var height = 52+$(obj).height();
+            $(".self_box").height(height);
+            $(".resume_self").height(height-2);
+            $(".resumeBox").height($(".resumeBox").height() + $(obj).height() - window.sessionStorage["rr_ta2"]);
+        } else if($(".self_box").height()-$(obj).height() > 52) {
+            var height = 52+$(obj).height();
+            $(".self_box").height(height);
+            $(".resume_self").height(height-2);
+            $(".resumeBox").height($(".resumeBox").height() + $(obj).height() - window.sessionStorage["rr_ta2"]);
+        }
+        sessionStorage.setItem("rr_ta2", $(obj).height());
+    }
+}
+
+function getCol(obj) { // 获取textarea的行数
+    var col = 0;
+    col = $(obj).val().split("\n").length;
+    for(let i = 0; i < $(obj).val().split("\n").length; i++) {
+        if(sizeof($(obj).val().split("\n")[i], "utf8") > 111) {
+            col++;
+        }
+    }
+
+    console.log("col: ", col);
+    return col;
+}
+
+/** 
+ * 计算字符串所占的内存字节数，默认使用UTF-8的编码方式计算，也可制定为UTF-16 
+ * UTF-8 是一种可变长度的 Unicode 编码格式，使用一至四个字节为每个字符编码 
+ *  
+ * 000000 - 00007F(128个代码)      0zzzzzzz(00-7F)                             一个字节 
+ * 000080 - 0007FF(1920个代码)     110yyyyy(C0-DF) 10zzzzzz(80-BF)             两个字节 
+ * 000800 - 00D7FF  
+   00E000 - 00FFFF(61440个代码)    1110xxxx(E0-EF) 10yyyyyy 10zzzzzz           三个字节 
+ * 010000 - 10FFFF(1048576个代码)  11110www(F0-F7) 10xxxxxx 10yyyyyy 10zzzzzz  四个字节 
+ *  
+ * 注: Unicode在范围 D800-DFFF 中不存在任何字符 
+ * {@link http://zh.wikipedia.org/wiki/UTF-8} 
+ *  
+ * UTF-16 大部分使用两个字节编码，编码超出 65535 的使用四个字节 
+ * 000000 - 00FFFF  两个字节 
+ * 010000 - 10FFFF  四个字节 
+ *  
+ * {@link http://zh.wikipedia.org/wiki/UTF-16} 
+ * @param  {String} str  
+ * @param  {String} charset utf-8, utf-16 
+ * @return {Number} 
+ */  
+function sizeof(str, charset){  // 计算字符串所占的字节数
+    var total = 0,  
+        charCode,  
+        i,  
+        len;  
+    charset = charset ? charset.toLowerCase() : '';  
+    if(charset === 'utf-16' || charset === 'utf16'){  
+        for(i = 0, len = str.length; i < len; i++){  
+            charCode = str.charCodeAt(i);  
+            if(charCode <= 0xffff){  
+                total += 2;  
+            }else{  
+                total += 4;  
+            }  
+        }  
+    }else{  
+        for(i = 0, len = str.length; i < len; i++){  
+            charCode = str.charCodeAt(i);  
+            if(charCode <= 0x007f) {  
+                total += 1;  
+            }else if(charCode <= 0x07ff){  
+                total += 2;  
+            }else if(charCode <= 0xffff){  
+                total += 3;  
+            }else{  
+                total += 4;  
+            }  
+        }  
+    }  
+    return total;  
+}
+
+function showM(obj) { // 显示模态框
+    if($(obj)[0].className == "resume_userhead") {
+        target = "#rr_userhead"
+    } else {
+        target = "#rr_" + $(obj).parent()[0].className.split("_")[1];
+    }
+    console.log(target);
+    $(target).modal('show')
 }
