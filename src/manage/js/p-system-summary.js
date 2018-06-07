@@ -1,50 +1,97 @@
 var $systemSummaryPanel = (function() {
-    var $changePwdDOM = $(''
-        + '<div class="change-password-panel">'
-          + '<form>'
-            + '<input class="origin-pwd" type="password" placeholder="请输入原密码" required><br>'
-            + '<input class="new-pwd" type="password" placeholder="请输入新密码" minlength="6" required><br>'
-            + '<input class="new-pwd2" type="password" placeholder="请再次输入新密码" minlength="6" required><br>'
-            + '<input type="submit" value="保存">'
-            + '<input type="reset" value="重置">'
-          + '</form>'
-        + '</div>');
-  
-    var $form = $changePwdDOM.find('form'),
-      $originPwd = $changePwdDOM.find('.origin-pwd'),
-      $newPwd = $changePwdDOM.find('.new-pwd'),
-      $newPwd2 = $changePwdDOM.find('.new-pwd2');
-  
-    /**
-     * 验证密码数据是否合法
-     *
-     * @returns boolean true 验证通过，false 验证不通过
-     */
-    function validate() {
-      if($originPwd.val() === $newPwd.val()) {
-        alert('新密码不应该跟旧密码相同');
-        return false;
-      } else if($newPwd.val() !== $newPwd2.val()) {
-        alert('确认密码和新密码不同');
-        return false;
-      } else {
-        return true;
-      }
-    }
-  
-    function onSubmit(e) {
-      e.preventDefault();
-      if(validate()) {
-        // 验证通过后，调用 API 接口修改密码
-      }
-    }
+    var $systemSummaryDOM = $(''
+      +'<div id="system-summary-panel">'
+      +'<div id="manager-count">'
+      +'<div></div>'
+      +'<div>'
+      +'<h1>2</h1>'
+      +'<span>管理员总数</span>'
+      +'</div>'
+      +'</div>'
+      +'<div id="user-count">'
+      +'<div></div>'
+      +'<div>'
+      +'<h1>2</h1>'
+      +'<span>注册用户数</span>'
+      +'</div>'
+      +'</div>'
+      +'<div id="use-count">'
+      +'<div></div>'
+      +'<div>'
+      +'<h1>2</h1>'
+      +'<span>使用次数</span>'
+      +'</div>'
+      +'</div>'
+      +'<div id="template-count">'
+      +'<div></div>'
+      +'<div>'
+      +'<h1>2</h1>'
+      +'<span>模板数量</span>'
+      +'</div>'
+      +'</div>'
+      +'<div id="echarts"></div>'
+      +'<div id="currunt-user">'
+      +'<h2>RRManager1</h2>'
+      +'<p>管理员帐号</p>'
+      +'<hr>'
+      +'<p>上次登录时间：2018/06/05</p>'
+      +'<p>上次登录IP：10.7.92.144</p>'
+      +'</div>'
+      +'</div>');
     
+      var x = [];
+      for(let i = 0; i < 7; i++) {
+        x.push(getDay(i-6));
+      }
+      var y = [111, 32, 768, 3, 444, 1, 33];
+      
+      function getDay(day){
+          var today = new Date();
+          var targetday_milliseconds=today.getTime() + 1000*60*60*24*day;
+          today.setTime(targetday_milliseconds);
+          var tYear = today.getFullYear();
+          var tMonth = today.getMonth();
+          var tDate = today.getDate();
+          tMonth = doHandleMonth(tMonth + 1);
+          tDate = doHandleMonth(tDate);
+          return tYear+"-"+tMonth+"-"+tDate;
+      }
+      function doHandleMonth(month){
+          var m = month;
+          if(month.toString().length == 1){
+           m = "0" + month;
+          }
+          return m;
+      }
+      
+
     function show() {
-      console.log("changePasswordPanel");
+      console.log("systemSummaryDOM");
       $(app.config.panelContainer).html('');
-      $(app.config.panelContainer).append($changePwdDOM);
-  
-      $form.submit(onSubmit);
+      $(app.config.panelContainer).append($systemSummaryDOM);
+
+      var myChart = echarts.init(document.getElementById('echarts'));
+      var option = {
+        title: {
+            text: '近一周访问量',
+            // subtext: "just a demo"
+        },
+        tooltip: {},
+        legend: {
+            data:['访问量']
+        },
+        xAxis: {
+            data: x
+        },
+        yAxis: {},
+        series: [{
+            name: '访问量',
+            type: 'line',
+            // smooth: true,
+            data: y
+        }]
+      };
+      myChart.setOption(option);
     }
   
     return {show: show};

@@ -1,50 +1,279 @@
 var $templateManagePanel = (function() {
-    var $changePwdDOM = $(''
-        + '<div class="change-password-panel">'
-          + '<form>'
-            + '<input class="origin-pwd" type="password" placeholder="请输入原密码" required><br>'
-            + '<input class="new-pwd" type="password" placeholder="请输入新密码" minlength="6" required><br>'
-            + '<input class="new-pwd2" type="password" placeholder="请再次输入新密码" minlength="6" required><br>'
-            + '<input type="submit" value="保存">'
-            + '<input type="reset" value="重置">'
-          + '</form>'
-        + '</div>');
-  
-    var $form = $changePwdDOM.find('form'),
-      $originPwd = $changePwdDOM.find('.origin-pwd'),
-      $newPwd = $changePwdDOM.find('.new-pwd'),
-      $newPwd2 = $changePwdDOM.find('.new-pwd2');
-  
-    /**
-     * 验证密码数据是否合法
-     *
-     * @returns boolean true 验证通过，false 验证不通过
-     */
-    function validate() {
-      if($originPwd.val() === $newPwd.val()) {
-        alert('新密码不应该跟旧密码相同');
-        return false;
-      } else if($newPwd.val() !== $newPwd2.val()) {
-        alert('确认密码和新密码不同');
-        return false;
-      } else {
-        return true;
-      }
-    }
-  
-    function onSubmit(e) {
-      e.preventDefault();
-      if(validate()) {
-        // 验证通过后，调用 API 接口修改密码
-      }
-    }
+    var $templateManageDOM = $(''
+      +'<div id="template-manage-panel">'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div class="templates">'
+      +'<div class="templates-imgBox">'
+      +'<div class="templates-block hide">'
+      +'<div class="templates-btn">加入首页</div>'
+      +'<div class="templates-btn">加入推荐</div>'
+      +'</div>'
+      +'<img src="images/m1.jpg" alt="m1">'
+      +'</div>'
+      +'</div>'
+      +'<div id="pager">'
+      +'<div></div>'
+      +'</div>'
+      +'div>');
     
     function show() {
       console.log("changePasswordPanel");
       $(app.config.panelContainer).html('');
-      $(app.config.panelContainer).append($changePwdDOM);
+      $(app.config.panelContainer).append($templateManageDOM);
+
+      $(".templates-imgBox").mouseover(function() {
+          $(this).parent().find(".hide").removeClass("hide");
+      });
+      
+      $(".templates-imgBox").mouseout(function() {
+          $(this).parent().find(".templates-block").addClass("hide");
+      });
+
+      var maxPageNum = getMaxPageNum();
+      console.log(maxPageNum);
+      var target = $("#pager div:eq(0)");
+
+      if(target.children().length === 0) {
+          target.append($("<div>＜</div>"));
+          for(let i = 0; i < maxPageNum; i++) {
+              target.append($("<div>"+(i+1)+"</div>"));
+          }
+          target.append($("<div>＞</div>"));
+      }
+      
+
+      var pager = $("#pager div div");
+      pager.click(function() {
+          var pageNum = getPageNum();
+          var maxPageNum = getMaxPageNum();
+      
+          if($(this).html() === "＜") {
+              if(pageNum-1 !== 0) {
+                  showList(pageNum-1);
+              }
+          } else if ($(this).html() === "＞") {
+              if(pageNum !== maxPageNum) {
+                  showList(pageNum+1);
+              }
+          } else {
+              showList(Number($(this).html()));
+          }
+      });
+
+      $("#pager div div:eq(1)").trigger("click");
   
-      $form.submit(onSubmit);
+    }
+
+    function getPageNum() { // 获取当前是第几页
+        return $(".templates").index($(".templates").not(".hide")[0])/12+1;
+    }
+    
+    function getMaxPageNum() { // 获取一共有多少页
+        return Math.ceil($(".templates").length/12);
+    }
+    
+    function showList(pageNum) { // 显示列表项
+        $(".templates").addClass("hide");
+        for(let i = (pageNum-1)*12; i < pageNum*12; i++) {
+            $(".templates:eq("+i+")").removeClass("hide");
+        }
     }
   
     return {show: show};

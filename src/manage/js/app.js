@@ -11,6 +11,8 @@ $(function() {
       $menu.show();
       $footer.show();
       $stage.show();
+      $(".menu-bar:eq(0)").trigger("click");
+      $(".menu .menu-item:eq(0)").trigger("click");
     } else {
       $stage.load(location.hash);
     }

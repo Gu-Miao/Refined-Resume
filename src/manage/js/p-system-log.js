@@ -1,50 +1,288 @@
 var $systemLogPanel = (function() {
-    var $changePwdDOM = $(''
-        + '<div class="change-password-panel">'
-          + '<form>'
-            + '<input class="origin-pwd" type="password" placeholder="请输入原密码" required><br>'
-            + '<input class="new-pwd" type="password" placeholder="请输入新密码" minlength="6" required><br>'
-            + '<input class="new-pwd2" type="password" placeholder="请再次输入新密码" minlength="6" required><br>'
-            + '<input type="submit" value="保存">'
-            + '<input type="reset" value="重置">'
-          + '</form>'
-        + '</div>');
+    var $systemLogDOM = $(''
+      +'<div id="system-log-panel">'
+      +'<div class="system-log-header">'
+      +'<div>行为</div>'
+      +'<div>账号类别</div>'
+      +'<div>账号名</div>'
+      +'<div>IP地址</div>'
+      +'<div>时间</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>用户</div>'
+      +'<div>gumiao</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>用户</div>'
+      +'<div>zhangsan</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>用户</div>'
+      +'<div>zhanggaoxiang</div>'
+      +'<div>10.7.92.226</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>管理员</div>'
+      +'<div>RRManager1</div>'
+      +'<div>10.7.92.224</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div class="sytem-logs">'
+      +'<div>登录</div>'
+      +'<div>用户</div>'
+      +'<div>王伟</div>'
+      +'<div>10.7.92.226</div>'
+      +'<div>2018/06/06</div>'
+      +'</div>'
+      +'<div id="pager"><div></div></div>'
+      +'</div>');
   
-    var $form = $changePwdDOM.find('form'),
-      $originPwd = $changePwdDOM.find('.origin-pwd'),
-      $newPwd = $changePwdDOM.find('.new-pwd'),
-      $newPwd2 = $changePwdDOM.find('.new-pwd2');
-  
-    /**
-     * 验证密码数据是否合法
-     *
-     * @returns boolean true 验证通过，false 验证不通过
-     */
-    function validate() {
-      if($originPwd.val() === $newPwd.val()) {
-        alert('新密码不应该跟旧密码相同');
-        return false;
-      } else if($newPwd.val() !== $newPwd2.val()) {
-        alert('确认密码和新密码不同');
-        return false;
-      } else {
-        return true;
-      }
-    }
-  
-    function onSubmit(e) {
-      e.preventDefault();
-      if(validate()) {
-        // 验证通过后，调用 API 接口修改密码
-      }
+    
+
+    function getPageNum() { // 获取当前是第几页
+        return $(".sytem-logs").index($(".sytem-logs").not(".hide")[0])/10+1;
     }
     
+    function getMaxPageNum() { // 获取一共有多少页
+        return Math.ceil($(".sytem-logs").length/10);
+    }
+
+    function showList(pageNum) { // 显示列表项
+        $(".sytem-logs").addClass("hide");
+        for(let i = (pageNum-1)*10; i < pageNum*10; i++) {
+            $(".sytem-logs:eq("+i+")").removeClass("hide");
+        }
+    }
+
+
     function show() {
-      console.log("changePasswordPanel");
+      console.log("systemLog");
       $(app.config.panelContainer).html('');
-      $(app.config.panelContainer).append($changePwdDOM);
-  
-      $form.submit(onSubmit);
+      $(app.config.panelContainer).append($systemLogDOM);
+
+      var maxPageNum = getMaxPageNum();
+      console.log(maxPageNum);
+      var target = $("#pager div:eq(0)");
+
+      if(target.children().length === 0) {
+          target.append($("<div>＜</div>"));
+          for(let i = 0; i < maxPageNum; i++) {
+              target.append($("<div>"+(i+1)+"</div>"));
+          }
+          target.append($("<div>＞</div>"));
+      }
+      
+
+      var pager = $("#pager div div");
+      pager.click(function() {
+          var pageNum = getPageNum();
+          var maxPageNum = getMaxPageNum();
+      
+          if($(this).html() === "＜") {
+              if(pageNum-1 !== 0) {
+                  showList(pageNum-1);
+              }
+          } else if ($(this).html() === "＞") {
+              if(pageNum !== maxPageNum) {
+                  showList(pageNum+1);
+              }
+          } else {
+              showList(Number($(this).html()));
+          }
+      });
+
+      $("#pager div div:eq(1)").trigger("click");
     }
   
     return {show: show};

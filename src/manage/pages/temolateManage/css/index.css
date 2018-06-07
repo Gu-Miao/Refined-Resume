@@ -1,0 +1,96 @@
+* {
+    margin: 0 0;
+    padding: 0 0;
+}
+#admin-app-stage {
+    min-width: 1164px;
+    position: absolute;
+    left: 200px;
+    top: 70px;
+    bottom: 0;
+    right: 0;
+    border-left: solid 2px #1aa094;
+    box-sizing: border-box;
+    background-color: white;
+}
+#template-manage-panel {
+    width: 100%;
+}
+.templates {
+    width: 165px;
+    height: 220px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    float: left;
+    margin: 10px 0 0 20px;
+} .templates-imgBox {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+} .templates-imgBox img {
+    width: 100%;
+    height: 100%;
+    transition: 1s all;
+} .templates-imgBox img:hover {
+    transform: scale(1.04);
+} .templates-block {
+    width: 100%;
+    height: 100%;
+    background-color:rgb(0,0,0);
+    filter:alpha(opacity=50);  
+    -moz-opacity:0.5;  
+    -khtml-opacity: 0.5;  
+    opacity: 0.5;  
+    /* background-color: rgba(192,192,192,0.1); */
+} .templates-btn {
+    width: 70px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 13px;
+    text-align: center;
+    background-color: #fff;
+    margin: 50px 0 0 50px;
+    float: left;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    cursor: pointer;
+} .templates-btn:active {
+    font-size: 12px;
+}
+.hide {
+    display: none;
+}
+
+#pager {
+    width: 90%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px auto 0 auto;
+    position: absolute;
+    bottom: 60px;
+    right: 50px;
+    background-color: #fff;
+} #pager div {
+    width: 90%;
+    height: 30px;
+    margin: 0 auto;
+} #pager div div {
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+} #pager div div:active {
+    font-size: 12px;
+} #pager div div:nth-child(1) {
+    font-weight: bolder;
+} #pager div div:last-child {
+    font-weight: bolder;
+}

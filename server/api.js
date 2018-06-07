@@ -63,6 +63,9 @@ http.createServer(function(req, res) {
                 case "changeInfo6":
                   changeInfo6(data, req, res);
                   break;
+                case "systemSummary":
+                  systemSummary(data, req, res);
+                  break;
                 default: 
                   break;
               }
@@ -568,6 +571,15 @@ function changeInfo6(data, req, res) { // 更改头像
     });
   });
 }
+
+function systemSummary(data, req, res) { // 后台概览
+  console.log("systemSummary/POST");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Content-Type", "text/plain; charset='utf-8'");
+
+
+}
+
 
 
 function selectData(db, callback) {  

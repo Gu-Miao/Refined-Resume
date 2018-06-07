@@ -1,0 +1,123 @@
+#user-details-panel {
+    width: 100%;
+}
+
+.user-box {
+    width: 40%;
+    min-width: 460px;
+    height: 500px;
+    margin: 10px 0 0 2%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    text-align: center;
+    float: left;
+} .user-box div {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin: 40px auto 0 auto;
+    overflow: hidden;
+} .user-box div img {
+    width: 100%;
+    height: 130%;
+} .user-box p:nth-child(2) {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 30px;
+} .user-box p:nth-child(3) {
+    font-size: 14px;
+    margin-top: 4px;
+    color: #777;
+} .user-box hr {
+    width: 90%;
+    height: 1px;
+    border: none;
+    outline: none;
+    margin: 20px auto 0 auto;
+    background-color: #ccc;
+} .user-box p:nth-child(5) {
+    font-size: 18px;
+    margin-top: 50px;
+} .user-box p:nth-child(6) {
+    font-size: 18px;
+    margin-top: 50px;
+}
+
+.information-panel {
+    width: 50%;
+    height: 500px;
+    margin: 10px 0 0 2%;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    text-align: center;
+    float: left;
+    border: 1px solid #ccc;
+}
+
+.info-type {
+    width: 170px;
+    height: 100%;
+    float: left;
+    line-height: 50px;
+    text-align: center;
+    background-color: #f7f7f7;
+} .info-type div {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f7f7f7;
+    cursor: pointer;
+}
+
+.info-box {
+    width: 290px;
+    height: 409px;
+    padding-top: 40px;
+    float: left;
+}
+
+.infos {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+} .infos input {
+    border: none;
+    outline: none;
+    border: 1px solid#fff;
+} .infos input:focus {
+    border: 1px solid #ccc;
+} .infos-exp {
+    width: 100%;
+    margin-top: 80px;
+} .infos-exp textarea {
+    width: 70%;
+    resize: none;
+}
+
+.btn-change {
+    width: 120px;
+    height: 30px;
+    background-color: #67a1d4;
+    text-align: center;
+    line-height: 30px;
+	color: white;
+	font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    -moz-user-select:none; /*火狐*/
+    -webkit-user-select:none; /*webkit浏览器*/
+    -ms-user-select:none; /*IE10*/
+    -khtml-user-select:none; /*早期浏览器*/
+    user-select:none;
+    clear: left;
+    position: absolute;
+    left: 27%;
+    bottom: 130px;
+}
+
+.btn-change:active {
+	font-size: 12px;
+}

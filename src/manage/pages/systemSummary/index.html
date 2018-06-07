@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		* {
+			margin: 0 0;
+			padding: 0 0;
+		}
+		#admin-app-stage {
+			position: absolute;
+		    left: 200px;
+		    top: 70px;
+		    bottom: 0;
+		    right: 0;
+		    border-left: solid 2px #1aa094;
+		    box-sizing: border-box;
+		    background-color: white;
+		}
+		#system-summary-panel {
+			width: 100%;
+		}
+		#manager-count {
+			width: 20%;
+			min-width: 150px;
+			height: 100px;
+			background-color: #fff;
+			border-radius: 5px;
+			margin: 10px 0 0 4%;
+			border: 1px solid #ccc;
+			float: left;
+			box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+		} #manager-count div:nth-child(1) {
+			width: 30%;
+			height: 100%;
+			background-color: rgb(64, 158, 255);
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+			float: left;
+		} #manager-count div:nth-child(2) {
+			width: 70%;
+			height: 100%;
+			text-align: center;
+			background-color: #fff;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+			float: left;
+		} #manager-count div:nth-child(2) h1 {
+			margin: 10px 0 5px 0;
+		}
+
+		#user-count {
+			width: 20%;
+			min-width: 150px;
+			height: 100px;
+			background-color: #fff;
+			border-radius: 5px;
+			margin: 10px 0 0 4%;
+			border: 1px solid #ccc;
+			float: left;
+			box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+		} #user-count div:nth-child(1) {
+			width: 30%;
+			height: 100%;
+			background-color: rgb(103, 194, 58);
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+			float: left;
+		} #user-count div:nth-child(2) {
+			width: 70%;
+			height: 100%;
+			text-align: center;
+			background-color: #fff;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+			float: left;
+		} #user-count div:nth-child(2) h1 {
+			margin: 10px 0 5px 0;
+		}
+
+		#use-count {
+			width: 20%;
+			min-width: 150px;
+			height: 100px;
+			background-color: #fff;
+			border-radius: 5px;
+			margin: 10px 0 0 4%;
+			border: 1px solid #ccc;
+			float: left;
+			box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+		} #use-count div:nth-child(1) {
+			width: 30%;
+			height: 100%;
+			background-color: rgb(235, 158, 5);
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+			float: left;
+		} #use-count div:nth-child(2) {
+			width: 70%;
+			height: 100%;
+			text-align: center;
+			background-color: #fff;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+			float: left;
+		} #use-count div:nth-child(2) h1 {
+			margin: 10px 0 5px 0;
+		}
+
+		#template-count {
+			width: 20%;
+			min-width: 150px;
+			height: 100px;
+			background-color: #fff;
+			border-radius: 5px;
+			margin: 10px 0 0 4%;
+			border: 1px solid #ccc;
+			float: left;
+			box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+		} #template-count div:nth-child(1) {
+			width: 30%;
+			height: 100%;
+			background-color: rgb(250, 85, 85);
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+			float: left;
+		} #template-count div:nth-child(2) {
+			width: 70%;
+			height: 100%;
+			text-align: center;
+			background-color: #fff;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+			float: left;
+		} #template-count div:nth-child(2) h1 {
+			margin: 10px 0 5px 0;
+		}
+
+		#echarts {
+			width: 68%;
+			min-width: 780px;
+			height: 400px;
+			margin: 50px 0 0 1%;
+			background-color: #fff;
+			float: left;
+		}
+
+		#currunt-user {
+			width: 30%;
+			height: 380px;
+			border: 1px solid #ccc;
+			float: left;
+			margin: 20px 0 0 -2.5%;
+			box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+			border-radius: 5px;
+			text-align: center;
+		} #currunt-user h2 {
+			margin-top: 50px;
+		} #currunt-user p {
+			margin-top: 36px;
+		} #currunt-user hr {
+			width: 85%;
+			height: 1px;
+			border: none;
+			outline: none;
+			background-color: #ccc;
+			margin: 40px auto 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="admin-app-stage">
+		<div id="system-summary-panel">
+			<div id="manager-count">
+				<div></div>
+				<div>
+					<h1>2</h1>
+					<span>管理员总数</span>
+				</div>
+			</div>
+			<div id="user-count">
+				<div></div>
+				<div>
+					<h1>2</h1>
+					<span>注册用户数</span>
+				</div>
+			</div>
+			<div id="use-count">
+				<div></div>
+				<div>
+					<h1>2</h1>
+					<span>使用次数</span>
+				</div>
+			</div>
+			<div id="template-count">
+				<div></div>
+				<div>
+					<h1>2</h1>
+					<span>模板数量</span>
+				</div>
+			</div>
+			<div id="echarts"></div>
+			<div id="currunt-user">
+				<h2>RRManager1</h2>
+				<p>管理员帐号</p>
+				<hr>
+				<p>上次登录时间：2018/06/05</p>
+				<p>上次登录IP：10.7.92.144</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script src="./js/echarts.min.js"></script>
+<script type="text/javascript">
+var date = new Date();
+console.log(date.toLocaleDateString()+"-1");
+var x = [];
+for(let i = 0; i < 7; i++) {
+	x.push(getDay(i-6));
+}
+console.log(x);
+var y = [111, 32, 768, 3, 444, 1, 33];
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('echarts'));
+
+// 指定图表的配置项和数据
+var option = {
+    title: {
+        text: '近一周访问量',
+        // subtext: "just a demo"
+    },
+    tooltip: {},
+    legend: {
+        data:['访问量']
+    },
+    xAxis: {
+        data: x
+    },
+    yAxis: {},
+    series: [{
+        name: '访问量',
+        type: 'line',
+        // smooth: true,
+        data: y
+    }]
+};
+
+function getDay(day){
+    var today = new Date();
+    var targetday_milliseconds=today.getTime() + 1000*60*60*24*day;
+    today.setTime(targetday_milliseconds); //注意，这行是关键代码
+    var tYear = today.getFullYear();
+    var tMonth = today.getMonth();
+    var tDate = today.getDate();
+    tMonth = doHandleMonth(tMonth + 1);
+    tDate = doHandleMonth(tDate);
+    return tYear+"-"+tMonth+"-"+tDate;
+}
+function doHandleMonth(month){
+    var m = month;
+    if(month.toString().length == 1){
+     m = "0" + month;
+    }
+    return m;
+}
+// 使用刚指定的配置项和数据显示图表。
+myChart.setOption(option);
+</script><script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+
+<script type="text/javascript">
+
+//默认为GBK可通过ie参数设置编码
+
+console.log(returnCitySN["cip"]+','+returnCitySN["cname"])//117.89.35.98,江苏省南京市
+
+</script>
+</html>

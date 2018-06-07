@@ -1,0 +1,90 @@
+* {
+    margin: 0 0;
+    padding: 0 0;
+}
+#admin-app-stage {
+    min-width: 1164px;
+    position: absolute;
+    left: 200px;
+    top: 70px;
+    bottom: 0;
+    right: 0;
+    border-left: solid 2px #1aa094;
+    box-sizing: border-box;
+    background-color: white;
+}
+#system-log-panel {
+    width: 100%;
+}
+
+.system-log-header {
+    width: 90%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    margin: 10px auto 0 auto;
+    /* border: 1px solid #ccc; */
+} .system-log-header div {
+    width: 20%;
+    height: 30px;
+    text-align: center;
+    float: left;
+}
+.sytem-logs {
+    width: 90%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    margin: 10px auto 0 auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+} .sytem-logs div {
+    width: 20%;
+    height: 30px;
+    text-align: center;
+    float: left;
+} .sytem-logs div:nth-child(1) {
+   color: red;
+} .sytem-logs div:nth-child(3) {
+    color: blue;
+}
+
+#pager {
+    width: 90%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px auto 0 auto;
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    background-color: #fff;
+} #pager div {
+    width: 90%;
+    height: 30px;
+    margin: 0 auto;
+} #pager div div {
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+} #pager div div:active {
+    font-size: 12px;
+} #pager div div:nth-child(1) {
+    font-weight: bolder;
+} #pager div div:last-child {
+    font-weight: bolder;
+}
+
+.hide {
+    display: none;
+}
