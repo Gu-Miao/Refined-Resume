@@ -391,7 +391,7 @@ hr {
     float: left;
     color: #878686;
 } .resume_exp textarea {
-    font-size: 8px;
+    font-size: 12px;
     resize: none;
     width: 94%;
     height: 160px;
@@ -422,7 +422,7 @@ hr {
     font-size: 20px;
     margin-bottom: 10px;
 } .resume_self textarea {
-    font-size: 8px;
+    font-size: 12px;
     resize: none;
     width: 94%;
     height: 150px;

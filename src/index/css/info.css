@@ -3,9 +3,7 @@
 	height: 525px;
 	border: 1px solid #e5e5e5;
 	box-shadow: -1px 0 2px 1px #c5c5c5;
-	position: absolute;
-	top: 90px;
-	left: 180px;
+	margin: 90px auto 0 auto;
 }
 
 #infoMenu {
