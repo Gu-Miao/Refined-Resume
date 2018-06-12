@@ -99,6 +99,21 @@ var $menu = function() {
 
     $menuBar.click(onMenuBarClick);
     $menuItem.click(onMenuItemClick);
+
+
+    if(!window.sessionStorage["m_show"]) {
+      $(".menu-bar:eq(0)").trigger("click");
+      $(".menu .menu-item:eq(0)").trigger("click");
+    } else {
+      for(let i = 0; i < app.menuData.length; i++) {
+        for(let j = 0; j < app.menuData[i].items.length; j++) {
+          if(window.sessionStorage["m_show"] == app.menuData[i].items[j].url) {
+            $(".menu-bar:eq("+i+")").trigger("click");
+            $(".menu-bar:eq("+i+") .menu-item:eq("+j+")").trigger("click");
+          }
+        }
+      }
+    }
   }
   
   return {show: show};

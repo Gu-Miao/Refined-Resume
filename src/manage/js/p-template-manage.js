@@ -210,8 +210,7 @@ var $templateManagePanel = (function() {
       +'</div>'
       +'<div id="pager">'
       +'<div></div>'
-      +'</div>'
-      +'div>');
+      +'</div>');
     
     function show() {
       console.log("changePasswordPanel");

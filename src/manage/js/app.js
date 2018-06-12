@@ -11,12 +11,45 @@ $(function() {
       $menu.show();
       $footer.show();
       $stage.show();
-      $(".menu-bar:eq(0)").trigger("click");
-      $(".menu .menu-item:eq(0)").trigger("click");
     } else {
       $stage.load(location.hash);
     }
   };
 
-  $login.show();
+  window.onbeforeunload = function() {
+    window.sessionStorage.setItem("m_show", window.location.hash);
+  }
+
+  window.onload = function() {
+    console.log(window.sessionStorage["m_show"]);
+    if(!window.sessionStorage["m_show"]) {
+      $login.show();
+    } else {
+      window.location.hash = window.sessionStorage["m_show"];
+        if(window.sessionStorage["m_show"] === '#/logout') {
+          $login.show();
+        } else if(window.sessionStorage["m_show"] === '#/index') {
+          $(app.config.appContainer).html('');
+          $header.show({
+            'title': app.config.headerTitle,
+            'logo': app.config.headerLogo
+          });
+          $menu.show();
+          $footer.show();
+          $stage.show();
+        } else {
+          $(app.config.appContainer).html('');
+          $header.show({
+            'title': app.config.headerTitle,
+            'logo': app.config.headerLogo
+          });
+          $menu.show();
+          $footer.show();
+          $stage.show();
+          $stage.load(window.sessionStorage["m_show"]);
+        }
+    }
+  }
 });
+
+

@@ -1,6 +1,7 @@
 #!/usr/bin/node
 
 var users = [];
+var managers = [];
 var http = require("http");
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://localhost:27017/rr'; 
@@ -11,17 +12,19 @@ MongoClient.connect(url, function(err, db) {
     for(let i=0;i<result.length;i++) {
       users.push(result[i]);
     }
-    db.close();
     console.log("users: ", users);
-  });
+  }, "user");
+  selectData(db, function(result) {
+    for(let i=0;i<result.length;i++) {
+      managers.push(result[i]);
+    }
+    db.close();
+    console.log("managers: ", managers);
+  }, "manager");
 });
   
 
 http.createServer(function(req, res) {
-    // console.log("req.headers: ", req.headers);
-    // console.log("req.url: ", req.url);
-    // console.log("");
-
     switch(req.method) {
         case "GET":
             get(res);
@@ -63,6 +66,9 @@ http.createServer(function(req, res) {
                 case "changeInfo6":
                   changeInfo6(data, req, res);
                   break;
+                case "mLogin":
+                  mLogin(data, req, res);
+                  break;
                 case "systemSummary":
                   systemSummary(data, req, res);
                   break;
@@ -71,12 +77,11 @@ http.createServer(function(req, res) {
               }
             });
         default:
-            console.log(req);
             break;
     }
 }).listen(8000);
 
-function login(data, req, res) {
+function login(data, req, res) { // 用户登录
     console.log("login/POST");
     console.log(JSON.parse(data.toString("utf8")));
 
@@ -138,7 +143,7 @@ function reg(data, req, res) { // 注册
           }
           db.close();
           console.log("users: ", users);
-        });
+        }, "user");
       });
     }
       
@@ -238,7 +243,7 @@ function changePsw(data, req, res) { // 更改密码
         res.end(end);
         db.close();
         console.log("users: ", users);
-      });
+      }, "user");
   });
 
 }
@@ -303,7 +308,7 @@ function changeInfo1(data, req, res) { // 基本信息
       res.end(end);
       db.close();
       console.log("users: ", users);
-    });
+    }, "user");
     
   });
 }
@@ -363,7 +368,7 @@ function changeInfo2(data, req, res) { // 详细信息
       res.end(end);
       db.close();
       console.log("users: ", users);
-    });
+    }, "user");
     
   });
 }
@@ -415,7 +420,7 @@ function changeInfo3(data, req, res) { // 教育背景
       res.end(end);
       db.close();
       console.log("users: ", users);
-    });
+    }, "user");
   });
 }
 
@@ -470,7 +475,7 @@ function changeInfo4(data, req, res) { // 工作信息
       res.end(end);
       db.close();
       console.log("users: ", users);
-    });
+    }, "user");
   });
 }
 
@@ -521,7 +526,7 @@ function changeInfo4(data, req, res) { // 求职意向
       res.end(end);
       db.close();
       console.log("users: ", users);
-    });
+    }, "user");
   });
 }
 
@@ -568,8 +573,34 @@ function changeInfo6(data, req, res) { // 更改头像
       res.end(end);
       db.close();
       console.log("users: ", users);
-    });
+    }, "user");
   });
+}
+
+function mLogin(data, req, res) { // 后台登录
+  console.log("mLogin/POST");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Content-Type", "text/plain; charset='utf-8'");
+
+  var username = "";
+  var password = "";
+  var end = "用户名不存在";
+  
+  username = JSON.parse(data.toString("utf8")).usr;
+  password = JSON.parse(data.toString("utf8")).psw;
+
+  for(let i = 0; i < managers.length; i++) {
+    if(managers[i].username === username) {
+      if(managers[i].password === password) {
+        end = JSON.stringify(managers[i]);
+      } else {
+        end = "密码错误";
+      }
+    }
+  }
+
+  res.setHeader("Content-Length", Buffer.byteLength(end));
+  res.end(end);
 }
 
 function systemSummary(data, req, res) { // 后台概览
@@ -577,13 +608,33 @@ function systemSummary(data, req, res) { // 后台概览
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Content-Type", "text/plain; charset='utf-8'");
 
+  MongoClient.connect(url, function(err, db) {
+    
+    selectData(db, function(result) {
+      var use = result[0].count;
+      console.log("use: ", use);
+      db.close();
 
+    }, "use");
+  });
+
+  // var end = {
+  //   users: users.length,
+  //   managers: managers.length,
+  //   use: use,
+  //   template: temp,
+  //   manager: manager,
+  //   date: date
+  // }
+
+  res.end("asdf");
+  
 }
 
 
 
-function selectData(db, callback) {  
-  var collection = db.collection('user');
+function selectData(db, callback, collection) {  
+  var collection = db.collection(collection);
   collection.find().toArray(function(err, result) {
     if(err)
     {

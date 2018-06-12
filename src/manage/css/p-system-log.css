@@ -46,8 +46,8 @@
     text-align: center;
     margin: 10px auto 0 auto;
     position: absolute;
-    bottom: 60px;
-    right: 50px;
+    bottom: 50px;
+    left: 0;
     background-color: #fff;
 } #pager div {
     width: 90%;

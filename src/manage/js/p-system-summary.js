@@ -69,6 +69,21 @@ var $systemSummaryPanel = (function() {
       console.log("systemSummaryDOM");
       $(app.config.panelContainer).html('');
       $(app.config.panelContainer).append($systemSummaryDOM);
+      
+
+      var data = {
+        id: "systemSummary",
+        usr: "rr1",
+        psw: "asdf"
+      }
+              fetch("http://localhost:8000", {
+        method: "POST",
+        body: JSON.stringify(data)
+      }).then(function(res) {
+        res.text().then(function(data) {
+          console.log(data);
+        });
+      });
 
       var myChart = echarts.init(document.getElementById('echarts'));
       var option = {
