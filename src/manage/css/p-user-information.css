@@ -33,6 +33,7 @@
     float: left;
 } .user-informations div:nth-child(1) {
    color: red;
+   cursor: pointer;
 } .user-informations div:nth-child(3) {
     color: blue;
 }

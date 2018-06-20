@@ -1,38 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-p {
-    word-wrap: break-word;
-    word-break: break-all;
-    overflow: hidden;
-}
-
-li {
-    list-style: none;
-}
-
-hr {
+.resumeBox hr {
     margin-top: 10px;
     margin-bottom: 10px;
-}
-
-#rr {
-    width: 100%;
-}
-
-.hide {
-    display: none;
-}
-
-.em {
-    width: 170px;
-    height: 20px;
-    font-size: 14px;
-    color: red;
-    line-height: 20px;
-    margin: 5px 0 0 15%;
 }
 
 .gifbg {
@@ -77,9 +45,8 @@ hr {
 /* 简历 */
 .resume {
     width: 680px;
-    min-width: 633px;
     height: 99%;
-    margin: 1% 0 0 7.5%;
+    margin: 1% auto 0 auto;
     background-color: #254665;
 }
 
@@ -150,7 +117,7 @@ hr {
 } .resume_basic ul {
     position: relative;
     top: 15%;
-    left: 10%;
+    left: 5px;
 }
 
 .dataBox {
@@ -390,13 +357,7 @@ hr {
     height: 30px;
     float: left;
     color: #878686;
-} .resume_exp textarea {
-    font-size: 12px;
-    resize: none;
-    width: 94%;
-    height: 160px;
-    outline: none;
-    border: none;
+} .resume_exp p {
     overflow: visible;
 }
 
@@ -406,7 +367,7 @@ hr {
     height: 200px;
     position: relative;
     left: 7.5%;
-    top: 0;
+    top: 10px;
 }
 
 .resume_self {

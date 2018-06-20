@@ -1,0 +1,414 @@
+* {
+    margin: 0 0;
+    padding: 0 0;
+}
+
+#rr {
+    width: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+.resumeBox hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.gifbg {
+    background-image: url(../images/Jcrop.gif);
+}
+
+.modal-content {
+    border-radius: 15px;
+}
+
+.modal-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* 修改按钮 */
+.btn_change {
+    width: 50px;
+    height: 20px;
+    color: black;
+    border: none;
+    outline: none;
+    float: right;
+    position: relative;
+    right: 0;
+    top: 0;
+}
+
+/* 简历模块容器 */
+.resumeBox {
+    width: 57%;
+    min-width: 780px;
+    height: 1000px;
+    min-height: 1000px;
+    position: absolute;
+    top: 70px;
+    left: 300px;
+    border: 1px solid white;
+    background-color: rgb(43, 216, 174);
+}
+
+/* 简历 */
+.resume {
+    width: 680px;
+    height: 99%;
+    margin: 1% auto 0 auto;
+    background-color: #254665;
+}
+
+/* 简历左侧 */
+.resume_left {
+    width: 240px;
+    height: 100%;
+    float: left;
+}
+
+/* 头像 */
+.resume_userhead {
+    background-color: black;
+    width: 141px;
+    height: 192px;
+    margin: 20px auto 0 auto;
+    cursor: pointer;
+} .resume_userhead img {
+    width: 100%;
+    height: 100%;
+}
+
+#rr_show {
+    width: 400px;
+	height: 300px;
+	background: #e5e5e5;
+	border: 1px solid black;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+#rr_thumbnail {
+	width: 141px;
+	height: 192px;
+	background: #e5e5e5;
+	border: 1px solid black;
+	position: absolute;
+	top: 15px;
+	left: 430px;
+}
+#rr_file {
+	width: 200px;
+	position: absolute;
+	top: 270px;
+	left: 420px;
+}
+#rr_thumbnail_text {
+	font-size: 16px;
+	position: absolute;
+	top: 220px;
+	left: 430px;
+}
+
+/* 基本信息 */
+.basic_box {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto 0 auto;
+}
+
+.resume_basic {
+    width: 198px;
+    height: 198px;
+    background-color: #254665;
+    position: relative;
+    top: 1px;
+    left: 1px;
+} .resume_basic ul {
+    position: relative;
+    top: 15%;
+    left: 5px;
+}
+
+.dataBox {
+    width: 40%;
+    height: 50px;
+    float: left;
+    margin: 30px 0 0 5%;
+}
+
+.ui_date {
+    width: 260px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.resume_basic ul li {
+    color: white;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* 技能特长 */
+.skill_box {
+    width: 200px;
+    height: 240px;
+    margin: 20px auto 0 auto;
+}
+
+.resume_skill {
+    width: 198px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #254665;
+    color: white;
+} .resume_skill ul {
+    margin-left: 10px;
+} .resume_skill ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+#skills {
+    width: 100%;
+    height: 300px;
+}
+
+/* 模态框中的标签 */
+.tag_top {
+    width: 100%;
+    height: 180px;
+}
+
+.tag_bottom {
+    width: 100%;
+    height: 0;
+    padding-bottom: 20%;
+} .tag_bottom p {
+    margin: 5px 0 0 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.tag {
+    min-width: 70px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #ccc;
+    margin: 5px 0 0 20px;
+    padding: 8px 10px;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box !important;
+} .tag:hover {
+    color: white;
+}
+
+.tag_top input {
+    width: 90%;
+    height: 30px;
+    margin: 15px 0 0 5%;
+    float: left;
+    position: absolute;
+    top: 130px;
+    left: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+    padding: 5px 5px;
+} .tag_top input:focus {
+    border: 1px solid green;
+}
+
+/* 兴趣爱好 */
+.hobby_box {
+    width: 200px;
+    height: 240px;
+    margin: 20px auto 0 auto;
+}
+
+.resume_hobby {
+    width: 198px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #254665;
+    color: white;
+} .resume_hobby ul {
+    margin-left: 10px;
+} .resume_hobby ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+#hobby {
+    width: 100%;
+    height: 300px;
+}
+
+/* 简历右侧 */
+.resume_right {
+    width: 440px;
+    height: 100%;
+    float: left;
+    background-color: white;
+}
+
+/* 自我介绍 */
+.name_box {
+    width: 380px;
+    height: 115px;
+    position: relative;
+    left: 7.5%;
+    top: 0;
+}
+
+.resume_name { 
+    width: 378px;
+    height: 113px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+} .resume_name p:nth-child(2) {
+    margin-top: 20px;
+    line-height: 30px;
+    font-size: 30px;
+}
+
+/* 求职意向 */
+.jhi_box {
+    width: 380px;
+    height: 150px;
+    position: relative;
+    left: 7.5%;
+    top: 0;
+}
+
+.resume_jhi {
+    width: 378px;
+    height: 148px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+} .resume_jhi p {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+} .resume_jhi div {
+    width: 50%;
+    height: 50px;
+    float: left;
+    line-height: 50px;
+    color: #878686;
+}
+
+/* 教育背景 */
+.edu_box {
+    width: 380px;
+    height: 150px;
+    position: relative;
+    left: 7.5%;
+    top: 0;
+}
+
+.resume_edu {
+    width: 378px;
+    height: 148px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white
+} .resume_edu div {
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 0;
+    color: #878686;
+} .resume_edu p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+/* 工作经历 */
+.exp_box {
+    width: 380px;
+    height: 300px;
+    position: relative;
+    left: 7.5%;
+    top: 0;
+}
+
+.resume_exp {
+    width: 378px;
+    height: 298px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+} .resume_exp p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+} .resume_exp div {
+    width: 100%;
+    height: 30px;
+    float: left;
+    color: #878686;
+} .resume_exp p {
+    overflow: visible;
+}
+
+/* 自我评价 */
+.self_box {
+    width: 380px;
+    height: 200px;
+    position: relative;
+    left: 7.5%;
+    top: 10px;
+}
+
+.resume_self {
+    width: 378px;
+    height: 198px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+} .resume_self p:nth-child(1) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+} .resume_self textarea {
+    font-size: 12px;
+    resize: none;
+    width: 94%;
+    height: 150px;
+    outline: none;
+    border: none;
+    overflow: visible;
+}
+
+
+/* 模态框头部 */
+.modal-header {
+    background-color: #00c190;
+} .close {
+    outline: none;
+}

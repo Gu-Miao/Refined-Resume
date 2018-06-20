@@ -16,6 +16,7 @@ app.config = {
   'appContainer': '#admin-app',
   'panelContainer': '.admin-app-stage',
   'headerTitle': 'R.R.管理后台',
+  'url': 'http://localhost:8000'
   // 'headerLogo': 'url()',
 };
 

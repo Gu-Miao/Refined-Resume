@@ -110,6 +110,7 @@ var $menu = function() {
           if(window.sessionStorage["m_show"] == app.menuData[i].items[j].url) {
             $(".menu-bar:eq("+i+")").trigger("click");
             $(".menu-bar:eq("+i+") .menu-item:eq("+j+")").trigger("click");
+            console.log(i, j, window.sessionStorage["m_show"], app.menuData[i].items[j].url);
           }
         }
       }

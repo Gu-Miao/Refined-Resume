@@ -23,7 +23,7 @@ var c_reg = function() {
         '<input id="ans" type="text" class="usr placeholder" autocomplete="off" value="密保问题答案" onfocus="ansFocus()" onblur="ansBlur()">'+
         '<div class="em"></div>'+
         '<div class="link_reg">'+
-        '<div class="radio" onclick="radio()"></div>'+
+        '<span class="radio" onclick="radio()">　</span>'+
         '<span class="text"> 我已阅读并接受 </span>'+
         '<span class="doc">《R.R.注册协议》</span>'+
         '</div>'+

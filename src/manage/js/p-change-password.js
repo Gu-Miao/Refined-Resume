@@ -21,7 +21,10 @@ var $changePasswordPanel = (function() {
    * @returns boolean true 验证通过，false 验证不通过
    */
   function validate() {
-    if($originPwd.val() === $newPwd.val()) {
+    if($originPwd.val() !== JSON.parse(window.localStorage["m_manager"]).password) {
+      alert('原密码错误');
+      return false;
+    } else if($originPwd.val() === $newPwd.val()) {
       alert('新密码不应该跟旧密码相同');
       return false;
     } else if($newPwd.val() !== $newPwd2.val()) {
@@ -35,7 +38,22 @@ var $changePasswordPanel = (function() {
   function onSubmit(e) {
     e.preventDefault();
     if(validate()) {
-      // 验证通过后，调用 API 接口修改密码
+      fetch(app.config.url, {
+        method: "POST",
+        body: JSON.stringify({
+          id: "changePassword",
+          username: JSON.parse(window.localStorage["m_manager"]).username,
+          password: $newPwd.val()
+        })
+      }).then(function(res) {
+        res.text().then(function(data) {
+          console.log(data);
+          if(JSON.parse(data).password === $newPwd.val()) {
+            alert("修改成功");
+            window.localStorage.setItem("m_manager", data);
+          }
+        });
+      });
     }
   }
   

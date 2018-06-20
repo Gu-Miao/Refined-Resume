@@ -22,7 +22,6 @@ MongoClient.connect(mUrl, function(err, db) {
   });
 });
 
-
 var server = http.createServer(function(req, res) {
 
   var url = "http://" + req.headers.host + req.url;

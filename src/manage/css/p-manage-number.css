@@ -45,6 +45,7 @@
     font-size: 14px;
     border-radius: 5px;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    margin-left: 5px;
 } .manage-numbers button:active {
     font-size: 12px;
 }

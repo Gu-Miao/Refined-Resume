@@ -1,5 +1,5 @@
 var c_resume = function() {
-    var dome_resume = '<div class="resumeBox">'+
+    var dome_resume0 = '<div class="resumeBox">'+
         '<div class="resume">'+
         '<!-- 简历左侧 -->'+
         '<div class="resume_left">'+
@@ -84,15 +84,16 @@ var c_resume = function() {
         '<div>职位名称</div>'+
         '</br>'+
         '</br>'+
-        '<textarea onblur="taBlur(this)" onfocus="taFocus(this)" onmousemove="taMove(this)" onkeyup="taKey(this)" onkeydown="taKey(this)">在这里简介你的工作经历</textarea>'+
+        '<p>在这里简介你的工作经历</p>'+
         '</div>'+
         '</div>'+
         '<!-- 自我评价 -->'+
         '<div class="self_box">'+
         '<div class="resume_self" onmouseover="showBtn(this)" onmouseout="hideBtn(this)"> '+
+        '<button class="hide btn_change" onclick="showM(this)">修改</button>'+
         '<p>自我评价</p>'+
         '<hr></hr>'+
-        '<textarea onblur="taBlur(this)" onfocus="taFocus(this)" onmousemove="taMove(this)" onkeyup="taKey(this)" onkeydown="taKey(this)">在这里对你的履历进行简短的总结和评价</textarea>'+
+        '<p>在这里对你的履历进行简短的总结和评价</p>'+
         '</div>'+
         '</div>'+
         '</div>'+
@@ -375,6 +376,7 @@ var c_resume = function() {
         '　结束时间：<input type="date"><br><br>'+
         '　公司名称：<input type="text">'+
         '　工作岗位：<input type="text"><br><br>'+
+        '　工作经历：<textarea></textarea>'+
         '</div>'+
         '<div class="modal-footer">'+
         '<button type="button" class="btn btn-default" data-dismiss="modal">'+
@@ -386,10 +388,41 @@ var c_resume = function() {
         '</div>'+
         '</div>'+
         '</div>'+
+        '</div>'+
+        '<!-- 自我评价 -->'+
+        '<div class="modal fade" id="rr_self" tModalgerenabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
+        '<div class="modal-dialog">'+
+        '<div class="modal-content">'+
+        '<div class="modal-header">'+
+        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">'+
+        '&times;'+
+        '</button>'+
+        '<h4 class="modal-title" id="myModalLabel">'+
+        '编辑自我评价'+
+        '</h4>'+
+        '</div>'+
+        '<div class="modal-body">'+
+        '　自我评价：<textarea></textarea>'+
+        '</div>'+
+        '<div class="modal-footer">'+
+        '<button type="button" class="btn btn-default" data-dismiss="modal">'+
+        '关闭'+
+        '</button>'+
+        '<button type="button" class="btn btn-primary" onclick="self(this)">'+
+        '保存'+
+        '</button>'+
+        '</div>'+
+        '</div>'+
+        '</div>'+
+        '</div>'+
         '</div>';
 
     function show() {
-        rr.innerHTML += dome_resume;
+        // console.log([dome_resume+"0"]);
+        if(localStorage["rr-id"]) {
+            eval("rr.innerHTML += dome_resume"+(Number(localStorage["rr-id"])-1));
+        }
+        
 
         $("#rr_file").change(preview1);
         $("#info_target").click(showCanvas1);

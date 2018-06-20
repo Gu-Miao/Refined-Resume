@@ -6,92 +6,24 @@ var c_stage = function() {
         '<hr>'+
         '</div>'+
         '<div class="stage_content">'+
-        '<div class="mbox">'+
-        '<div class="imgL">'+
-        '<img src="./images/m1.jpg"  onclick="toMake()">'+
-        '</div>'+
-        '<div class="mbox_bottom">'+
-        '<span>使用量：1111</span>'+
-        '<button class="use" onclick="toMake()">使用</button>'+
-        '</div>'+
-        '</div>'+
-        '<div class="mbox">'+
-        '<div class="imgL">'+
-        '<img src="./images/m1.jpg"  onclick="toMake()">'+
-        '</div>'+
-        '<div class="mbox_bottom">'+
-        '<span>使用量：1111</span>'+
-        '<button class="use" onclick="toMake()">使用</button>'+
-        '</div>'+
-        '</div>'+
-        '<div class="mbox">'+
-        '<div class="imgL">'+
-        '<img src="./images/m1.jpg"  onclick="toMake()">'+
-        '</div>'+
-        '<div class="mbox_bottom">'+
-        '<span>使用量：1111</span>'+
-        '<button class="use" onclick="toMake()">使用</button>'+
-        '</div>'+
-        '</div>'+
-        '<div class="mbox">'+
-        '<div class="imgL">'+
-        '<img src="./images/m1.jpg"  onclick="toMake()">'+
-        '</div>'+
-        '<div class="mbox_bottom">'+
-        '<span>使用量：1111</span>'+
-        '<button class="use" onclick="toMake()">使用</button>'+
-        '</div>'+
-        '</div>'+
-        '<div class="mbox">'+
-        '<div class="imgL">'+
-        '<img src="./images/m1.jpg"  onclick="toMake()">'+
-        '</div>'+
-        '<div class="mbox_bottom">'+
-        '<span>使用量：1111</span>'+
-        '<button class="use" onclick="toMake()">使用</button>'+
-        '</div>'+
-        '</div>'+
-        '<div class="mbox">'+
-        '<div class="imgL">'+
-        '<img src="./images/m1.jpg"  onclick="toMake()">'+
-        '</div>'+
-        '<div class="mbox_bottom">'+
-        '<span>使用量：1111</span>'+
-        '<button class="use" onclick="toMake()">使用</button>'+
-        '</div>'+
-        '</div>'+
-        '<div class="mbox">'+
-        '<div class="imgL">'+
-        '<img src="./images/m1.jpg"  onclick="toMake()">'+
-        '</div>'+
-        '<div class="mbox_bottom">'+
-        '<span>使用量：1111</span>'+
-        '<button class="use" onclick="toMake()">使用</button>'+
-        '</div>'+
-        '</div>'+
-        '<div class="mbox">'+
-        '<div class="imgL">'+
-        '<img src="./images/m1.jpg"  onclick="toMake()">'+
-        '</div>'+
-        '<div class="mbox_bottom">'+
-        '<span>使用量：1111</span>'+
-        '<button class="use" onclick="toMake()">使用</button>'+
-        '</div>'+
-        '</div>'+
-        '<div class="mbox">'+
-        '<div class="imgL">'+
-        '<img src="./images/m1.jpg"  onclick="toMake()">'+
-        '</div>'+
-        '<div class="mbox_bottom">'+
-        '<span>使用量：1111</span>'+
-        '<button class="use" onclick="toMake()">使用</button>'+
-        '</div>'+
-        '</div>'+
         '</div>'+
         '</div>';
 
     function show() {
         rr.innerHTML += dom_stage;
+        fetch("http://localhost:8000", {
+            method: "POST",
+            body: JSON.stringify({
+                id: "templateManage"
+            })
+        }).then(function(res) {
+            res.text().then(function(data) {
+                console.log(data);
+                for(let i = 0; i < JSON.parse(data).length; i++) {
+                    $(".stage_content").append($('<div class="mbox"><div class="imgL"><img src="'+JSON.parse(data)[i].url+'"  onclick="toMake(this)"></div><div class="mbox_bottom"><span>编号：'+JSON.parse(data)[i].id+'</span><button class="use" onclick="toMake(this)">使用</button></div></div>'))
+                }
+            });
+        });
     }
 
     return {show: show}

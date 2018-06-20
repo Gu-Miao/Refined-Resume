@@ -12,28 +12,27 @@ var $userDetailsPanel = (function() {
         +'</div>'
         +'<div class="info-box hide">'
         +'<div class="infos">'
-        +'<span>姓名：</span><input type="text" value="谷淼">'
+        +'<span>姓名：</span><input type="text" value="">'
         +'</div>'
         +'<div class="infos">'
-        +'<span>性别：</span><input type="text" value="男">'
+        +'<span>性别：</span><input type="text" value="">'
         +'</div>'
         +'<div class="infos">'
-        +'<span>年龄：</span><input type="text" value="18">'
+        +'<span>年龄：</span><input type="text" value="">'
         +'</div>'
         +'<div class="infos">'
-        +'<span>电话：</span><input type="text" value="13171920850">'
+        +'<span>电话：</span><input type="text">'
         +'</div>'
         +'<div class="infos">'
-        +'<span>住址：</span><input type="text" value="乐凯大街">'
+        +'<span>住址：</span><input type="text" value="">'
         +'</div>'
-        +'<div class="btn-change">确认修改</div>'
         +'</div>'
         +'<div class="info-box hide">'
         +'<div class="infos">'
-        +'<span>身高：</span><input type="number" value="111" min="0" step="10">'
+        +'<span>身高：</span><input type="number" min="0" step="10">'
         +'</div>'
         +'<div class="infos">'
-        +'<span>体重：</span><input type="text" value="120kg">'
+        +'<span>体重：</span><input type="text">'
         +'</div>'
         +'<div class="infos">'
         +'<span>血型：</span><input type="text" value="">'
@@ -41,7 +40,6 @@ var $userDetailsPanel = (function() {
         +'<div class="infos">'
         +'<span>兴趣爱好：</span><input type="text" value="">'
         +'</div>'
-        +'<div class="btn-change">确认修改</div>'
         +'</div>'
         +'<div class="info-box hide">'
         +'<div class="infos">'
@@ -50,7 +48,6 @@ var $userDetailsPanel = (function() {
         +'<div class="infos">'
         +'<span>毕业院校：</span><input type="text" value="">'
         +'</div>'
-        +'<div class="btn-change">确认修改</div>'
         +'</div>'
         +'<div class="info-box hide">'
         +'<div class="infos">'
@@ -61,7 +58,6 @@ var $userDetailsPanel = (function() {
         +'<div class="infos-exp">'
         +'<span>职场经历：</span><textarea cols="30" rows="10"></textarea>'
         +'</div>'
-        +'<div class="btn-change">确认修改</div>'
         +'</div>'
         +'<div class="info-box hide">'
         +'<div class="infos">'
@@ -70,7 +66,6 @@ var $userDetailsPanel = (function() {
         +'<div class="infos">'
         +'<span>期望薪资：</span><input type="text" value="">'
         +'</div>'
-        +'<div class="btn-change">确认修改</div>'
         +'</div>'
         +'<div class="info-box hide">'
         +'<div class="infos">'
@@ -79,11 +74,10 @@ var $userDetailsPanel = (function() {
         +'<div class="infos">'
         +'<span>密保答案：</span><input type="text" value="">'
         +'</div>'
-        +'<div class="btn-change">确认修改</div>'
         +'</div>'
         +'</div>'
         +'<div class="user-box">'
-        +'<div><img src="./images/header.jpg"></div>'
+        +'<div><img src="./images/user.jpg"></div>'
         +'<p>GuMiao</p>'
         +'<p>用户账号</p>'
         +'<hr>'
@@ -97,6 +91,32 @@ var $userDetailsPanel = (function() {
       console.log("changePasswordPanel");
       $(app.config.panelContainer).html('');
       $(app.config.panelContainer).append($userDetailsDOM);
+
+      var data = JSON.parse(localStorage["m-usrC"]);
+      console.log(data, $(".info-box:eq(3) input:eq(1)"));
+      $(".info-box:eq(0) input:eq(0)").val(data.name);
+      $(".info-box:eq(0) input:eq(1)").val(data.sex);
+      $(".info-box:eq(0) input:eq(2)").val(data.age);
+      $(".info-box:eq(0) input:eq(3)").val(data.telephone);
+      $(".info-box:eq(0) input:eq(4)").val(data.home);
+      $(".info-box:eq(1) input:eq(0)").val(data.tall);
+      $(".info-box:eq(1) input:eq(1)").val(data.weight);
+      $(".info-box:eq(1) input:eq(2)").val(data.blood);
+      $(".info-box:eq(1) input:eq(3)").val(data.hobby);
+      $(".info-box:eq(2) input:eq(0)").val(data.education);
+      $(".info-box:eq(2) input:eq(1)").val(data.school);
+      $(".info-box:eq(3) input:eq(0)").val(data.company);
+      $(".info-box:eq(3) input:eq(1)").val(data.position);
+      $(".info-box:eq(3) input:eq(2)").val(data.experience);
+      $(".info-box:eq(4) input:eq(0)").val(data.postionwant);
+      $(".info-box:eq(4) input:eq(1)").val(data.pricewant);
+      $(".info-box:eq(5) input:eq(0)").val(data.question);
+      $(".info-box:eq(5) input:eq(1)").val(data.answer);
+      if(data.userhead){$(".user-box img").attr("src", data.userhead);}
+      $(".user-box p:eq(0)").html(data.username);
+      $(".user-box p:eq(2)").html("注册时间："+data.date);
+      $(".user-box p:eq(3)").html("上次登录IP："+data.ip);
+      
 
       $(".info-type div").click(function() {
           $(".info-type div").css({
@@ -114,7 +134,6 @@ var $userDetailsPanel = (function() {
       });
 
       $(".info-type div:eq(0)").trigger("click");
-
     }
   
     return {show: show};

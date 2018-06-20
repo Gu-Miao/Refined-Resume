@@ -8,227 +8,9 @@ var $systemLogPanel = (function() {
       +'<div>IP地址</div>'
       +'<div>时间</div>'
       +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>用户</div>'
-      +'<div>gumiao</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>用户</div>'
-      +'<div>zhangsan</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>用户</div>'
-      +'<div>zhanggaoxiang</div>'
-      +'<div>10.7.92.226</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>管理员</div>'
-      +'<div>RRManager1</div>'
-      +'<div>10.7.92.224</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
-      +'<div class="sytem-logs">'
-      +'<div>登录</div>'
-      +'<div>用户</div>'
-      +'<div>王伟</div>'
-      +'<div>10.7.92.226</div>'
-      +'<div>2018/06/06</div>'
-      +'</div>'
+      +'<div class="system-log"></div>'
       +'<div id="pager"><div></div></div>'
       +'</div>');
-  
-    
 
     function getPageNum() { // 获取当前是第几页
         return $(".sytem-logs").index($(".sytem-logs").not(".hide")[0])/10+1;
@@ -247,42 +29,57 @@ var $systemLogPanel = (function() {
 
 
     function show() {
-      console.log("systemLog");
-      $(app.config.panelContainer).html('');
-      $(app.config.panelContainer).append($systemLogDOM);
+        console.log("systemLog");
+        $(app.config.panelContainer).html('');
+        $(app.config.panelContainer).append($systemLogDOM);
 
-      var maxPageNum = getMaxPageNum();
-      console.log(maxPageNum);
-      var target = $("#pager div:eq(0)");
+        var data = {
+            id: "systemLog"
+        }
+        fetch(app.config.url, {
+            method: "POST",
+            body: JSON.stringify(data)
+        }).then(function(res) {
+            res.text().then(function(data) {
+                $(".system-log").empty();
+                for(let i = 0; i < JSON.parse(data).length; i++) {
+                    $(".system-log").append($('<div class="sytem-logs"><div>登录</div><div>'+JSON.parse(data)[i].type+'</div><div>'+JSON.parse(data)[i].username+'</div><div>'+JSON.parse(data)[i].ip+'</div><div>'+JSON.parse(data)[0].date+'</div></div>'));
+                }
 
-      if(target.children().length === 0) {
-          target.append($("<div>＜</div>"));
-          for(let i = 0; i < maxPageNum; i++) {
-              target.append($("<div>"+(i+1)+"</div>"));
-          }
-          target.append($("<div>＞</div>"));
-      }
-      
+                var maxPageNum = getMaxPageNum();
+                console.log(maxPageNum);
+                var target = $("#pager div:eq(0)");
 
-      var pager = $("#pager div div");
-      pager.click(function() {
-          var pageNum = getPageNum();
-          var maxPageNum = getMaxPageNum();
-      
-          if($(this).html() === "＜") {
-              if(pageNum-1 !== 0) {
-                  showList(pageNum-1);
-              }
-          } else if ($(this).html() === "＞") {
-              if(pageNum !== maxPageNum) {
-                  showList(pageNum+1);
-              }
-          } else {
-              showList(Number($(this).html()));
-          }
-      });
+                if(target.children().length === 0) {
+                    target.append($("<div>＜</div>"));
+                    for(let i = 0; i < maxPageNum; i++) {
+                        target.append($("<div>"+(i+1)+"</div>"));
+                    }
+                    target.append($("<div>＞</div>"));
+                }
+            
 
-      $("#pager div div:eq(1)").trigger("click");
+                var pager = $("#pager div div");
+                pager.click(function() {
+                    var pageNum = getPageNum();
+                    var maxPageNum = getMaxPageNum();
+                
+                    if($(this).html() === "＜") {
+                        if(pageNum-1 !== 0) {
+                            showList(pageNum-1);
+                        }
+                    } else if ($(this).html() === "＞") {
+                        if(pageNum !== maxPageNum) {
+                            showList(pageNum+1);
+                        }
+                    } else {
+                        showList(Number($(this).html()));
+                    }
+                });
+
+                $("#pager div div:eq(1)").trigger("click");
+            });
+        });
     }
   
     return {show: show};

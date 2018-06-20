@@ -4,7 +4,7 @@ var c_header = function() {
         '<span class="header_title">随时随地创建属于您的简历</span>'+
         '<div class="header_usr">'+
         '<div class="header_usr_top">'+
-        '<img class="header_usrhd" src="images/header.jpg" onmouseover="showList()">'+
+        '<img class="header_usrhd" src="images/user.jpg" onmouseover="showList()">'+
         '<span class="header_username" onmouseover="showList()">XXX</span>'+
         '<i class="iconfont icon-arrowup" onmouseover="showList()"></i>'+
         '</div>'+
@@ -12,8 +12,8 @@ var c_header = function() {
         '<ul>'+
         '<li><span onclick="toInfo()">个人信息</span></li>'+
         '<hr class="hhr">'+
-        '<li><span>我的简历</span></li>'+
-        '<hr class="hhr">'+
+        ''+
+        ''+
         '<li><span onclick="logOff()">注销登录</span></li>'+
         '</ul>'+
         '</div>'+
@@ -41,7 +41,9 @@ var c_header = function() {
         rr.innerHTML += dom_header;
 
         var width = window.setInterval(widthChange, 250);
-        $(".header_usrhd")[0].src = JSON.parse(window.sessionStorage["rr_usrC"]).userhead;
+        if(JSON.parse(window.sessionStorage["rr_usrC"]).userhead) {
+            $(".header_usrhd")[0].src = JSON.parse(window.sessionStorage["rr_usrC"]).userhead;
+        }
         console.log(JSON.parse(window.sessionStorage["rr_usrC"]).username.length);
         if(JSON.parse(window.sessionStorage["rr_usrC"]).username.length <= 8) {
             $(".header_username")[0].innerHTML = JSON.parse(window.sessionStorage["rr_usrC"]).username;
