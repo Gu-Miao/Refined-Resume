@@ -27,9 +27,6 @@ MongoClient.connect(url, function(err, db) {
 
 http.createServer(function(req, res) {
     switch(req.method) {
-        case "GET":
-            get(res);
-            break;
         case "POST":
             req.on("data",function(data) {
               var id = JSON.parse(data.toString("utf8")).id;
