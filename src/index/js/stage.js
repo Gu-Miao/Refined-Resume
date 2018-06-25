@@ -11,7 +11,7 @@ var c_stage = function() {
 
     function show() {
         rr.innerHTML += dom_stage;
-        fetch("http://localhost:8000", {
+        fetch(app.url, {
             method: "POST",
             body: JSON.stringify({
                 id: "templateManage"
