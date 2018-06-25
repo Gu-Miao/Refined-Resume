@@ -48,7 +48,7 @@ var rr = document.getElementById("rr");
         var data = {
             id: "visit"
         }
-        fetch("http://localhost:8000", {
+        fetch(app.url, {
           method: "POST",
           body: JSON.stringify(data)
         }).then(function(res) {
@@ -196,14 +196,13 @@ function login() { // 登录页点击登录按钮的回调
     } else {
         var data = {id: "login", username: usr, password: psw};
         console.log("fetching...");
-        fetch("http://localhost:8000", {
+        fetch(app.url, {
             method: "POST",
             body: JSON.stringify(data)
         }).then(function(res) {
             res.text().then(function(data) {
                 if(data == "登录失败") {
                     alert("登录失败");
-                    fetch()
                 } else if(data === "用户名不存在") {
                     alert("用户名不存在");
                     usr_em.innerHTML = "* 用户名不存在";
@@ -211,7 +210,7 @@ function login() { // 登录页点击登录按钮的回调
                     alert("密码错误");
                     psw_em.innerHTML = "* 密码错误，请重试";
                 } else {
-                    fetch("http://localhost:8000", {
+                    fetch(app.url, {
                         method: "POST",
                         body: JSON.stringify({
                             id: "ip",
@@ -292,7 +291,7 @@ function reg() { // 注册按钮回调函数
     if(usr_em.innerHTML === "" && psw_em.innerHTML === "" && cpsw_em.innerHTML === "" && qes_em.innerHTML === "" && ans_em.innerHTML === "" && radio.classList[1]) {
         var data = {id: "reg", username: usr, password: psw, question: qes, answer: ans, ip: "10.7.1.92"};
         console.log("fetching...");
-        fetch("http://localhost:8000", {
+        fetch(app.url, {
             method: "POST",
             body: JSON.stringify(data)
         }).then(function(res) {
@@ -325,7 +324,7 @@ function next1() { // 忘记密码页下一步按钮的回调函数
     } else {
         usr_em.innerHTML = "";
         var data = {id: "getpsw1", username: usr};
-        fetch("http://localhost:8000", {
+        fetch(app.url, {
             method: "POST",
             body: JSON.stringify(data)
         }).then(function(res) {
@@ -357,7 +356,7 @@ function next2() { // 忘记密码页下一步按钮的回调函数
     } else {
         ans_em.innerHTML = "";
         var data = {id: "getpsw2", username: window.sessionStorage["rr_usr"], answer: ans};
-        fetch("http://localhost:8000", {
+        fetch(app.url, {
             method: "POST",
             body: JSON.stringify(data)
         }).then(function(res) {
@@ -399,7 +398,7 @@ function getPsw() { // 忘记密码页完成按钮的回调函数
     
     if(psw_em.innerHTML === "" && cpsw_em.innerHTML === ""){
         var data = {id: "changePsw", username: window.sessionStorage["rr_usr"], password: psw}
-        fetch("http://localhost:8000", {
+        fetch(app.url, {
             method: "POST",
             body: JSON.stringify(data)
         }).then(function(res) {
@@ -446,7 +445,7 @@ function infoChange1() { // 基本信息
 		telephone: tele.value
 	}
 	console.log("data: ", data);
-	fetch("http://localhost:8000", {
+	fetch(app.url, {
 		method: "POST",
 		body: JSON.stringify(data)
 	}).then(function(res) {
@@ -478,7 +477,7 @@ function infoChange2() { // 详细信息
 		hobby: home.value
 	}
 	console.log("data: ", data);
-	fetch("http://localhost:8000", {
+	fetch(app.url, {
 		method: "POST",
 		body: JSON.stringify(data)
 	}).then(function(res) {
@@ -505,7 +504,7 @@ function infoChange3() { // 教育背景
 		school: school.value
 	}
 	console.log("data: ", data);
-	fetch("http://localhost:8000", {
+	fetch(app.url, {
 		method: "POST",
 		body: JSON.stringify(data)
 	}).then(function(res) {
@@ -536,7 +535,7 @@ function infoChange4() { // 工作信息
 		experience: exp.value
 	}
 	console.log("data: ", data);
-	fetch("http://localhost:8000", {
+	fetch(app.url, {
 		method: "POST",
 		body: JSON.stringify(data)
 	}).then(function(res) {
@@ -564,7 +563,7 @@ function infoChange5() { // 求职意向
 		pricewant: priw.value,
 	}
 	console.log("data: ", data);
-	fetch("http://localhost:8000", {
+	fetch(app.url, {
 		method: "POST",
 		body: JSON.stringify(data)
 	}).then(function(res) {
@@ -589,7 +588,7 @@ function infoChange6() { // 更改头像
 		userhead: usrhd.toDataURL("image/png")
 	}
 	console.log("data: ", data);
-	fetch("http://localhost:8000", {
+	fetch(app.url, {
 		method: "POST",
 		body: JSON.stringify(data)
 	}).then(function(res) {
@@ -633,7 +632,7 @@ function infoChange7() { // 修改密码
 			password: pswc.value
 		}
 		console.log("data: ", data);
-		fetch("http://localhost:8000", {
+		fetch(app.url, {
 			method: "POST",
 			body: JSON.stringify(data)
 		}).then(function(res) {
