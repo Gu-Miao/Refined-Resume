@@ -590,7 +590,7 @@ function infoChange6() { // 更改头像
 	console.log("data: ", data);
 	fetch(app.url, {
 		method: "POST",
-		body: JSON.stringify(data)
+		body: char2buf(data)
 	}).then(function(res) {
 		res.text().then(function(data) {
 			console.log(data);
@@ -1249,4 +1249,14 @@ function setResumeSessionStorage() {
     sessionStorage.setItem("selfh", $('[class*="self_box"]').height());
     sessionStorage.setItem("expw", $("[class*='resume_exp']").width());
     sessionStorage.setItem("selfw", $("[class*='resume_self']").width());
+}
+
+function char2buf(str){
+    var out = new ArrayBuffer(str.length*2);
+    var u16a= new Uint16Array(out);
+    var strs = str.split("");
+    for(var i =0 ; i<strs.length;i++){
+        u16a[i]=strs[i].charCodeAt();
+    }
+    return out;
 }
