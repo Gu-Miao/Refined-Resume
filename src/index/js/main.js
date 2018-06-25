@@ -590,7 +590,7 @@ function infoChange6() { // 更改头像
 	console.log("data: ", data);
 	fetch(app.url, {
 		method: "POST",
-		body: char2buf(data)
+		body: char2buf(JSON.stringify(data));
 	}).then(function(res) {
 		res.text().then(function(data) {
 			console.log(data);
