@@ -19,8 +19,11 @@ var c_stage = function() {
         }).then(function(res) {
             res.text().then(function(data) {
                 console.log(data);
+                sessionStorage.setItem("tdata", data);
                 for(let i = 0; i < JSON.parse(data).length; i++) {
-                    $(".stage_content").append($('<div class="mbox"><div class="imgL"><img src="'+JSON.parse(data)[i].url+'"  onclick="toMake(this)"></div><div class="mbox_bottom"><span>编号：'+JSON.parse(data)[i].id+'</span><button class="use" onclick="toMake(this)">使用</button></div></div>'))
+                    if(JSON.parse(data)[i].home) {
+                        $(".stage_content").append($('<div class="mbox"><div class="imgL"><img src="'+JSON.parse(data)[i].url+'"  onclick="toMake(this)"></div><div class="mbox_bottom"><span>编号：'+JSON.parse(data)[i].id+'</span><button class="use" onclick="toMake(this)">使用</button></div></div>'));
+                    }
                 }
             });
         });

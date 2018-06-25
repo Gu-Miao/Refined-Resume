@@ -7,7 +7,7 @@
     color: white;
     position: absolute;
     left: 0;
-    bottom: -1110px;
+    bottom: -1510px;
 }
 .footer_item {
 	float: left;
@@ -56,7 +56,7 @@
 
 .inc {
     position: absolute;
-    bottom: -1080px;
+    bottom: -1480px;
     left: 400px;
     z-index: 999;
 }

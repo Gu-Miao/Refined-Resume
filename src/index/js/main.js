@@ -26,8 +26,7 @@ var rr = document.getElementById("rr");
             c_tip.show();
             c_resume.show();
             $(document).click(hideList);
-            sessionStorage.setItem("rr_ta1", $(""));
-            sessionStorage.setItem("rr_ta2", 148);
+            setResumeSessionStorage()
         } else {
             rr.innerHTML = "";
             c_header.show();
@@ -46,8 +45,6 @@ var rr = document.getElementById("rr");
     }
 
     window.onload = function() {
-        localStorage.setItem("boxexp", 0);
-        localStorage.setItem("boxself", 0);
         var data = {
             id: "visit"
         }
@@ -88,6 +85,7 @@ var rr = document.getElementById("rr");
                 c_tip.show();
                 c_resume.show();
                 $(document).click(hideList);
+                setResumeSessionStorage()
             } else {
                 rr.innerHTML = "";
                 c_header.show();
@@ -688,7 +686,7 @@ function toHome() {
 
 function toMake(obj) {
     var src = $(obj).parent().parent().find("img").attr("src");
-    var id = src.substring(src.length-5, src.length-4);
+    var id = src.substring(src.length-6, src.length-4);
     window.localStorage.setItem("rr-id", id);
     window.location.hash = "#/make";
     (event || window.event).cancelBubble = true;
@@ -864,6 +862,7 @@ function hideBtn(obj) {
 }
 
 function userhead(obj) { // 头像模态框的保存按钮的回调函数
+    $("[class*='resume_userhead']").empty();
     $("[class*='resume_userhead']").append($("<img src='" + $("#rr_thumbnail")[0].toDataURL("image/png") + "'>"));
     $(obj).parent().parent().find(".close").trigger("click");
     console.log("userhead: ", $("[class*='resume_userhead']"));
@@ -937,7 +936,7 @@ function changeSkill(obj) {
     console.log($("#skills .tag_bottom").children().length);
     
     if($(obj).parent()[0].className == "tag_top") {
-        if($("#skills .tag_bottom").children().length === 10) {
+        if($("#skills .tag_bottom").children().length === 9) {
             alert("您添加的标签太多了，选几个重点吧");
         } else {
             var addTarget = $(obj);
@@ -953,7 +952,7 @@ function changeSkill(obj) {
 
 function addSkill(obj, e) {
     if(e.keyCode == 13) {
-        if($("#skills .tag_bottom").children().length === 10) {
+        if($("#skills .tag_bottom").children().length === 9) {
             alert("您添加的标签太多了，选几个重点吧");
         } else {
             $("#skills .tag_bottom").append($('<div class="tag" onclick="changeSkill(this)">' + $(obj).val() + '<div></div></div>'));
@@ -987,7 +986,7 @@ function changeHobby(obj) {
     console.log($("#hobbys .tag_bottom").children().length);
     
     if($(obj).parent()[0].className == "tag_top") {
-        if($("#hobbys .tag_bottom").children().length === 10) {
+        if($("#hobbys .tag_bottom").children().length === 9) {
             alert("您添加的标签太多了，选几个重点吧");
         } else {
             var addTarget = $(obj);
@@ -1004,7 +1003,7 @@ function changeHobby(obj) {
 function addHobby(obj, e) {
     if(e.keyCode == 13) {
         console.log(1);
-        if($("#hobbys .tag_bottom").children().length === 10) {
+        if($("#hobbys .tag_bottom").children().length === 9) {
             alert("您添加的标签太多了，选几个重点吧");
         } else {
             $("#hobbys .tag_bottom").append($('<div class="tag" onclick="changeSkill(this)">' + $(obj).val() + '<div></div></div>'));
@@ -1081,51 +1080,75 @@ function exp(obj) {
     if(start.value == "" || end.value == "") {
         $("[class*='resume_exp'] div:eq(0)").html("工作时间");
     } else {
-        $("[class*='resume_exp'] div:eq(0)").html(start.value + "~" + end.value);
+        $("[class*='resume_exp'] div:eq(0)").html("工作时间：" + start.value + "~" + end.value);
     }
     
-    $("[class*='resume_exp'] div:eq(1)").html("所在公司" + com.value);
-    $("[class*='resume_exp'] div:eq(2)").html("工作岗位" + pos.value);
-    $("[class*='resume_exp'] p:eq(1)").html(getFormatCode(exp.value));
+    $("[class*='resume_exp'] div:eq(1)").html("所在公司：" + com.value);
+    $("[class*='resume_exp'] div:eq(2)").html("工作岗位：" + pos.value);
+    if(exp.value !== "") {
+        $("[class*='resume_exp'] p:eq(1)").html(getFormatCode(exp.value));
+        $("[class*='resume_exp'] p:eq(1)").css({
+            ["line-height"] : "15px",
+            ["word-wrap"]: "break-word",
+            ["word-break"]: "break-all",
+            margin: "0 auto",
+            width: Number(sessionStorage.expw) - 20 + "px"
+        });
+    } else {
+        $("[class*='resume_exp'] p:eq(1)").html("请在这里介绍你的工作经历");
+    }
 
-    localStorage.setItem("exph", $(".exp_box").height());
-    console.log(localStorage.exph);
-    var height = getFormatCode(exp.value).split("<br/>").length-1;
-    $(".resumeBox").height(1000+Number(localStorage.boxself)+height*15);
-    localStorage.setItem("boxexp", Number($(".resumeBox").height())-(1000+Number(localStorage.boxself)));
-    $(".exp_box").height(Number(localStorage.exph)+height*15);
-    $("[class*='resume_exp']").height(Number(localStorage.exph)-2+height*15);
+    var height = getFormatCode(exp.value).split("<br>").length-1;
+    $('[class*="resumeBox"]').height(Number(sessionStorage.boxh)+Number(sessionStorage.boxself)+height*16);
+    sessionStorage.setItem("boxexp", Number($('[class*="resumeBox"]').height())-(Number(sessionStorage.boxh)+Number(sessionStorage.boxself)));
+    $('[class*="exp_box"]').height(Number(sessionStorage.exph)+height*15);
+    $("[class*='resume_exp']").height(Number(sessionStorage.exph)-2+height*15);
 
     $(obj).parent().parent().find(".close").trigger("click");
 }
 
 function self(obj) {
     var inner = $(obj).parent().parent().find("textarea").val();
-    var p = $("[class*='resume_self'] p:eq(1)").html(getFormatCode(inner));
-    var height = getFormatCode(inner).split("<br/>").length-1;
+    if(inner !== "") {
+        $("[class*='resume_self'] p:eq(1)").html(getFormatCode(inner));
+        $("[class*='resume_self'] p:eq(1)").css({
+            ["line-height"] : "15px",
+            ["word-wrap"]: "break-word",
+            ["word-break"]: "break-all",
+            margin: "0 auto",
+            width: Number(sessionStorage.selfw) - 20 + "px"
+        });
+    } else {
+        $("[class*='resume_self'] p:eq(1)").html("在这里对你的履历进行简短的总结和评价");
+    }
+    
+    var height = getFormatCode(inner).split("<br>").length-1;
 
-    localStorage.setItem("selfh", $(".self_box").height());
-    console.log(localStorage.selfh);
-    $(".resumeBox").height(1000+Number(localStorage.boxexp)+height*15);
-    localStorage.setItem("boxself", Number($(".resumeBox").height())-(1000+Number(localStorage.boxexp)));
-    $(".self_box").height(Number(localStorage.selfh)+height*15);
-    $("[class*='resume_self']").height(Number(localStorage.selfh)-2+height*15);
+    $('[class*="resumeBox"]').height(Number(sessionStorage.boxh)+Number(sessionStorage.boxexp)+height*16);
+    sessionStorage.setItem("boxself", Number($('[class*="resumeBox"]').height())-(Number(sessionStorage.boxh)+Number(sessionStorage.boxexp)));
+    $('[class*="self_box"]').height(Number(sessionStorage.selfh)+height*15);
+    $("[class*='resume_self']").height(Number(sessionStorage.selfh)-2+height*15);
 
-    console.log(height, localStorage.boxexp, 1000+Number(localStorage.boxexp)+height*15, $(".resumeBox").height());
+    console.log(height, sessionStorage.boxexp, Number(sessionStorage.boxh)+Number(sessionStorage.boxexp)+height*15, $('[class*="resumeBox"]').height());
 
     $(obj).parent().parent().find(".close").trigger("click");
 }
 
-function getCol(obj) { // 获取textarea的行数
+function getCol(str) {
     var col = 0;
-    col = $(obj).val().split("\n").length;
-    for(let i = 0; i < $(obj).val().split("\n").length; i++) {
-        if(sizeof($(obj).val().split("\n")[i], "utf8") > 111) {
-            col++;
+    var a = [];
+    a = str.split(/\n|<br>/);
+    col = a.length;
+    for(let i = 0; i < a.length; i++) {
+        console.log(sizeof(a[i], "utf8"));
+        console.log(70);
+        if(sizeof(a[i], "utf8") > 70) {
+            a.push(a[i].substring(70, a[i].length));
+            a[i] = a[i].substring(0, 70);
         }
     }
 
-    console.log("col: ", col);
+    console.log("col: ", a.length);
     return col;
 }
 
@@ -1184,21 +1207,47 @@ function sizeof(str, charset){  // 计算字符串所占的字节数
 }
 
 function showM(obj) { // 显示模态框
+    // console.log($(obj)[0].className.substring(0, 15));
+    // console.log(!(isNaN(Number($(obj).parent()[0].className.substring($(obj).parent()[0].className.length-2, $(obj).parent()[0].className.length)))));
     if($(obj)[0].className.substring(0, 15) == "resume_userhead") {
         target = "#rr_userhead"
-    } else {
-        if(isNaN(Number($(obj).parent()[0].className.split("_")[1].substring($(obj).parent()[0].className.split("_")[1].length-1, $(obj).parent()[0].className.split("_")[1].length)))) {
-            target = "#rr_" + $(obj).parent()[0].className.split("_")[1];
-        } else {
-            target = "#rr_" + $(obj).parent()[0].className.split("_")[1].substring(0, $(obj).parent()[0].className.split("_")[1].length-1);
-        }
-        
+    } else if (!(isNaN(Number($(obj).parent()[0].className.substring($(obj).parent()[0].className.length-2, $(obj).parent()[0].className.length))))) {
+        target = "#rr_" + $(obj).parent()[0].className.split("_")[1];
+        target = target.substring(0, target.length-2);
+    } else if (!(isNaN(Number($(obj).parent()[0].className.substring($(obj).parent()[0].className.length-1, $(obj).parent()[0].className.length))))) {
+        target = "#rr_" + $(obj).parent()[0].className.split("_")[1];
+        target = target.substring(0, target.length-1);
+    }  else {
+        target = "#rr_" + $(obj).parent()[0].className.split("_")[1];
     }
-    console.log("if: ",isNaN(Number($(obj).parent()[0].className.split("_")[1].substring($(obj).parent()[0].className.split("_")[1].length-1, $(obj).parent()[0].className.split("_")[1].length))));
-    console.log("target: ", target);
-    $(target).modal('show');
+    console.log(target);
+    $(target).modal('show')
 }
 
 var getFormatCode=function(strValue){  
-    return strValue.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');  
+    var str =  strValue.replace(/\r\n/g, '<br>').replace(/\n/g, '<br>').replace(/\s/g, ' ');
+    var a = str.split(/\n|<br>/);
+    var resultStr = "";
+    for(let i = 0; i < a.length; i++) {
+        if(a[i].length > 27) {
+            for(let j = a.length; j != i+1; j--) {
+                a[j+1] = a[j];
+            }
+            a[i+1] = a[i].substring(27, a[i].length);
+            a[i] = a[i].substring(0, 27);
+        }
+        resultStr += a[i]+"<br>";
+    }
+
+    return resultStr;
+}
+
+function setResumeSessionStorage() {
+    sessionStorage.setItem("boxh", $('[class*="resumeBox"]').height());
+    sessionStorage.setItem("boxexp", 0);
+    sessionStorage.setItem("boxself", 0);
+    sessionStorage.setItem("exph", $('[class*="exp_box"]').height());
+    sessionStorage.setItem("selfh", $('[class*="self_box"]').height());
+    sessionStorage.setItem("expw", $("[class*='resume_exp']").width());
+    sessionStorage.setItem("selfw", $("[class*='resume_self']").width());
 }

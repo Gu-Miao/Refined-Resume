@@ -16,6 +16,11 @@ li {
     margin-bottom: 10px;
 }
 
+.resumeBox1 hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .gifbg {
     background-image: url(../images/Jcrop.gif);
 }
@@ -28,6 +33,20 @@ li {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
+
+.dataBox {
+    width: 40%;
+    height: 50px;
+    float: left;
+    margin: 30px 0 0 5%;
+}
+
+.ui_date {
+    width: 260px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
 
 /* 修改按钮 */
 .btn_change {
@@ -55,12 +74,25 @@ li {
     background-color: rgb(43, 216, 174);
 }
 
+/* 简历模块容器 */
+.resumeBox1 {
+    width: 57%;
+    min-width: 780px;
+    height: 1200px;
+    min-height: 1000px;
+    position: absolute;
+    top: 70px;
+    left: 300px;
+    border: 1px solid white;
+    background-color: rgb(43, 216, 174);
+}
+
 /* 简历 */
 .resume {
     width: 680px;
     height: 99%;
     margin: 1% auto 0 auto;
-    background-color: #254665;
+    background-color: #fff;
 }
 
 /* 简历左侧 */
@@ -68,18 +100,19 @@ li {
     width: 240px;
     height: 100%;
     float: left;
+    background-color: #254665;
 }
-
-/* 头像 */
-.resume_userhead {
-    background-color: black;
-    width: 141px;
-    height: 192px;
-    margin: 20px auto 0 auto;
-    cursor: pointer;
-} .resume_userhead img {
-    width: 100%;
+.resume_left1 {
+    width: 240px;
     height: 100%;
+    float: left;
+    background-color: rgb(204, 26, 13);
+}
+.resume_left2 {
+    width: 240px;
+    height: 100%;
+    float: left;
+    background-color: #e6e600;
 }
 
 #rr_show {
@@ -113,6 +146,19 @@ li {
 	left: 430px;
 }
 
+/* 头像 */
+.resume_userhead {
+    background-image: url(../images/1.jpg);
+    background-size: 100% 100%;
+    width: 141px;
+    height: 192px;
+    margin: 20px auto 0 auto;
+    cursor: pointer;
+} .resume_userhead img {
+    width: 100%;
+    height: 100%;
+}
+
 /* 基本信息 */
 .basic_box {
     width: 200px;
@@ -131,22 +177,7 @@ li {
     position: relative;
     top: 15%;
     left: 5px;
-}
-
-.dataBox {
-    width: 40%;
-    height: 50px;
-    float: left;
-    margin: 30px 0 0 5%;
-}
-
-.ui_date {
-    width: 260px;
-    border: none;
-    border-bottom: 1px solid #ccc;
-}
-
-.resume_basic ul li {
+} .resume_basic ul li {
     color: white;
     margin-top: 10px;
     font-size: 18px;
@@ -262,6 +293,7 @@ li {
     height: 100%;
     float: left;
     background-color: white;
+    overflow: hidden;
 }
 
 /* 自我介绍 */
@@ -390,7 +422,7 @@ li {
     left: 1px;
     top: 1px;
     background-color: white;
-} .resume_self p:nth-child(1) {
+} .resume_self p:nth-child(2) {
     margin-top: 10px;
     line-height: 20px;
     font-size: 20px;
@@ -411,4 +443,1505 @@ li {
     background-color: #00c190;
 } .close {
     outline: none;
+}
+
+.resume_skill1 {
+    width: 198px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: rgb(204, 26, 13);
+    color: white;
+} .resume_skill1 ul {
+    margin-left: 10px;
+} .resume_skill1 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+.resume_hobby1 {
+    width: 198px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: rgb(204, 26, 13);
+    color: white;
+} .resume_hobby1 ul {
+    margin-left: 10px;
+} .resume_hobby1 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+.resume_basic1 {
+    width: 198px;
+    height: 198px;
+    background-color: rgb(204, 26, 13);
+    position: relative;
+    top: 1px;
+    left: 1px;
+} .resume_basic1 ul {
+    position: relative;
+    top: 15%;
+    left: 5px;
+} .resume_basic1 ul li {
+    color: white;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.resume_hobby2 {
+    width: 198px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #e6e600;
+    color: white;
+} .resume_hobby2 ul {
+    margin-left: 10px;
+} .resume_hobby2 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+.resume_skill2 {
+    width: 198px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #e6e600;
+    color: white;
+} .resume_skill2 ul {
+    margin-left: 10px;
+} .resume_skill2 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+.resume_basic2 {
+    width: 198px;
+    height: 198px;
+    background-color: #e6e600;
+    position: relative;
+    top: 1px;
+    left: 1px;
+} .resume_basic2 ul {
+    position: relative;
+    top: 15%;
+    left: 5px;
+} .resume_basic2 ul li {
+    color: white;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.rbg {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/bg.jpg);
+    /* background-size: 100% 100%; */
+}
+
+.rbg1 {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/bg1.jpg);
+    background-size: 100% 100%;
+}
+
+.rbg2 {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/bg2.jpg);
+    background-size: 100% 100%;
+}
+
+.rbg3 {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    background-size: 100% 100%;
+}
+
+
+/* 头像 */
+.resume_userhead3 {
+    background-image: url(../images/1.jpg);
+    background-size: 100% 100%;
+    width: 141px;
+    height: 192px;
+    cursor: pointer;
+    float: left;
+    margin-top: 30px;
+} .resume_userhead3 img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 自我介绍 */
+.name_box3 {
+    width: 459px;
+    height: 192px;
+    float: left;
+    margin-top: 30px;
+    background-color: #fff;
+}
+
+.resume_name3 { 
+    width: 457px;
+    height: 190px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_name3 p:nth-child(2) {
+    margin: 20px 0 0 40px;
+    line-height: 30px;
+    font-size: 30px;
+} .resume_name3 p:nth-child(4) {
+    margin: 20px 0 0 40px;
+    line-height: 30px;
+}
+
+/* 基本信息 */
+.basic_box3 {
+    width: 600px;
+    height: 80px;
+    margin: 0 0 0 40px;
+    float: left;
+    background-color: #fff;
+}
+
+.resume_basic3 {
+    width: 598px;
+    height: 78px;
+    background-color: #fff;
+    position: relative;
+    top: 1px;
+    left: 1px;
+    float: left;
+} .resume_basic3 ul {
+    position: relative;
+    top: 15%;
+    left: 5px;
+} .resume_basic3 ul li {
+    float: left;
+    margin: 10px 0 0 8%;
+    font-size: 14px;
+} .resume_basic3 ul li:nth-child(1) {
+    margin-left: 0;
+}
+
+/* 求职意向 */
+.jhi_box3 {
+    width: 600px;
+    height: 150px;
+    margin: 0 0 0 40px;
+    float: left;
+    background-color: #fff;
+}
+
+.resume_jhi3 {
+    width: 598px;
+    height: 148px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_jhi3 p {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+} .resume_jhi3 div {
+    width: 50%;
+    height: 50px;
+    float: left;
+    line-height: 50px;
+    color: #878686;
+}
+
+/* 教育背景 */
+.edu_box3 {
+    width: 600px;
+    height: 120px;
+    float: left;
+    margin: 0 0 0 40px;
+    background-color: #fff;
+}
+
+.resume_edu3 {
+    width: 598px;
+    height: 118px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_edu3 div {
+    width: 50%;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 0;
+    color: #878686;
+    float: left;
+} .resume_edu3 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+/* 工作经历 */
+.exp_box3 {
+    width: 600px;
+    height: 200px;
+    float: left;
+    margin-left: 40px;
+    background-color: #fff;
+}
+
+.resume_exp3 {
+    width: 598px;
+    height: 198px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_exp3 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+} .resume_exp3 div:nth-child(4) {
+    width: 100%;
+    height: 30px;
+    float: left;
+    color: #878686;
+} .resume_exp3 div {
+    width: 50%;
+    height: 30px;
+    float: left;
+    color: #878686;
+} .resume_exp3 p {
+    overflow: visible;
+}
+
+
+/* 技能特长 */
+.skill_box3 {
+    width: 300px;
+    height: 240px;
+    margin: 0 0 0 40px;
+    float: left;
+    background-color: #fff;
+}
+
+.resume_skill3 {
+    width: 298px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+    float: left;
+    /* color: white; */
+} .resume_skill3 ul {
+    margin-left: 10px;
+} .resume_skill3 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+/* 兴趣爱好 */
+.hobby_box3 {
+    width: 300px;
+    height: 240px;
+    float: left;
+    background-color: #fff;
+}
+
+.resume_hobby3 {
+    width: 298px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+    float: left;
+} .resume_hobby3 ul {
+    margin-left: 10px;
+} .resume_hobby3 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+/* 自我评价 */
+.self_box3 {
+    width: 600px;
+    height: 150px;
+    margin-left: 40px;
+    float: left;
+    background-color: #fff;
+}
+
+.self_box9 {
+    width: 600px;
+    height: 140px;
+    margin-left: 40px;
+    float: left;
+    background-color: #fff;
+}
+
+.resume_self3 {
+    width: 598px;
+    height: 148px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_self3 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+} .resume_self3 textarea {
+    font-size: 12px;
+    resize: none;
+    width: 94%;
+    height: 150px;
+    outline: none;
+    border: none;
+    overflow: visible;
+}
+
+/* 居中 */
+.md {
+    width: 600px;
+    margin: 0 auto;
+}
+
+/* 简历左侧 */
+.resume_left7 {
+    width: 240px;
+    height: 100%;
+    float: left;
+    background-color: #fff;
+}
+
+.resume_basic7 {
+    width: 198px;
+    height: 198px;
+    background-color: #fff;
+    position: relative;
+    top: 1px;
+    left: 1px;
+} .resume_basic7 ul {
+    position: relative;
+    top: 15%;
+    left: 5px;
+} .resume_basic7 ul li {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* 技能特长 */
+.skill_box {
+    width: 200px;
+    height: 240px;
+    margin: 20px auto 0 auto;
+}
+
+.resume_skill7 {
+    width: 198px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+} .resume_skill7 h2 {
+    color: #0b70bd;
+    font-weight: bold;
+} .resume_skill7 ul {
+    margin-left: 10px;
+} .resume_skill7 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+/* 兴趣爱好 */
+.hobby_box {
+    width: 200px;
+    height: 240px;
+    margin: 20px auto 0 auto;
+}
+
+.resume_hobby7 {
+    width: 198px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+} .resume_hobby7 h2 {
+    color: #0b70bd;
+    font-weight: bold;
+} .resume_hobby7 ul {
+    margin-left: 10px;
+} .resume_hobby7 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+/* 自我介绍 */
+.name_box7 {
+    width: 440px;
+    height: 165px;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.resume_name7 { 
+    width: 440px;
+    height: 163px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    color: white;
+    background-image: url(../images/name.png);
+} .resume_name7 p:nth-child(2) {
+    margin: 20px 0 0 20px;
+    padding-top: 20px;
+    line-height: 30px;
+    font-size: 30px;
+} .resume_name7 p:nth-child(4) {
+    margin: 0 0 0 20px;
+    padding-top: 20px;
+    line-height: 30px;
+}
+
+.resume_name8 { 
+    width: 440px;
+    height: 163px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    color: white;
+    background-image: url(../images/name1.png);
+} .resume_name8 p:nth-child(2) {
+    margin: 20px 0 0 20px;
+    padding-top: 20px;
+    line-height: 30px;
+    font-size: 30px;
+} .resume_name8 p:nth-child(4) {
+    margin: 0 0 0 20px;
+    padding-top: 20px;
+    line-height: 30px;
+}
+
+/* 求职意向 */
+.jhi_box7 {
+    width: 440px;
+    height: 150px;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.resume_jhi7 {
+    width: 438px;
+    height: 148px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+} .resume_jhi7 p:nth-child(2) {
+    color: #0b70bd;
+    font-weight: bold;
+} .resume_jhi7 p {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+} .resume_jhi7 div {
+    width: 50%;
+    height: 50px;
+    float: left;
+    line-height: 50px;
+    color: #878686;
+}
+
+/* 教育背景 */
+.edu_box7 {
+    width: 440px;
+    height: 150px;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.resume_edu7 {
+    width: 438px;
+    height: 148px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white
+} .resume_edu7 p:nth-child(2) {
+    color: #0b70bd;
+    font-weight: bold;
+} .resume_edu7 div {
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 0;
+    color: #878686;
+} .resume_edu7 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+/* 工作经历 */
+.exp_box7 {
+    width: 440px;
+    height: 250px;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.resume_exp7 {
+    width: 438px;
+    height: 248px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+} .resume_exp7 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: #0b70bd;
+} .resume_exp7 div {
+    width: 100%;
+    height: 30px;
+    float: left;
+    color: #878686;
+} .resume_exp7 p {
+    overflow: visible;
+}
+
+/* 自我评价 */
+.self_box7 {
+    width: 440px;
+    height: 200px;
+    position: relative;
+    left: 0;
+    top: 10px;
+}
+
+.resume_self7 {
+    width: 440px;
+    height: 198px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+} .resume_self7 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #0b70bd;
+} .resume_self7 textarea {
+    font-size: 12px;
+    resize: none;
+    width: 94%;
+    height: 150px;
+    outline: none;
+    border: none;
+    overflow: visible;
+}
+
+.resume_skill8 {
+    width: 198px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+} .resume_skill8 h2 {
+    color: #d61212;
+    font-weight: bold;
+} .resume_skill8 ul {
+    margin-left: 10px;
+} .resume_skill8 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+.resume_hobby8 {
+    width: 198px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+} .resume_hobby8 h2 {
+    color: #d61212;
+    font-weight: bold;
+} .resume_hobby8 ul {
+    margin-left: 10px;
+} .resume_hobby8 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+/* 自我介绍 */
+.name_box8 {
+    width: 440px;
+    height: 165px;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+/* 求职意向 */
+.jhi_box8 {
+    width: 440px;
+    height: 150px;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.resume_jhi8 {
+    width: 438px;
+    height: 148px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+} .resume_jhi8 p:nth-child(2) {
+    color: #d61212;
+    font-weight: bold;
+} .resume_jhi8 p {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+} .resume_jhi8 div {
+    width: 50%;
+    height: 50px;
+    float: left;
+    line-height: 50px;
+    color: #878686;
+}
+
+/* 教育背景 */
+.edu_box8 {
+    width: 440px;
+    height: 150px;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.resume_edu8 {
+    width: 438px;
+    height: 148px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white
+} .resume_edu8 p:nth-child(2) {
+    color: #d61212;
+    font-weight: bold;
+} .resume_edu8 div {
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 0;
+    color: #878686;
+} .resume_edu8 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+/* 工作经历 */
+.exp_box8 {
+    width: 440px;
+    height: 250px;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.resume_exp8 {
+    width: 438px;
+    height: 248px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+} .resume_exp8 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: #d61212;
+} .resume_exp8 div {
+    width: 100%;
+    height: 30px;
+    float: left;
+    color: #878686;
+} .resume_exp8 p {
+    overflow: visible;
+}
+
+/* 自我评价 */
+.self_box8 {
+    width: 440px;
+    height: 200px;
+    position: relative;
+    left: 0;
+    top: 10px;
+}
+
+.resume_self8 {
+    width: 440px;
+    height: 198px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+} .resume_self8 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #d61212;
+} .resume_self8 textarea {
+    font-size: 12px;
+    resize: none;
+    width: 94%;
+    height: 150px;
+    outline: none;
+    border: none;
+    overflow: visible;
+}
+
+/* 居中 */
+.mds {
+    width: 680px;
+    height: 250px;
+    background-image: url(../images/nbg.jpg);
+    background-size: 680px 100%;
+}
+
+.mds1 {
+    width: 680px;
+    height: 250px;
+    background-image: url(../images/nbg1.jpg);
+    background-size: 680px 100%;
+}
+
+.mds2 {
+    width: 680px;
+    height: 250px;
+    background-image: url(../images/nbg2.jpg);
+    background-size: 680px 100%;
+}
+
+.mds3 {
+    width: 680px;
+    height: 250px;
+    background-image: url(../images/nbg3.jpg);
+    background-size: 680px 100%;
+}
+
+/* 头像 */
+.resume_userhead9 {
+    background-image: url(../images/1.jpg);
+    background-size: 80% 100%;
+    background-position: center center;
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    cursor: pointer;
+    float: left;
+    margin: 30px 0 0 40px;
+    overflow: hidden;
+} .resume_userhead9 img {
+    width: 100%;
+    height: 211px;
+    margin-top: -30px;
+}
+
+/* 自我介绍 */
+.name_box9 {
+    width: 459px;
+    height: 192px;
+    float: left;
+    margin-top: 30px;
+}
+
+.resume_name9 { 
+    width: 457px;
+    height: 190px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    float: left;
+    background-image: url(../images/nbg.jpg);
+    background-position: -190px;
+    background-size: 680px 100%;
+    background-repeat: no-repeat;
+} .resume_name9 p:nth-child(2) {
+    margin: 20px 0 0 40px;
+    line-height: 30px;
+    font-size: 30px;
+} .resume_name9 p:nth-child(4) {
+    margin: 20px 0 0 40px;
+    line-height: 30px;
+}
+
+.resume_jhi9 {
+    width: 598px;
+    height: 148px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_jhi9 p {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #048CA6;
+    font-weight: bold;
+} .resume_jhi9 div {
+    width: 50%;
+    height: 50px;
+    float: left;
+    line-height: 50px;
+    color: #878686;
+}
+
+.resume_edu9 {
+    width: 598px;
+    height: 118px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_edu9 div {
+    width: 50%;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 0;
+    color: #878686;
+    float: left;
+} .resume_edu9 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #048CA6;
+    font-weight: bold;
+}
+
+.resume_exp9 {
+    width: 598px;
+    height: 198px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_exp9 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #048CA6;
+    font-weight: bold;
+} .resume_exp9 div:nth-child(4) {
+    width: 100%;
+    height: 30px;
+    float: left;
+    color: #878686;
+} .resume_exp9 div {
+    width: 50%;
+    height: 30px;
+    float: left;
+    color: #878686;
+} .resume_exp9 p {
+    overflow: visible;
+}
+
+.resume_skill9 {
+    width: 298px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+    float: left;
+    /* color: white; */
+} .resume_skill9 h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #048CA6;
+} .resume_skill9 ul {
+    margin-left: 10px;
+} .resume_skill9 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+.resume_hobby9 {
+    width: 298px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+    float: left;
+} .resume_hobby9 h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #048CA6;
+} .resume_hobby9 ul {
+    margin-left: 10px;
+} .resume_hobby9 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+.resume_self9 {
+    width: 598px;
+    height: 138px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_self9 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #048CA6;
+} .resume_self9 textarea {
+    font-size: 12px;
+    resize: none;
+    width: 94%;
+    height: 150px;
+    outline: none;
+    border: none;
+    overflow: visible;
+}
+
+.resume_jhi10 {
+    width: 598px;
+    height: 148px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_jhi10 p {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #ff3333;
+    font-weight: bold;
+} .resume_jhi10 div {
+    width: 50%;
+    height: 50px;
+    float: left;
+    line-height: 50px;
+    color: #878686;
+}
+
+.resume_edu10 {
+    width: 598px;
+    height: 118px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_edu10 div {
+    width: 50%;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 0;
+    color: #878686;
+    float: left;
+} .resume_edu10 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #ff3333;
+    font-weight: bold;
+}
+
+.resume_exp10 {
+    width: 598px;
+    height: 198px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_exp10 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #ff3333;
+    font-weight: bold;
+} .resume_exp10 div:nth-child(4) {
+    width: 100%;
+    height: 30px;
+    float: left;
+    color: #878686;
+} .resume_exp10 div {
+    width: 50%;
+    height: 30px;
+    float: left;
+    color: #878686;
+} .resume_exp10 p {
+    overflow: visible;
+}
+
+.resume_skill10 {
+    width: 298px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+    float: left;
+    /* color: white; */
+} .resume_skill10 h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff3333;
+} .resume_skill10 ul {
+    margin-left: 10px;
+} .resume_skill10 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+.resume_hobby10 {
+    width: 298px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+    float: left;
+} .resume_hobby10 h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff3333;
+} .resume_hobby10 ul {
+    margin-left: 10px;
+} .resume_hobby10 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+.resume_self10 {
+    width: 598px;
+    height: 138px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_self10 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ff3333;
+} .resume_self10 textarea {
+    font-size: 12px;
+    resize: none;
+    width: 94%;
+    height: 150px;
+    outline: none;
+    border: none;
+    overflow: visible;
+}
+
+.resume_jhi11 {
+    width: 598px;
+    height: 148px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_jhi11 p {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #8300FC;
+    font-weight: bold;
+} .resume_jhi11 div {
+    width: 50%;
+    height: 50px;
+    float: left;
+    line-height: 50px;
+    color: #878686;
+}
+
+.resume_edu11 {
+    width: 598px;
+    height: 118px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_edu11 div {
+    width: 50%;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 0;
+    color: #878686;
+    float: left;
+} .resume_edu11 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #8300FC;
+    font-weight: bold;
+}
+
+.resume_exp11 {
+    width: 598px;
+    height: 198px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_exp11 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #8300FC;
+    font-weight: bold;
+} .resume_exp11 div:nth-child(4) {
+    width: 100%;
+    height: 30px;
+    float: left;
+    color: #878686;
+} .resume_exp11 div {
+    width: 50%;
+    height: 30px;
+    float: left;
+    color: #878686;
+} .resume_exp11 p {
+    overflow: visible;
+}
+
+.resume_skill11 {
+    width: 298px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+    float: left;
+    /* color: white; */
+} .resume_skill11 h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #8300FC;
+} .resume_skill11 ul {
+    margin-left: 10px;
+} .resume_skill11 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+.resume_hobby11 {
+    width: 298px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+    float: left;
+} .resume_hobby11 h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #8300FC;
+} .resume_hobby11 ul {
+    margin-left: 10px;
+} .resume_hobby11 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+.resume_self11 {
+    width: 598px;
+    height: 138px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_self11 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #8300FC;
+} .resume_self11 textarea {
+    font-size: 12px;
+    resize: none;
+    width: 94%;
+    height: 150px;
+    outline: none;
+    border: none;
+    overflow: visible;
+}
+
+.resume_jhi12 {
+    width: 598px;
+    height: 148px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_jhi12 p {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #28c855;
+    font-weight: bold;
+} .resume_jhi12 div {
+    width: 50%;
+    height: 50px;
+    float: left;
+    line-height: 50px;
+    color: #878686;
+}
+
+.resume_edu12 {
+    width: 598px;
+    height: 118px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_edu12 div {
+    width: 50%;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 0;
+    color: #878686;
+    float: left;
+} .resume_edu12 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #28c855;
+    font-weight: bold;
+}
+
+.resume_exp12 {
+    width: 598px;
+    height: 198px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_exp12 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #28c855;
+    font-weight: bold;
+} .resume_exp12 div:nth-child(4) {
+    width: 100%;
+    height: 30px;
+    float: left;
+    color: #878686;
+} .resume_exp12 div {
+    width: 50%;
+    height: 30px;
+    float: left;
+    color: #878686;
+} .resume_exp12 p {
+    overflow: visible;
+}
+
+.resume_skill12 {
+    width: 298px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+    float: left;
+    /* color: white; */
+} .resume_skill12 h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #28c855;
+} .resume_skill12 ul {
+    margin-left: 10px;
+} .resume_skill12 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+.resume_hobby12 {
+    width: 298px;
+    height: 238px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: #fff;
+    float: left;
+} .resume_hobby12 h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #28c855;
+} .resume_hobby12 ul {
+    margin-left: 10px;
+} .resume_hobby12 ul li {
+    margin: 2px 0 0 20px;
+    list-style: square outside;
+}
+
+.resume_self12 {
+    width: 598px;
+    height: 138px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+    float: left;
+} .resume_self12 p:nth-child(2) {
+    margin-top: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #28c855;
+} .resume_self12 textarea {
+    font-size: 12px;
+    resize: none;
+    width: 94%;
+    height: 150px;
+    outline: none;
+    border: none;
+    overflow: visible;
+}
+
+.resume_name10 { 
+    width: 457px;
+    height: 190px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    float: left;
+    background-image: url(../images/nbg1.jpg);
+    background-position: -190px;
+    background-size: 680px 100%;
+    background-repeat: no-repeat;
+} .resume_name10 p:nth-child(2) {
+    margin: 20px 0 0 40px;
+    line-height: 30px;
+    font-size: 30px;
+} .resume_name10 p:nth-child(4) {
+    margin: 20px 0 0 40px;
+    line-height: 30px;
+}
+
+.resume_name11 { 
+    width: 457px;
+    height: 190px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    float: left;
+    background-image: url(../images/nbg2.jpg);
+    background-position: -190px;
+    background-size: 680px 100%;
+    background-repeat: no-repeat;
+} .resume_name11 p:nth-child(2) {
+    margin: 20px 0 0 40px;
+    line-height: 30px;
+    font-size: 30px;
+} .resume_name11 p:nth-child(4) {
+    margin: 20px 0 0 40px;
+    line-height: 30px;
+}
+
+.resume_name12 { 
+    width: 457px;
+    height: 190px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    float: left;
+    background-image: url(../images/nbg3.jpg);
+    background-position: -190px;
+    background-size: 680px 100%;
+    background-repeat: no-repeat;
+} .resume_name12 p:nth-child(2) {
+    margin: 20px 0 0 40px;
+    line-height: 30px;
+    font-size: 30px;
+} .resume_name12 p:nth-child(4) {
+    margin: 20px 0 0 40px;
+    line-height: 30px;
 }

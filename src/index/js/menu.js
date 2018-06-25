@@ -28,6 +28,13 @@ var c_menu = function() {
 
     function show() {
         rr.innerHTML += dome_menu;
+        let j = 0;
+        for(let i = 0; i < JSON.parse(sessionStorage.tdata).length; i++) {
+            if(JSON.parse(sessionStorage.tdata)[i].ad) {
+                $(".menu_thu:eq("+j+") img").attr("src", JSON.parse(sessionStorage.tdata)[i].url);
+                j++;
+            }
+        }
     }
 
     return {show: show}

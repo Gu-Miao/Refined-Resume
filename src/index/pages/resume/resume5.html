@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>resume</title>
+    <title>resume5</title>
     <link href="css/bootstrap.min.css" rel="stylesheet"/> 
     <link href="./css/city-picker.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/jquery.Jcrop.min.css">
@@ -10,16 +10,28 @@
 </head>
 <body>
     <div id="rr">
-        <div class="resumeBox">
+        <div class="resumeBox1">
             <div class="resume">
 
-                <!-- 简历左侧 -->
-                <div class="resume_left">
-                    <!-- 头像 -->
-                    <div class="resume_userhead" onclick="showM(this)"></div>
+                <div class="rbg2">
+                    <div class="md">
+                        <!-- 头像 -->
+                        <div class="resume_userhead3" onclick="showM(this)"></div>
+    
+                        <!-- 名字 -->
+                        <div class="name_box3">
+                            <div class="resume_name3" onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
+                                <button class="hide btn_change" onclick="showM(this)">修改</button> 
+                                <p>你的名字</p>
+                                </br>
+                                <p>一句话介绍你自己，告诉HR为什么选择你而不是别人</p>
+                            </div>
+                        </div>
+                    </div>
+    
                     <!-- 基本信息 -->
-                    <div class="basic_box">
-                        <div class="resume_basic" onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
+                    <div class="basic_box3">
+                        <div class="resume_basic3" onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
                             <button class="hide btn_change" onclick="showM(this)">修改</button>
                             <ul>
                                 <li id="resume_birth">生日</li>
@@ -29,42 +41,10 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- 技能特长 -->
-                    <div class="skill_box">
-                        <div class="resume_skill" onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
-                            <button class="hide btn_change" onclick="showM(this)">修改</button>  
-                            <h2>技能特长</h2>
-                            <ul>
-                                <li>添加我的技能特长</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- 兴趣爱好 -->
-                    <div class="hobby_box">
-                        <div class="resume_hobby"  onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
-                            <button class="hide btn_change" onclick="showM(this)">修改</button> 
-                            <h2>兴趣爱好</h2>
-                            <ul>
-                                <li>添加我的兴趣爱好</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 简历右侧 -->
-                <div class="resume_right">
-                    <!-- 名字 -->
-                    <div class="name_box">
-                        <div class="resume_name" onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
-                            <button class="hide btn_change" onclick="showM(this)">修改</button> 
-                            <p>你的名字</p>
-                            </br>
-                            <p>一句话介绍你自己，告诉HR为什么选择你而不是别人</p>
-                        </div>
-                    </div>
+    
                     <!-- 求职意向 -->
-                    <div class="jhi_box">
-                        <div class="resume_jhi" onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
+                    <div class="jhi_box3">
+                        <div class="resume_jhi3" onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
                             <button class="hide btn_change" onclick="showM(this)">修改</button> 
                             <p>求职意向</p>
                             <hr></hr>
@@ -74,9 +54,10 @@
                             <div>薪资要求</div>
                         </div>
                     </div>
+    
                     <!-- 教育背景 -->
-                    <div class="edu_box">
-                        <div class="resume_edu" onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
+                    <div class="edu_box3">
+                        <div class="resume_edu3" onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
                             <button class="hide btn_change" onclick="showM(this)">修改</button> 
                             <p>教育背景</p>
                             <hr></hr>
@@ -86,23 +67,47 @@
                             <div>所学专业</div>
                         </div>
                     </div>
+    
                     <!-- 工作经历 -->
-                    <div class="exp_box">
-                        <div class="resume_exp" onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
+                    <div class="exp_box3">
+                        <div class="resume_exp3" onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
                             <button class="hide btn_change" onclick="showM(this)">修改</button> 
                             <p>工作经验</p>
                             <hr></hr>
-                            <div>工作时间</div><br><br>
-                            <div>公司名称</div><br><br>
+                            <div>工作时间</div>
+                            <div>公司名称</div>
                             <div>职位名称</div>
                             </br>
                             </br>
                             <p>在这里简介你的工作经历</p>
                         </div>
                     </div>
+    
+                    <!-- 技能特长 -->
+                    <div class="skill_box3">
+                        <div class="resume_skill3" onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
+                            <button class="hide btn_change" onclick="showM(this)">修改</button>  
+                            <h2>技能特长</h2>
+                            <ul>
+                                <li>添加我的技能特长</li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <!-- 兴趣爱好 -->
+                    <div class="hobby_box3">
+                        <div class="resume_hobby3"  onmouseover="showBtn(this)" onmouseout="hideBtn(this)">
+                            <button class="hide btn_change" onclick="showM(this)">修改</button> 
+                            <h2>兴趣爱好</h2>
+                            <ul>
+                                <li>添加我的兴趣爱好</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
                     <!-- 自我评价 -->
-                    <div class="self_box">
-                        <div class="resume_self" onmouseover="showBtn(this)" onmouseout="hideBtn(this)"> 
+                    <div class="self_box3">
+                        <div class="resume_self3" onmouseover="showBtn(this)" onmouseout="hideBtn(this)"> 
                             <button class="hide btn_change" onclick="showM(this)">修改</button> 
                             <p>自我评价</p>
                             <hr></hr>
