@@ -17,7 +17,7 @@ Refinde Resume面向所有用户提供高效、个性的简历设计服务。为
     * Github : [https://github.com/duoleyisui](https://github.com/duoleyisui)
 * 刘京 
     * Email: <295062608@qq.com>
-    * Gi
+    * Github : [https://github.com/peanut](https://github.com/peanut)
 
 ## 用户面向
 
@@ -36,10 +36,10 @@ JS|刘京，张高翔
 
 
 ### 运行效果
-<img src="images/1.jpg"/>
-<img src="images/2.jpg"/>
-<img src="images/3.jpg"/>
-<img src="images/4.jpg"/>
-<img src="images/5.jpg"/>
-<img src="images/6.jpg"/>
-<img src="images/7.jpg"/>
+<img src="docs/3.项目简介/images/1.jpg"/>
+<img src="docs/3.项目简介/images/2.jpg"/>
+<img src="docs/3.项目简介/images/3.jpg"/>
+<img src="docs/3.项目简介/images/4.jpg"/>
+<img src="docs/3.项目简介/images/5.jpg"/>
+<img src="docs/3.项目简介/images/6.jpg"/>
+<img src="docs/3.项目简介/images/7.jpg"/>
