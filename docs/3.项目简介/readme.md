@@ -1,4 +1,4 @@
-#岛买岛卖
+# Refined-Resume
 
 * [Github](https://github.com/gu-miao/refined-resume) 
 * [HostedRedmine](http://10.7.1.5/projects/h5_refined_resume)
@@ -15,11 +15,11 @@ Refinde Resume面向所有用户提供高效、个性的简历设计服务。为
     * Email: <1450206741@qq.com>
     * Github : [https://github.com/gu-miao](https://github.com/gu-miao)
 * 张高翔 (客户端代码开发，产品，文档编写) 
-    * Email: <960007435@qq.com>
-    * Github : [https://github.com/liuxin2017](https://github.com/liuxin2017)
+    * Email: <1694474987@qq.com>
+    * Github : [https://github.com/duoleyisui](https://github.com/duoleyisui)
 * 刘京 (客户端代码开发，测试)
-    * Email: <593160444@qq.com>
-    * Github : [https://github.com/zhanglixuan](https://github.com/zhanglixuan)
+    * Email: <295062608@qq.com>
+    * Github : [https://github.com/peanut](https://github.com/peanut)
 
 ### 运行效果
 <img src="images/1.jpg"/>
