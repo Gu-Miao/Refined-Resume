@@ -19,11 +19,11 @@ Refinde Resume面向所有用户提供高效、个性的简历设计服务。为
     * Email: <295062608@qq.com>
     * Github : [https://github.com/peanut](https://github.com/peanut)
 
-## 用户面向
+### 用户面向
 
 对个人简历有需求的求职者或者个人
 
-## 分工
+### 分工
 
 任务|负责人
 -|-
