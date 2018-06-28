@@ -32,7 +32,7 @@ var server = http.createServer(function(req, res) {
     fs.createReadStream(fileName).pipe(res);
   }
   
-}).listen(80);
+}).listen(8080);
 
 function getClientIp(req) {
   return req.headers['x-forwarded-for'] ||
