@@ -43,3 +43,6 @@ JS|刘京，张高翔
 <img src="docs/3.项目简介/images/5.jpg"/>
 <img src="docs/3.项目简介/images/6.jpg"/>
 <img src="docs/3.项目简介/images/7.jpg"/>
+
+### Redmine
+http://10.7.1.5/projects/h5_refined_resume
