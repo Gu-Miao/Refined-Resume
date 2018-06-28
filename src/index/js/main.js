@@ -1228,12 +1228,12 @@ var getFormatCode=function(strValue){
     var a = str.split(/\n|<br>/);
     var resultStr = "";
     for(let i = 0; i < a.length; i++) {
-        if(a[i].length > 27) {
+        if(a[i].length > 40) {
             for(let j = a.length; j != i+1; j--) {
                 a[j+1] = a[j];
             }
-            a[i+1] = a[i].substring(27, a[i].length);
-            a[i] = a[i].substring(0, 27);
+            a[i+1] = a[i].substring(40, a[i].length);
+            a[i] = a[i].substring(0, 40);
         }
         resultStr += a[i]+"<br>";
     }
