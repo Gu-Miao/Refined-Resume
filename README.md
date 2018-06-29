@@ -1,6 +1,6 @@
 ﻿# Refined Resume
 
-* [Github](https://github.com/gu-miao) 
+* [Github](https://github.com/gu-miao/refined-resume) 
 * [HostedRedmine](http://10.7.1.5/projects/h5_refined_resume)
 
 ### 项目简介
