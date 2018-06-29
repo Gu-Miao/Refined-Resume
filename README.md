@@ -1,5 +1,8 @@
 ﻿# Refined Resume
 
+* [Github](https://github.com/gu-miao) 
+* [HostedRedmine](http://10.7.1.5/projects/h5_refined_resume)
+
 ### 项目简介
 
 **Refinde Resume**是一款面向求职者的在线制作个人简历的网站
@@ -43,6 +46,3 @@ JS|刘京，张高翔
 <img src="./images/5.jpg"/>
 <img src="./images/6.jpg"/>
 <img src="./images/7.jpg"/>
-
-### Redmine
-http://10.7.1.5/projects/h5_refined_resume
