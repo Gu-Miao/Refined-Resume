@@ -36,13 +36,13 @@ JS|刘京，张高翔
 
 
 ### 运行效果
-<img src="images/1.jpg"/>
-<img src="images/2.jpg"/>
-<img src="images/3.jpg"/>
-<img src="images/4.jpg"/>
-<img src="images/5.jpg"/>
-<img src="images/6.jpg"/>
-<img src="images/7.jpg"/>
+<img src="./images/1.jpg"/>
+<img src="./images/2.jpg"/>
+<img src="./images/3.jpg"/>
+<img src="./images/4.jpg"/>
+<img src="./images/5.jpg"/>
+<img src="./images/6.jpg"/>
+<img src="./images/7.jpg"/>
 
 ### Redmine
 http://10.7.1.5/projects/h5_refined_resume
