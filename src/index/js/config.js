@@ -1,3 +1,3 @@
 var app = {
-    url: "http://localhost:8000"
+    url: "http://47.93.240.98:80"
 }

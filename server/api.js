@@ -110,7 +110,7 @@ http.createServer(function(req, res) {
         default:
             break;
     }
-}).listen(8000);
+}).listen(80);
 
 function getIP(data, req, res) { // 获取用户端IP
   console.log("getIP/POST");
