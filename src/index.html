@@ -7,5 +7,165 @@
     <title>Refined Resume</title>
     <link rel="stylesheet" href="./style/style.less" />
   </head>
-  <body></body>
+  <body>
+    <div class="card">
+      <!-- title -->
+      <h1>Refined Resume</h1>
+      <form id="form">
+        <!-- name -->
+        <div class="form-group">
+          <label for="name">name</label>
+          <input type="text" id="name" />
+        </div>
+
+        <!-- profile -->
+        <div class="form-group">
+          <label for="profile">profile</label>
+          <input type="file" id="profile" accept="*" />
+          <img class="hide" src="" alt="profile-preview" id="profile-preview" />
+        </div>
+
+        <!-- sex -->
+        <div class="form-group">
+          <div class="radio-group">
+            <input type="radio" id="female" name="sex" />
+            <label for="female">female</label>
+          </div>
+          <div class="radio-group">
+            <input type="radio" id="male" name="sex" />
+            <label for="male">male</label>
+          </div>
+          <div class="radio-group">
+            <input type="radio" id="other" name="sex" />
+            <label for="other">other</label>
+          </div>
+        </div>
+
+        <!-- age -->
+        <div class="form-group">
+          <label for="age">age</label>
+          <input type="number" id="age" min="1" max="200" step="1" />
+        </div>
+
+        <!-- phone -->
+        <div class="form-group">
+          <label for="phone">phone</label>
+          <input type="tel" id="phone" />
+        </div>
+
+        <!-- email -->
+        <div class="form-group">
+          <label for="email">email</label>
+          <input type="email" id="email" />
+        </div>
+
+        <!-- home -->
+        <div class="form-group">
+          <label for="home">home</label>
+          <input type="text" id="home" />
+        </div>
+
+        <!-- links -->
+        <div class="form-group">
+          <label>links</label>
+          <input type="text" name="link" /><button class="add" type="button">+</button>
+        </div>
+
+        <!-- introduce -->
+        <div class="form-group">
+          <label for="introduce">introduce</label>
+          <textarea id="introduce"></textarea>
+        </div>
+
+        <!-- edu exp -->
+        <div class="form-group">
+          <div class="group-header">
+            <label>education experience</label>
+            <button class="add" type="button">+</button>
+          </div>
+          <div class="group-item">
+            <label>school</label>
+            <input type="text" />
+            <label>from</label>
+            <input type="date" />
+            <label>to</label>
+            <input type="date" />
+            <label>major</label>
+            <input type="text" />
+          </div>
+        </div>
+
+        <!-- work exp -->
+        <div class="form-group">
+          <div class="group-header">
+            <label>work experience</label>
+            <button class="add" type="button">+</button>
+          </div>
+          <div class="group-item">
+            <label>company</label>
+            <input type="text" />
+            <label>from</label>
+            <input type="date" />
+            <label>to</label>
+            <input type="date" />
+            <label>position</label>
+            <input type="text" />
+            <label>work content & achievements</label>
+            <input type="text" />
+          </div>
+        </div>
+
+        <!-- projects exp -->
+        <div class="form-group">
+          <div class="group-header">
+            <label>project experience</label>
+            <button class="add" type="button">+</button>
+          </div>
+
+          <div class="group-item">
+            <label>project name</label>
+            <input type="text" />
+            <label>from</label>
+            <input type="date" />
+            <label>to</label>
+            <input type="date" />
+            <label>position</label>
+            <input type="text" />
+            <label>project content & achievements</label>
+            <input type="text" />
+          </div>
+        </div>
+
+        <!-- skills -->
+        <div class="form-group">
+          <div class="group-header">
+            <label>skills</label>
+            <button class="add" type="button">+</button>
+          </div>
+
+          <div class="group-item">
+            <label>skill name</label>
+            <input type="text" />
+            <label>proficiency level</label>
+            <input type="range" min="1" max="100" step="1" value="50" />
+          </div>
+        </div>
+
+        <!-- honor & achievement & certificates -->
+        <div class="form-group">
+          <div class="group-header">
+            <label>honor & achievement & certificates</label>
+            <button class="add" type="button">+</button>
+          </div>
+
+          <div class="group-item">
+            <input type="text" />
+          </div>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+  <script src="./scripts/app.js"></script>
 </html>
