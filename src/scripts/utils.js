@@ -9,9 +9,8 @@ export class Storage {
     // data in storage.
     if (isUndefined(name)) {
       const names = []
-      for (let name in localStorage) {
-        names.push(name)
-      }
+      Object.keys(localStorage).forEach(name => names.push(name))
+
       return Storage.get(names)
     }
 
@@ -113,7 +112,7 @@ export function isPlainObject(v) {
 /**
  * Check if a value is undefined.
  * @param {*} v The value to check.
- * @returns {Boolean} True if the argument is undefined.
+ * @returns {boolean} True if the argument is undefined.
  */
 export function isUndefined(v) {
   return undefined === v
@@ -122,7 +121,7 @@ export function isUndefined(v) {
 /**
  * Check if a value is an array.
  * @param {*} v The value to check.
- * @returns {Boolean} True if the argument is an array.
+ * @returns {boolean} True if the argument is an array.
  */
 export function isArray(v) {
   return Array.isArray(v)
@@ -131,8 +130,26 @@ export function isArray(v) {
 /**
  * Check if a value is a function.
  * @param {*} v The value to check.
- * @returns {Boolean} True if the argument is a function.
+ * @returns {boolean} True if the argument is a function.
  */
 export function isFunction(v) {
   return typeof v === 'function'
+}
+
+/**
+ * debounce
+ * @param {function} fun fn need to call
+ * @param {number} delay delay to exec
+ * @returns {function} debounced fn
+ */
+export function debounce(fun, delay) {
+  let timer = null
+  return function (args) {
+    let that = this
+    let _args = args
+    clearTimeout(timer)
+    timer = setTimeout(function () {
+      fun.call(that, _args)
+    }, delay)
+  }
 }
